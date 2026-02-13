@@ -3,7 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://script.google.com https://script.googleusercontent.com;">
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval'
+        https://www.googletagmanager.com
+        https://www.google-analytics.com
+        https://tagmanager.google.com
+        https://script.google.com
+        https://script.googleusercontent.com;
+      img-src 'self' data:
+        https://www.googletagmanager.com
+        https://www.google-analytics.com
+        https://*.google-analytics.com;
+      connect-src 'self'
+        https://www.googletagmanager.com
+        https://www.google-analytics.com
+        https://*.google-analytics.com
+        https://script.google.com
+        https://script.googleusercontent.com;
+      frame-src 'self'
+        https://www.googletagmanager.com
+        https://tagmanager.google.com;
+    ">
+
     <title>新規会員登録 | れいわキャリア</title>
     <style>
         * {
