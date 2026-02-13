@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://script.google.com https://script.googleusercontent.com;">
     <title>新規会員登録 | れいわキャリア</title>
     <style>
         * {
@@ -236,6 +237,293 @@
             background: #e5e7eb;
         }
 
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .time-slot {
+            background: white;
+            border: 2px solid #e5e7eb;
+            padding: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 16px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .time-slot:hover {
+            border-color: #Fee858;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(254, 232, 88, 0.3);
+        }
+
+        .time-slot.selected {
+            background: linear-gradient(90deg, #Fee858 0%, #ffdb5c 50%, #ffcc3d 100%);
+            border-color: #Fee858;
+            color: #333;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(254, 232, 88, 0.4);
+        }
+
+        .week-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            justify-content: center;
+        }
+
+        .week-btn {
+            padding: 12px 24px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .week-btn:hover {
+            border-color: #Fee858;
+        }
+
+        .week-btn.active {
+            background: linear-gradient(90deg, #Fee858 0%, #ffdb5c 50%, #ffcc3d 100%);
+            border-color: #Fee858;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .calendar-container {
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .calendar-table th {
+            background: #f9fafb;
+            padding: 12px 8px;
+            font-weight: 600;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .calendar-table td {
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .calendar-table td:first-child {
+            font-weight: 500;
+            background: #f9fafb;
+            position: sticky;
+            left: 0;
+            z-index: 5;
+        }
+
+        .date-header {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .day-name {
+            font-size: 11px;
+            color: #999;
+            display: block;
+        }
+
+        .time-cell {
+            cursor: pointer;
+            padding: 8px;
+            transition: all 0.2s;
+        }
+
+        .time-cell.available {
+            color: #10b981;
+            font-size: 18px;
+        }
+
+        .time-cell.available:hover {
+            background: #fffbea;
+            transform: scale(1.1);
+        }
+
+        .time-cell.unavailable {
+            color: #d1d5db;
+            cursor: not-allowed;
+            font-size: 16px;
+        }
+
+        .time-cell.selected {
+            background: linear-gradient(90deg, #Fee858 0%, #ffdb5c 50%, #ffcc3d 100%);
+            font-weight: bold;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .time-cell.preference-1::after {
+            content: '1';
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: #333;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .time-cell.preference-2::after {
+            content: '2';
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: #333;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .time-cell.preference-3::after {
+            content: '3';
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: #333;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .selected-slots-info {
+            padding: 20px;
+            background: #fffbea;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 2px solid #Fee858;
+        }
+
+        .preference-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .preference-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .preference-label {
+            color: #666;
+            font-size: 14px;
+            margin-right: 8px;
+        }
+
+        .remove-btn {
+            background: #ff4444;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+
+        .remove-btn:hover {
+            background: #cc0000;
+            transform: scale(1.1);
+        }
+
+        .selected-slot-info {
+            text-align: center;
+            padding: 16px;
+            background: #fffbea;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 2px solid #Fee858;
+        }
+
+        .selected-slot-info strong {
+            color: #333;
+        }
+
+        .birth-date-selects {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .birth-date-selects {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .strength-box {
+            margin-top: 20px;
+            background: linear-gradient(135deg, #Fee858 0%, #ffdb5c 50%, #ffcc3d 100%);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(254, 232, 88, 0.3);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .strength-box-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
         .btn-next:disabled:hover {
             transform: translateY(0);
             box-shadow: none;
@@ -297,6 +585,11 @@
         <div class="header">
             <div class="logo">れいわキャリア</div>
             <div class="tagline">働き方も、自分らしく</div>
+            
+            <!-- 強みボックス -->
+            <div class="strength-box" id="strengthBox" style="display: none;">
+                <div class="strength-box-title" id="strengthBoxTitle"></div>
+            </div>
         </div>
         
         <div class="progress-bar">
@@ -370,32 +663,32 @@
 
             <!-- Step 3: 希望条件 -->
             <div class="step hidden" id="step3">
-                <div class="step-indicator">ステップ 3/7</div>
+                <div class="step-indicator">ステップ 3/8</div>
                 <h2 class="question-title">希望する条件を選択してください<span class="required">*</span></h2>
                 <div class="checkbox-grid" id="conditionGroup">
                     <label class="checkbox-label">
                         <input type="checkbox" value="年収UP" onchange="updateCheckboxes('condition')">
-                        <span>年収UP</span>
+                        <span>💵 年収UP</span>
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" value="残業少なめ" onchange="updateCheckboxes('condition')">
-                        <span>残業少なめ</span>
+                        <span>⏰ 残業少なめ</span>
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" value="服装自由" onchange="updateCheckboxes('condition')">
-                        <span>服装自由</span>
+                        <span>👔 服装自由</span>
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" value="未経験OK" onchange="updateCheckboxes('condition')">
-                        <span>未経験OK</span>
+                        <span>🌱 未経験OK</span>
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" value="リモートワーク" onchange="updateCheckboxes('condition')">
-                        <span>リモートワーク</span>
+                        <span>🏠 リモートワーク</span>
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" value="福利厚生充実" onchange="updateCheckboxes('condition')">
-                        <span>福利厚生充実</span>
+                        <span>✨ 福利厚生充実</span>
                     </label>
                 </div>
                 <div class="button-group">
@@ -406,14 +699,12 @@
 
             <!-- Step 4: 最終学歴 -->
             <div class="step hidden" id="step4">
-                <div class="step-indicator">ステップ 4/7</div>
+                <div class="step-indicator">ステップ 4/8</div>
                 <h2 class="question-title">最終学歴を選択してください<span class="required">*</span></h2>
                 <div class="options">
                     <button class="option-button" onclick="selectOption('education', '高校卒業')">高校卒業</button>
-                    <button class="option-button" onclick="selectOption('education', '専門学校卒業')">専門学校卒業</button>
-                    <button class="option-button" onclick="selectOption('education', '短大卒業')">短大卒業</button>
+                    <button class="option-button" onclick="selectOption('education', '短大・専門学校卒業')">短大・専門学校卒業</button>
                     <button class="option-button" onclick="selectOption('education', '大学卒業')">大学卒業</button>
-                    <button class="option-button" onclick="selectOption('education', '大学院卒業')">大学院卒業</button>
                     <button class="option-button" onclick="selectOption('education', 'その他')">その他</button>
                 </div>
                 <div class="button-group">
@@ -424,14 +715,12 @@
 
             <!-- Step 5: 就業状況 -->
             <div class="step hidden" id="step5">
-                <div class="step-indicator">ステップ 5/7</div>
+                <div class="step-indicator">ステップ 5/8</div>
                 <h2 class="question-title">現在の就業状況を選択してください<span class="required">*</span></h2>
                 <div class="options">
-                    <button class="option-button" onclick="selectOption('employmentStatus', '正社員として就業中')">正社員として就業中</button>
-                    <button class="option-button" onclick="selectOption('employmentStatus', '契約社員・派遣社員として就業中')">契約社員・派遣社員として就業中</button>
-                    <button class="option-button" onclick="selectOption('employmentStatus', 'アルバイト・パートとして就業中')">アルバイト・パートとして就業中</button>
+                    <button class="option-button" onclick="selectOption('employmentStatus', '正社員')">正社員</button>
+                    <button class="option-button" onclick="selectOption('employmentStatus', 'アルバイト・パート')">アルバイト・パート</button>
                     <button class="option-button" onclick="selectOption('employmentStatus', '離職中')">離職中</button>
-                    <button class="option-button" onclick="selectOption('employmentStatus', '学生')">学生</button>
                     <button class="option-button" onclick="selectOption('employmentStatus', 'その他')">その他</button>
                 </div>
                 <div class="button-group">
@@ -440,47 +729,13 @@
                 </div>
             </div>
 
-            <!-- Step 6: 基本情報 -->
+            <!-- Step 6: 都道府県 -->
             <div class="step hidden" id="step6">
-                <div class="step-indicator">ステップ 6/7</div>
-                <h2 class="question-title">基本情報を入力してください</h2>
-                <div class="input-group">
-                    <label class="input-label">お名前<span class="required">*</span></label>
-                    <input type="text" class="input-field" id="fullName" placeholder="山田 太郎" oninput="validateStep6()">
-                </div>
-                <div class="input-group">
-                    <label class="input-label">生年月日<span class="required">*</span></label>
-                    <input type="date" class="input-field" id="birthDate" oninput="validateStep6()">
-                </div>
-                <div class="input-group">
-                    <label class="input-label">性別<span class="required">*</span></label>
-                    <div class="gender-buttons">
-                        <button class="option-button" onclick="selectOption('gender', '男性')">男性</button>
-                        <button class="option-button" onclick="selectOption('gender', '女性')">女性</button>
-                        <button class="option-button" onclick="selectOption('gender', 'その他')">その他</button>
-                    </div>
-                </div>
-                <div class="button-group">
-                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
-                    <button class="btn btn-next" id="nextBtn6" onclick="nextStep()" disabled>次へ</button>
-                </div>
-            </div>
-
-            <!-- Step 7: 連絡先 -->
-            <div class="step hidden" id="step7">
-                <div class="step-indicator">ステップ 7/7</div>
-                <h2 class="question-title">連絡先を入力してください</h2>
-                <div class="input-group">
-                    <label class="input-label">電話番号<span class="required">*</span></label>
-                    <input type="tel" class="input-field" id="phone" placeholder="090-1234-5678" oninput="validateStep7()">
-                </div>
-                <div class="input-group">
-                    <label class="input-label">メールアドレス<span class="required">*</span></label>
-                    <input type="email" class="input-field" id="email" placeholder="example@mail.com" oninput="validateStep7()">
-                </div>
+                <div class="step-indicator">ステップ 6/10</div>
+                <h2 class="question-title">お住まいの都道府県を選択してください<span class="required">*</span></h2>
                 <div class="input-group">
                     <label class="input-label">都道府県<span class="required">*</span></label>
-                    <select class="input-field" id="prefecture" onchange="validateStep7()">
+                    <select class="input-field" id="prefecture" onchange="validateStep6()">
                         <option value="">選択してください</option>
                         <option value="北海道">北海道</option>
                         <option value="東京都">東京都</option>
@@ -494,7 +749,104 @@
                 </div>
                 <div class="button-group">
                     <button class="btn btn-back" onclick="prevStep()">戻る</button>
-                    <button class="btn btn-next" id="submitBtn" onclick="submitForm()" disabled>登録完了</button>
+                    <button class="btn btn-next" id="nextBtn6" onclick="nextStep()" disabled>次へ</button>
+                </div>
+            </div>
+
+            <!-- Step 7: 性別 -->
+            <div class="step hidden" id="step7">
+                <div class="step-indicator">ステップ 7/10</div>
+                <h2 class="question-title">性別を選択してください<span class="required">*</span></h2>
+                <div class="options">
+                    <button class="option-button" onclick="selectOption('gender', '男性')">男性</button>
+                    <button class="option-button" onclick="selectOption('gender', '女性')">女性</button>
+                    <button class="option-button" onclick="selectOption('gender', 'その他')">その他</button>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
+                    <button class="btn btn-next" id="nextBtn7" onclick="nextStep()" disabled>次へ</button>
+                </div>
+            </div>
+
+            <!-- Step 8: 氏名・年齢 -->
+            <div class="step hidden" id="step8">
+                <div class="step-indicator">ステップ 8/10</div>
+                <h2 class="question-title">氏名・年齢を入力してください</h2>
+                <div class="input-group">
+                    <label class="input-label">お名前<span class="required">*</span></label>
+                    <input type="text" class="input-field" id="fullName" placeholder="山田 太郎" oninput="validateStep8()">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">生年月日<span class="required">*</span></label>
+                    <div class="birth-date-selects">
+                        <select class="input-field" id="birthYear" onchange="validateStep8()">
+                            <option value="">年</option>
+                        </select>
+                        <select class="input-field" id="birthMonth" onchange="validateStep8()">
+                            <option value="">月</option>
+                        </select>
+                        <select class="input-field" id="birthDay" onchange="validateStep8()">
+                            <option value="">日</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
+                    <button class="btn btn-next" id="nextBtn8" onclick="nextStep()" disabled>次へ</button>
+                </div>
+            </div>
+
+            <!-- Step 9: メアド・電話 -->
+            <div class="step hidden" id="step9">
+                <div class="step-indicator">ステップ 9/10</div>
+                <h2 class="question-title">メールアドレス・電話番号を入力してください</h2>
+                <div class="input-group">
+                    <label class="input-label">メールアドレス<span class="required">*</span></label>
+                    <input type="email" class="input-field" id="email" placeholder="example@mail.com" oninput="validateStep9()">
+                    <span class="error-message" id="emailError" style="display: none; color: #ff4444; font-size: 12px; margin-top: 4px;">正しいメールアドレスを入力してください</span>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">電話番号<span class="required">*</span></label>
+                    <input type="tel" class="input-field" id="phone" placeholder="090-1234-5678" oninput="validateStep9()">
+                    <span class="error-message" id="phoneError" style="display: none; color: #ff4444; font-size: 12px; margin-top: 4px;">正しい電話番号を入力してください（例: 090-1234-5678）</span>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
+                    <button class="btn btn-next" id="nextBtn9" onclick="nextStep()" disabled>次へ</button>
+                </div>
+            </div>
+
+            <!-- Step 10: 面談日程選択 -->
+            <div class="step hidden" id="step10">
+                <div class="step-indicator">ステップ 10/10</div>
+                <h2 class="question-title">ご希望の日時を選択してください<br><span style="font-size: 16px; color: #666;">第1希望から第3希望まで選択してください</span></h2>
+                
+                <div class="week-selector">
+                    <button class="week-btn active" onclick="selectWeek('next')">次の1週間</button>
+                </div>
+
+                <div class="calendar-container" id="calendarContainer">
+                    <!-- Calendar will be generated by JavaScript -->
+                </div>
+
+                <div class="selected-slots-info" id="selectedSlotsInfo" style="display: none;">
+                    <div class="preference-item" id="preference1" style="display: none;">
+                        <span class="preference-label">第1希望:</span> <strong id="preference1Text"></strong>
+                        <button class="remove-btn" onclick="removePreference(1)">×</button>
+                    </div>
+                    <div class="preference-item" id="preference2" style="display: none;">
+                        <span class="preference-label">第2希望:</span> <strong id="preference2Text"></strong>
+                        <button class="remove-btn" onclick="removePreference(2)">×</button>
+                    </div>
+                    <div class="preference-item" id="preference3" style="display: none;">
+                        <span class="preference-label">第3希望:</span> <strong id="preference3Text"></strong>
+                        <button class="remove-btn" onclick="removePreference(3)">×</button>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
+                    <button class="btn btn-next" id="nextBtn10" onclick="submitForm()" disabled>登録完了</button>
                 </div>
             </div>
 
@@ -502,7 +854,7 @@
             <div class="step hidden" id="completion">
                 <div class="completion">
                     <div class="completion-icon">✅</div>
-                    <h2 class="completion-title">登録が完了しました！</h2>
+                    <h2 class="completion-title">予約が完了しました！</h2>
                     <p class="completion-message">
                         ご登録ありがとうございます。<br>
                         担当者より1〜3営業日以内にご連絡させていただきます。<br>
@@ -530,6 +882,9 @@
             education: '',
             employmentStatus: '',
             gender: '',
+            interviewDateTime1: '',
+            interviewDateTime2: '',
+            interviewDateTime3: '',
             fullName: '',
             birthDate: '',
             phone: '',
@@ -538,7 +893,32 @@
         };
 
         let currentStep = 1;
-        const totalSteps = 7;
+        const totalSteps = 10;
+
+        // 強みのデータ（2問ずつ切り替え）
+        const strengths = [
+            { step: 2, title: '平均年収100万円UP', emoji: '💵' },
+            { step: 4, title: '未経験特化', emoji: '✨' },
+            { step: 6, title: '全て無料', emoji: '🆓' },
+            { step: 8, title: '隠れホワイト求人多数', emoji: '🏢' },
+            { step: 10, title: '内定まで全てサポート', emoji: '🤝' }
+        ];
+
+        let currentStrengthIndex = 0;
+
+        function showStrength(index) {
+            const strength = strengths[index];
+            const strengthBox = document.getElementById('strengthBox');
+            const titleEl = document.getElementById('strengthBoxTitle');
+            
+            // コンテンツを更新
+            titleEl.textContent = `${strength.emoji} ${strength.title}`;
+            
+            // 初回表示
+            if (strengthBox.style.display === 'none') {
+                strengthBox.style.display = 'block';
+            }
+        }
 
         function updateProgress() {
             const progress = (currentStep / totalSteps) * 100;
@@ -596,22 +976,276 @@
         }
 
         function validateStep6() {
-            const fullName = document.getElementById('fullName').value;
-            const birthDate = document.getElementById('birthDate').value;
-            const gender = formData.gender;
-            
-            const isValid = fullName.trim() !== '' && birthDate !== '' && gender !== '';
+            const prefecture = document.getElementById('prefecture').value;
+            const isValid = prefecture !== '';
             document.getElementById('nextBtn6').disabled = !isValid;
         }
 
         function validateStep7() {
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const prefecture = document.getElementById('prefecture').value;
-            
-            const isValid = phone.trim() !== '' && email.trim() !== '' && prefecture !== '';
-            document.getElementById('submitBtn').disabled = !isValid;
+            // Step 7は性別のみ - selectOption関数で自動的に次へ進む
         }
+
+        function validateStep8() {
+            const fullName = document.getElementById('fullName').value;
+            const birthYear = document.getElementById('birthYear').value;
+            const birthMonth = document.getElementById('birthMonth').value;
+            const birthDay = document.getElementById('birthDay').value;
+            
+            const isValid = fullName.trim() !== '' && birthYear !== '' && birthMonth !== '' && birthDay !== '';
+            document.getElementById('nextBtn8').disabled = !isValid;
+        }
+
+        function validateStep9() {
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            // メールアドレスの正規表現
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailValid = emailRegex.test(email);
+            
+            // 電話番号の正規表現（ハイフンあり・なし両対応）
+            const phoneRegex = /^(0\d{1,4}-?\d{1,4}-?\d{4}|0\d{9,10})$/;
+            const phoneValid = phoneRegex.test(phone.replace(/-/g, ''));
+            
+            // エラーメッセージの表示/非表示
+            const emailError = document.getElementById('emailError');
+            const phoneError = document.getElementById('phoneError');
+            
+            if (email.trim() !== '' && !emailValid) {
+                emailError.style.display = 'block';
+            } else {
+                emailError.style.display = 'none';
+            }
+            
+            if (phone.trim() !== '' && !phoneValid) {
+                phoneError.style.display = 'block';
+            } else {
+                phoneError.style.display = 'none';
+            }
+            
+            const isValid = emailValid && phoneValid;
+            document.getElementById('nextBtn9').disabled = !isValid;
+        }
+
+        function validateStep10() {
+            // Step 10は面談日程選択 - selectSlot関数で処理
+        }
+
+        function initializeBirthDateSelects() {
+            const yearSelect = document.getElementById('birthYear');
+            const monthSelect = document.getElementById('birthMonth');
+            const daySelect = document.getElementById('birthDay');
+            
+            // Generate years (1940-2008)
+            for (let year = 2008; year >= 1940; year--) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year + '年';
+                yearSelect.appendChild(option);
+            }
+            
+            // Generate months (1-12)
+            for (let month = 1; month <= 12; month++) {
+                const option = document.createElement('option');
+                option.value = month;
+                option.textContent = month + '月';
+                monthSelect.appendChild(option);
+            }
+            
+            // Generate days (1-31)
+            for (let day = 1; day <= 31; day++) {
+                const option = document.createElement('option');
+                option.value = day;
+                option.textContent = day + '日';
+                daySelect.appendChild(option);
+            }
+        }
+
+        let currentWeek = 'next';
+        let selectedSlots = [];
+
+        function selectWeek(week) {
+            currentWeek = week;
+            document.querySelectorAll('.week-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            generateCalendar();
+        }
+
+        function generateCalendar() {
+            const container = document.getElementById('calendarContainer');
+            const today = new Date(2026, 1, 13); // Feb 13, 2026
+            
+            // Always show next week (starting from Feb 14)
+            const startDate = new Date(2026, 1, 14);
+            
+            // Generate 7 days
+            const dates = [];
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(startDate);
+                date.setDate(date.getDate() + i);
+                dates.push(date);
+            }
+            
+            // Time slots configuration
+            const weekdaySlots = [];
+            for (let hour = 10; hour <= 20; hour++) {
+                weekdaySlots.push(`${String(hour).padStart(2, '0')}:00`);
+            }
+            
+            const saturdaySlots = [];
+            for (let hour = 13; hour <= 18; hour++) {
+                saturdaySlots.push(`${String(hour).padStart(2, '0')}:00`);
+            }
+            
+            const sundaySlots = [];
+            for (let hour = 10; hour <= 20; hour++) {
+                sundaySlots.push(`${String(hour).padStart(2, '0')}:00`);
+            }
+            
+            // Build table
+            let tableHTML = '<table class="calendar-table"><thead><tr><th>日時</th>';
+            
+            dates.forEach(date => {
+                const dayNames = ['日', '月', '火', '水', '木', '金', '土'];
+                const dayName = dayNames[date.getDay()];
+                const month = date.getMonth() + 1;
+                const day = date.getDate();
+                tableHTML += `<th><div class="date-header">${month}/${day}<span class="day-name">(${dayName})</span></div></th>`;
+            });
+            
+            tableHTML += '</tr></thead><tbody>';
+            
+            // Generate rows for each time slot
+            const maxSlots = Math.max(weekdaySlots.length, saturdaySlots.length, sundaySlots.length);
+            
+            for (let i = 0; i < maxSlots; i++) {
+                tableHTML += '<tr>';
+                
+                // Time column
+                const time = weekdaySlots[i] || saturdaySlots[i] || sundaySlots[i];
+                tableHTML += `<td>${time || ''}</td>`;
+                
+                // Date columns
+                dates.forEach(date => {
+                    const dayOfWeek = date.getDay();
+                    const isSaturday = dayOfWeek === 6;
+                    const isSunday = dayOfWeek === 0;
+                    
+                    let slotTime;
+                    let isAvailable = false;
+                    
+                    // 平日（月〜金）: 10:00-21:00で○
+                    if (!isSaturday && !isSunday && i < weekdaySlots.length) {
+                        slotTime = weekdaySlots[i];
+                        isAvailable = true;
+                    }
+                    // 土曜: 13:00-19:00のみ○
+                    else if (isSaturday && i < saturdaySlots.length) {
+                        slotTime = saturdaySlots[i];
+                        isAvailable = true;
+                    }
+                    
+                    if (isAvailable && slotTime) {
+                        const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                        const slotId = `${dateStr}_${slotTime}`;
+                        const dayNames = ['日', '月', '火', '水', '木', '金', '土'];
+                        const displayDate = `${date.getMonth() + 1}/${date.getDate()}(${dayNames[date.getDay()]}) ${slotTime}-${String(parseInt(slotTime.split(':')[0]) + 1).padStart(2, '0')}:00`;
+                        
+                        tableHTML += `<td class="time-cell available" onclick="selectSlot('${slotId}', '${displayDate}')">○</td>`;
+                    } else {
+                        // 日曜・祝日、または土曜の対象外時間は×
+                        tableHTML += `<td class="time-cell unavailable">×</td>`;
+                    }
+                });
+                
+                tableHTML += '</tr>';
+            }
+            
+            tableHTML += '</tbody></table>';
+            container.innerHTML = tableHTML;
+            
+            // Restore selections if exist
+            updateCellHighlights();
+        }
+
+        function updateCellHighlights() {
+            // Remove all highlights
+            document.querySelectorAll('.time-cell').forEach(cell => {
+                cell.classList.remove('selected', 'preference-1', 'preference-2', 'preference-3');
+            });
+            
+            // Re-apply highlights
+            selectedSlots.forEach((slot, index) => {
+                const cells = document.querySelectorAll('.time-cell');
+                cells.forEach(cell => {
+                    if (cell.getAttribute('onclick') && cell.getAttribute('onclick').includes(slot.id)) {
+                        cell.classList.add('selected', `preference-${index + 1}`);
+                    }
+                });
+            });
+        }
+
+        function selectSlot(slotId, displayText) {
+            // Check if already selected
+            const existingIndex = selectedSlots.findIndex(s => s.id === slotId);
+            
+            if (existingIndex !== -1) {
+                // Remove if already selected
+                selectedSlots.splice(existingIndex, 1);
+            } else {
+                // Add new selection (max 3)
+                if (selectedSlots.length < 3) {
+                    selectedSlots.push({ id: slotId, text: displayText });
+                } else {
+                    alert('第3希望まで選択済みです。変更する場合は、既存の希望を削除してください。');
+                    return;
+                }
+            }
+            
+            updatePreferenceDisplay();
+            updateCellHighlights();
+            
+            // Enable next button if at least one slot is selected
+            document.getElementById('nextBtn10').disabled = selectedSlots.length === 0;
+        }
+
+        function updatePreferenceDisplay() {
+            const info = document.getElementById('selectedSlotsInfo');
+            
+            if (selectedSlots.length === 0) {
+                info.style.display = 'none';
+                return;
+            }
+            
+            info.style.display = 'block';
+            
+            // Update each preference
+            for (let i = 1; i <= 3; i++) {
+                const prefDiv = document.getElementById(`preference${i}`);
+                const prefText = document.getElementById(`preference${i}Text`);
+                
+                if (selectedSlots[i - 1]) {
+                    prefDiv.style.display = 'flex';
+                    prefText.textContent = selectedSlots[i - 1].text;
+                    formData[`interviewDateTime${i}`] = selectedSlots[i - 1].text;
+                } else {
+                    prefDiv.style.display = 'none';
+                    formData[`interviewDateTime${i}`] = '';
+                }
+            }
+        }
+
+        function removePreference(prefNumber) {
+            if (prefNumber <= selectedSlots.length) {
+                selectedSlots.splice(prefNumber - 1, 1);
+                updatePreferenceDisplay();
+                updateCellHighlights();
+                
+                // Disable next button if no slots selected
+                document.getElementById('nextBtn10').disabled = selectedSlots.length === 0;
+            }
+        }
+
 
         function nextStep() {
             document.getElementById('step' + currentStep).classList.add('hidden');
@@ -619,6 +1253,20 @@
             document.getElementById('step' + currentStep).classList.remove('hidden');
             updateProgress();
             window.scrollTo(0, 0);
+            
+            // Generate calendar when entering step 10
+            if (currentStep === 10) {
+                generateCalendar();
+            }
+            
+            // 強みを表示するステップをチェック
+            const strengthToShow = strengths.find(s => s.step === currentStep);
+            if (strengthToShow) {
+                const index = strengths.indexOf(strengthToShow);
+                setTimeout(() => {
+                    showStrength(index);
+                }, 300); // ステップ遷移のアニメーション後に表示
+            }
         }
 
         function prevStep() {
@@ -632,21 +1280,36 @@
         function submitForm() {
             // Collect all form data
             formData.fullName = document.getElementById('fullName').value;
-            formData.birthDate = document.getElementById('birthDate').value;
+            const birthYear = document.getElementById('birthYear').value;
+            const birthMonth = document.getElementById('birthMonth').value;
+            const birthDay = document.getElementById('birthDay').value;
+            formData.birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
             formData.phone = document.getElementById('phone').value;
             formData.email = document.getElementById('email').value;
             formData.prefecture = document.getElementById('prefecture').value;
+            // interviewDateTime is already set
             
             console.log('Form submitted:', formData);
+            console.log('第1希望:', formData.interviewDateTime1);
+            console.log('第2希望:', formData.interviewDateTime2);
+            console.log('第3希望:', formData.interviewDateTime3);
+            console.log('名前:', formData.fullName);
+            console.log('メール:', formData.email);
             
             // Send to Google Sheets
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyW4ZlxyIgS5jHJk7RMtT2aLUuyM7kB7WvlJJHTAWMLHQSnaAV-lVdXfNvs80sLGCIg/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbw8B6wTY4nMJUlpZ1f2QuDFUYZVlOCDHtifP6BrVgCo11kJjtCaLnIfPTYWDSr-Y5O3/exec';
             
             // Show completion screen immediately
-            document.getElementById('step7').classList.add('hidden');
+            document.getElementById('step10').classList.add('hidden');
             document.getElementById('completion').classList.remove('hidden');
-            currentStep = 8;
+            currentStep = 11;
             updateProgress();
+            
+            // 強みボックスのテキストを変更
+            const strengthBoxTitle = document.getElementById('strengthBoxTitle');
+            if (strengthBoxTitle) {
+                strengthBoxTitle.textContent = '🙏 ご回答ありがとうございます';
+            }
             
             // Send data to Google Sheets in background
             fetch(scriptURL, {
@@ -667,6 +1330,9 @@
 
         // Initialize progress bar
         updateProgress();
+        
+        // Initialize birth date selects
+        initializeBirthDateSelects();
     </script>
 </body>
 </html>
