@@ -639,11 +639,30 @@
             
             console.log('Form submitted:', formData);
             
-            // Show completion screen
+            // Send to Google Sheets
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyW4ZlxyIgS5jHJk7RMtT2aLUuyM7kB7WvlJJHTAWMLHQSnaAV-lVdXfNvs80sLGCIg/exec';
+            
+            // Show completion screen immediately
             document.getElementById('step7').classList.add('hidden');
             document.getElementById('completion').classList.remove('hidden');
             currentStep = 8;
             updateProgress();
+            
+            // Send data to Google Sheets in background
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                console.log('データがGoogleスプレッドシートに保存されました');
+            })
+            .catch(error => {
+                console.error('エラー:', error);
+            });
         }
 
         // Initialize progress bar
