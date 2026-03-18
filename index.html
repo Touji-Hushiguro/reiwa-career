@@ -427,29 +427,55 @@ a { color: inherit; text-decoration: none; }
 /* ===== STATS ===== */
 .stats {
   background: var(--bg2);
-  padding: 72px 24px;
+  padding: 64px 24px;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 48px;
-  text-align: center;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 900px;
+  margin: 0 auto;
+}
+.stat-item {
+  text-align: left;
+  padding: 0 48px;
+  border-right: 1px dashed rgba(255,255,255,0.15);
+}
+.stat-item:first-child { padding-left: 0; }
+.stat-item:last-child { border-right: none; }
+.stat-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--gray);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.stat-label::before {
+  content: '♥';
+  color: var(--accent);
+  font-size: 0.85rem;
 }
 .stat-num {
-  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  font-size: clamp(2.8rem, 5vw, 4rem);
   font-weight: 900;
-  color: var(--accent);
+  color: var(--white);
   line-height: 1;
   letter-spacing: -0.03em;
 }
-.stat-num sup { font-size: 0.45em; color: var(--gray); font-weight: 700; vertical-align: top; padding-top: .3em; }
-.stat-label {
-  font-size: 0.8rem;
+.stat-num .stat-unit {
+  font-size: 0.45em;
   color: var(--gray);
-  margin-top: 10px;
-  font-weight: 600;
+  font-weight: 700;
+  vertical-align: baseline;
+  margin-left: 2px;
+}
+@media (max-width: 640px) {
+  .stats-grid { grid-template-columns: 1fr; gap: 36px; }
+  .stat-item { padding: 0; border-right: none; border-bottom: 1px dashed rgba(255,255,255,0.15); padding-bottom: 28px; }
+  .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
 }
 
 /* ===== REASONS ===== */
@@ -1032,21 +1058,17 @@ details[open] .faq-arrow { transform: rotate(180deg); }
 <section class="stats">
   <div class="container">
     <div class="stats-grid">
-      <div class="fade-up">
-        <div class="stat-num" data-target="500">0<sup>名以上</sup></div>
-        <div class="stat-label">累計支援実績</div>
-      </div>
-      <div class="fade-up" style="transition-delay:.1s">
-        <div class="stat-num" data-target="92">0<sup>%</sup></div>
+      <div class="stat-item fade-up">
         <div class="stat-label">内定獲得率</div>
+        <div class="stat-num" data-target="72" data-decimal=".2">0<span class="stat-unit">%</span></div>
       </div>
-      <div class="fade-up" style="transition-delay:.2s">
-        <div class="stat-num" data-target="30">0<sup>日</sup></div>
-        <div class="stat-label">平均内定期間</div>
+      <div class="stat-item fade-up" style="transition-delay:.1s">
+        <div class="stat-label">1人あたり面談実施数</div>
+        <div class="stat-num" data-target="10">0<span class="stat-unit">回</span></div>
       </div>
-      <div class="fade-up" style="transition-delay:.3s">
-        <div class="stat-num" data-target="300">0<sup>社以上</sup></div>
-        <div class="stat-label">掲載求人数</div>
+      <div class="stat-item fade-up" style="transition-delay:.2s">
+        <div class="stat-label">定着率</div>
+        <div class="stat-num" data-target="98" data-decimal=".8">0<span class="stat-unit">%</span></div>
       </div>
     </div>
   </div>
@@ -1437,14 +1459,15 @@ details[open] .faq-arrow { transform: rotate(180deg); }
   }
 
   // Count-up
-  function countUp(el, target) {
-    var sup = el.querySelector('sup') ? el.querySelector('sup').outerHTML : '';
+  function countUp(el, target, decimal) {
+    var unit = el.querySelector('.stat-unit') ? el.querySelector('.stat-unit').outerHTML : '';
     var t0 = null;
     function step(ts) {
       if (!t0) t0 = ts;
       var p = Math.min((ts-t0)/1200, 1);
       var e = 1 - Math.pow(1-p, 3);
-      el.innerHTML = Math.floor(e*target) + sup;
+      var val = Math.floor(e * target);
+      el.innerHTML = val + (p >= 1 && decimal ? decimal : '') + unit;
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -1454,7 +1477,7 @@ details[open] .faq-arrow { transform: rotate(180deg); }
       entries.forEach(function(e) {
         if (e.isIntersecting) {
           e.target.querySelectorAll('.stat-num[data-target]').forEach(function(el) {
-            countUp(el, parseInt(el.getAttribute('data-target'), 10));
+            countUp(el, parseInt(el.getAttribute('data-target'), 10), el.getAttribute('data-decimal'));
           });
           sio.unobserve(e.target);
         }
