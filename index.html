@@ -1006,9 +1006,24 @@ details[open] .faq-arrow { transform: rotate(180deg); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
   .float-line .float-text { display: none; }
   .float-line { padding: 14px 18px; }
-  .footer-top { padding: 48px 24px 40px; gap: 36px; }
+
+  /* フッター：グリッドでバランス整列 */
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 40px 24px 36px;
+    gap: 28px 20px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+    max-width: 100%;
+    margin-bottom: 0;
+  }
+  .footer-cta-col {
+    grid-column: 1 / -1;
+  }
+  .footer-cta-btn { padding: 14px 24px; font-size: 0.85rem; }
   .footer-bottom { padding: 16px 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
-  .footer-cta-btn { padding: 12px 24px; font-size: 0.82rem; }
 }
 @media (max-width: 480px) {
   .fv-btns { flex-direction: column; align-items: center; }
@@ -1017,6 +1032,17 @@ details[open] .faq-arrow { transform: rotate(180deg); }
   .final-cta-btns > * { width: 100%; max-width: 320px; }
   .fv-trust { gap: 16px; }
   .footer-cta-btn { width: 100%; }
+  /* 実績：3項目を1列に整列（2列時に孤立する問題解消） */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .stat-item {
+    padding: 24px 0;
+    border-right: none;
+    border-bottom: 1px dashed rgba(255,255,255,0.15);
+  }
+  .stat-item:last-child { border-bottom: none; }
 }
 </style>
 </head>
