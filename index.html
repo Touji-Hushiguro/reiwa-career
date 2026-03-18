@@ -210,7 +210,8 @@
     height: 32px;
     width: 180px;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: left center;
   }
 
   .header-nav {
@@ -276,56 +277,76 @@
 
   /* ===== FV (HERO) ===== */
   .fv {
-    background: linear-gradient(135deg, #000000 0%, #1a1a1a 60%, #111111 100%);
-    color: var(--white);
-    padding: 140px 20px 80px;
+    background: var(--white);
+    color: var(--primary);
+    padding: 140px 20px 90px;
     text-align: center;
     position: relative;
     overflow: hidden;
   }
 
+  /* 上部のアクセントライン */
   .fv::before {
     content: '';
     position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: radial-gradient(circle at 70% 30%, rgba(254,232,88,0.07) 0%, transparent 50%),
-                radial-gradient(circle at 30% 70%, rgba(255,255,255,0.03) 0%, transparent 40%);
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--line-green) 100%);
+    pointer-events: none;
+  }
+
+  /* 背景の装飾円 */
+  .fv::after {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(254,232,88,0.12) 0%, transparent 70%);
     pointer-events: none;
   }
 
   .fv-badge {
-    display: inline-block;
-    background: rgba(254,232,88,0.15);
-    border: 1px solid rgba(254,232,88,0.5);
-    color: var(--accent);
-    font-size: 0.78rem;
-    font-weight: 700;
-    padding: 5px 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent);
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 6px 16px;
     border-radius: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 28px;
     letter-spacing: 0.05em;
+    box-shadow: 0 2px 10px rgba(254,232,88,0.4);
   }
 
   .fv h1 {
-    font-size: clamp(1.8rem, 5vw, 3rem);
-    font-weight: 800;
-    line-height: 1.35;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    font-size: clamp(2rem, 5.5vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 24px;
+    color: var(--primary);
+    letter-spacing: -0.02em;
   }
   .fv h1 em {
     font-style: normal;
-    color: var(--accent);
+    background: var(--accent);
+    padding: 2px 8px;
+    border-radius: 6px;
+    color: var(--primary);
+    display: inline-block;
+    line-height: 1.4;
   }
 
   .fv-lead {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    opacity: 0.9;
-    margin-bottom: 36px;
-    max-width: 560px;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    color: var(--text-light);
+    margin-bottom: 40px;
+    max-width: 520px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.8;
   }
 
   .fv-btns {
@@ -333,7 +354,7 @@
     flex-wrap: wrap;
     gap: 14px;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 44px;
   }
   .fv-btns .btn-line { font-size: 1.05rem; padding: 18px 40px; }
   .fv-btns .btn-outline-white {
@@ -341,32 +362,37 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background: var(--accent);
-    color: var(--primary);
+    background: var(--primary);
+    color: var(--white);
     padding: 16px 36px;
     border-radius: 50px;
     font-size: 1rem;
     font-weight: 700;
-    border: 2px solid var(--accent);
+    border: 2px solid var(--primary);
     transition: background 0.2s, border-color 0.2s, transform 0.15s;
     text-decoration: none;
   }
   .fv-btns .btn-outline-white:hover {
-    background: var(--accent-dark);
-    border-color: var(--accent-dark);
+    background: var(--primary-light);
+    border-color: var(--primary-light);
     transform: translateY(-2px);
   }
 
   .fv-trust {
     display: flex;
-    gap: 24px;
+    gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
-    font-size: 0.83rem;
-    opacity: 0.85;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    padding: 20px 24px;
+    background: var(--bg);
+    border-radius: var(--radius);
+    max-width: 580px;
+    margin: 0 auto;
   }
-  .fv-trust span { display: flex; align-items: center; gap: 5px; }
-  .fv-trust span::before { content: '✓'; color: var(--accent); font-weight: 700; }
+  .fv-trust span { display: flex; align-items: center; gap: 5px; font-weight: 600; }
+  .fv-trust span::before { content: '✓'; color: var(--line-green); font-weight: 800; font-size: 0.9rem; }
 
   /* ===== STATS ===== */
   .stats {
@@ -758,9 +784,10 @@
 
   /* ===== FOOTER ===== */
   .site-footer {
-    background: #111111;
-    color: rgba(255,255,255,0.7);
-    padding: 48px 20px 24px;
+    background: #0d0d0d;
+    color: rgba(255,255,255,0.65);
+    padding: 0 0 0;
+    border-top: 5px solid var(--accent);
   }
 
   .footer-inner {
@@ -772,43 +799,78 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 32px;
-    margin-bottom: 40px;
+    gap: 40px;
+    padding: 56px 20px 48px;
   }
 
-  .footer-brand .site-logo {
-    color: var(--white);
-    font-size: 1.3rem;
-    margin-bottom: 10px;
+  .footer-brand {
+    max-width: 300px;
+  }
+  .footer-brand .footer-logo-wrap {
+    margin-bottom: 16px;
+    display: block;
+  }
+  .footer-brand .logo-img-footer {
+    height: 28px;
+    width: 160px;
+    object-fit: cover;
+    object-position: left center;
+    filter: brightness(0) invert(1);
+    display: block;
   }
 
   .footer-brand p {
     font-size: 0.82rem;
-    line-height: 1.7;
-    max-width: 280px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .footer-brand .footer-line-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--line-green);
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-top: 18px;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+  .footer-brand .footer-line-btn:hover {
+    background: var(--line-green-dark);
+    transform: translateY(-1px);
   }
 
   .footer-nav h4 {
-    color: var(--white);
-    font-size: 0.82rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    letter-spacing: 0.05em;
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
-  .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .footer-nav a {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.6);
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.55);
     transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
+  .footer-nav a::before { content: '—'; font-size: 0.65rem; color: var(--accent); opacity: 0.7; }
   .footer-nav a:hover { color: var(--white); }
 
   .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 20px;
-    font-size: 0.78rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 18px 20px;
+    font-size: 0.75rem;
     text-align: center;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.28);
+    background: rgba(0,0,0,0.3);
   }
 
   /* ===== FLOATING LINE BTN ===== */
@@ -924,8 +986,8 @@
       全力でサポートします。
     </h1>
     <p class="fv-lead">
-      沖縄・全国の求人から、あなたにぴったりの仕事を一緒に探します。<br>
-      書類作成・面接対策・条件交渉まで、専任アドバイザーが無料で伴走。
+      20代・未経験からの転職を、専任アドバイザーが内定まで完全無料でサポート。<br>
+      書類作成・面接対策・条件交渉まで、あなたに寄り添い全力で伴走します。
     </p>
     <div class="fv-btns">
       <a href="LINE_URL" class="btn-line" id="fv-line-btn">
@@ -939,7 +1001,7 @@
       <span>登録・相談完全無料</span>
       <span>LINEで気軽に相談</span>
       <span>在職中もOK</span>
-      <span>沖縄・全国対応</span>
+      <span>20代・未経験OK</span>
     </div>
   </div>
 </section>
@@ -1167,8 +1229,9 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="/" class="site-logo" style="margin-bottom:10px"><img class="logo-img" src="./れいきゃりロゴ/1.png" alt="れいわキャリア" style="filter:brightness(0) invert(1)"></a>
-        <p>20代・未経験の転職・就職をサポートする無料キャリア支援サービス。専任アドバイザーが内定まで完全伴走します。</p>
+        <a href="/" class="footer-logo-wrap"><img class="logo-img-footer" src="./れいきゃりロゴ/1.png" alt="れいわキャリア"></a>
+        <p>20代・未経験の転職をサポートする無料キャリア支援サービス。専任アドバイザーが内定まで完全伴走します。</p>
+        <a href="LINE_URL" class="footer-line-btn" id="footer-line-link">📲 LINEで無料相談</a>
       </div>
       <div class="footer-nav">
         <h4>サービス</h4>
@@ -1184,7 +1247,6 @@
         <h4>リンク</h4>
         <ul>
           <li><a href="https://jobs.reiwa-career.com/">求人検索ページ</a></li>
-          <li><a href="LINE_URL" id="footer-line-link">LINEで無料相談</a></li>
         </ul>
       </div>
     </div>
