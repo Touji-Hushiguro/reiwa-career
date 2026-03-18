@@ -993,14 +993,15 @@ details[open] .faq-arrow { transform: rotate(180deg); }
 
     <!-- ロゴマーク SVG（大） -->
     <div class="fv-mark">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- 外側の円 -->
-        <circle cx="50" cy="50" r="44" fill="none" stroke="#fee858" stroke-width="7"/>
-        <!-- 上半分：塗りつぶし半円 -->
-        <path d="M 6 50 A 44 44 0 0 1 94 50 Z" fill="#fee858"/>
-        <!-- 下半分：2本の横線（参考ロゴ準拠） -->
-        <line x1="16" y1="63" x2="84" y2="63" stroke="#fee858" stroke-width="6" stroke-linecap="round"/>
-        <line x1="24" y1="77" x2="76" y2="77" stroke="#fee858" stroke-width="6" stroke-linecap="round"/>
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#fee858" stroke-linecap="round" stroke-linejoin="round">
+        <!-- 上半アーク（ドーム） -->
+        <path d="M 8 50 A 42 42 0 0 1 92 50" stroke-width="8.5"/>
+        <!-- 直径ライン -->
+        <line x1="8" y1="50" x2="92" y2="50" stroke-width="8.5"/>
+        <!-- 中間ライン（コード長に合わせて短く） -->
+        <line x1="16" y1="66" x2="84" y2="66" stroke-width="8.5"/>
+        <!-- 下部アーク -->
+        <path d="M 26 80 A 42 42 0 0 1 74 80" stroke-width="8.5"/>
       </svg>
     </div>
 
