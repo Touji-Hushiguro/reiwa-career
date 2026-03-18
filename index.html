@@ -306,27 +306,28 @@ a { color: inherit; text-decoration: none; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 140px 24px 100px;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 120px 0 100px 8vw;
   overflow: hidden;
   background-color: var(--bg);
   background-image: url('./fv-bg.jpg');
-  background-size: cover;
-  background-position: center top;
+  background-size: 115%;
+  background-position: 72% 28%;
   background-repeat: no-repeat;
 }
 
-/* 暗オーバーレイ（テキスト可読性確保） */
+/* 暗オーバーレイ：左側濃く・右側薄く → テキスト可読＋ロゴ映え */
 .fv::before {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to bottom,
-    rgba(8,8,8,0.55) 0%,
-    rgba(8,8,8,0.50) 50%,
-    rgba(8,8,8,0.70) 100%
+    108deg,
+    rgba(6,6,6,0.85) 0%,
+    rgba(6,6,6,0.72) 38%,
+    rgba(6,6,6,0.22) 68%,
+    rgba(6,6,6,0.05) 100%
   );
   z-index: 0;
 }
@@ -335,7 +336,7 @@ a { color: inherit; text-decoration: none; }
 .fv-inner {
   position: relative;
   z-index: 1;
-  max-width: 860px;
+  max-width: 540px;
   width: 100%;
 }
 
@@ -370,22 +371,20 @@ a { color: inherit; text-decoration: none; }
 
 /* 日本語サブタイトル */
 .fv h1 {
-  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-  font-weight: 800;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-  margin-bottom: 24px;
-  color: var(--white);
+  font-size: clamp(1.0rem, 2.0vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0em;
+  margin-bottom: 20px;
+  color: rgba(255,255,255,0.9);
   text-shadow: 0 2px 12px rgba(0,0,0,0.5);
 }
 
 .fv-lead {
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  color: rgba(255,255,255,0.88);
-  margin-bottom: 48px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: clamp(0.9rem, 1.6vw, 0.95rem);
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 40px;
+  max-width: 420px;
   line-height: 1.9;
   text-shadow: 0 1px 6px rgba(0,0,0,0.5);
 }
@@ -394,16 +393,16 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  justify-content: center;
-  margin-bottom: 52px;
+  justify-content: flex-start;
+  margin-bottom: 44px;
 }
 .fv-btns .btn-line { font-size: 1.05rem; padding: 18px 44px; }
 .fv-btns .btn-yellow { font-size: 1rem; padding: 17px 40px; }
 
 .fv-trust {
   display: flex;
-  gap: 28px;
-  justify-content: center;
+  gap: 20px;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 .fv-trust-item {
@@ -993,7 +992,17 @@ details[open] .faq-arrow { transform: rotate(180deg); }
   .section { padding: 72px 0; }
   .header-nav, .header-cta { display: none; }
   .hamburger { display: flex; }
-  .fv { padding: 120px 20px 80px; min-height: 100svh; background-position: 65% top; }
+  .fv {
+    padding: 100px 24px 80px;
+    min-height: 100svh;
+    justify-content: center;
+    text-align: center;
+    background-size: 200%;
+    background-position: 55% 20%;
+  }
+  .fv-btns { justify-content: center; }
+  .fv-trust { justify-content: center; }
+  .fv-lead { margin-left: auto; margin-right: auto; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
   .float-line .float-text { display: none; }
   .float-line { padding: 14px 18px; }
