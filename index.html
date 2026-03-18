@@ -484,48 +484,103 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ===== VOICES ===== */
-.voices { background: var(--bg2); }
+.voices { background: var(--bg); }
 .voices-head { text-align: center; }
 .voices-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
+/* BOX-style voice card */
 .voice-card {
-  background: var(--bg3);
-  border-radius: var(--radius);
-  padding: 32px;
-  border: 1px solid var(--border);
-  position: relative;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.28);
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s, box-shadow .25s;
 }
-.voice-quote {
-  font-size: 3rem;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 12px;
-  font-family: Georgia, serif;
+.voice-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.36); }
+.voice-card-body {
+  padding: 32px 28px 24px;
+  flex: 1;
 }
-.voice-badge {
-  display: inline-block;
-  background: rgba(254,232,88,0.12);
-  color: var(--accent);
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 3px 12px;
-  border-radius: 9999px;
+.voice-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: #b5870a;
+  line-height: 1.6;
   margin-bottom: 14px;
-  border: 1px solid rgba(254,232,88,0.25);
+}
+.voice-hearts {
+  color: #b5870a;
+  font-size: 1.05rem;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+.voice-company-label {
+  font-size: 0.7rem;
+  color: #999;
+  margin-bottom: 4px;
+}
+.voice-company-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 14px;
 }
 .voice-text {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.8);
+  font-size: 0.82rem;
+  color: #666;
   line-height: 1.85;
-  margin-bottom: 18px;
 }
-.voice-person {
-  font-size: 0.78rem;
-  color: var(--gray2);
-  font-weight: 600;
+.voice-card-foot {
+  background: #111111;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.voice-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #2a2a2a;
+  border: 2px solid #fee858;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #fee858;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.voice-agent-info { flex: 1; }
+.voice-agent-label {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.45);
+  display: block;
+  margin-bottom: 3px;
+}
+.voice-agent-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+}
+.voice-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fee858;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  font-size: 1rem;
+  font-weight: 700;
+  flex-shrink: 0;
 }
 
 /* ===== PICKUP JOBS ===== */
@@ -1026,23 +1081,59 @@ details[open] .faq-arrow { transform: rotate(180deg); }
       <p class="sec-sub fade-up">れいわキャリアを利用して転職に成功した方の声</p>
     </div>
     <div class="voices-grid">
+      <!-- card 1 -->
       <div class="voice-card fade-up">
-        <div class="voice-quote">"</div>
-        <div class="voice-badge">20代・男性｜IT業界へ転職</div>
-        <p class="voice-text">未経験からのエンジニア転職で不安でしたが、アドバイザーの方が丁寧にサポートしてくれました。面接対策を何度も繰り返し、無事に内定をいただけました！</p>
-        <div class="voice-person">Mさん（那覇市在住）</div>
+        <div class="voice-card-body">
+          <div class="voice-title">未経験でも親身にサポートしてもらえて、自信を持って転職活動に臨めました</div>
+          <div class="voice-hearts">♡ ♡ ♡ ♡ ♡</div>
+          <div class="voice-company-label">転職先企業</div>
+          <div class="voice-company-name">ITソリューション企業</div>
+          <p class="voice-text">アドバイザーの方が丁寧にサポートしてくれました。面接対策を何度も繰り返し、無事に内定をいただけました…</p>
+        </div>
+        <div class="voice-card-foot">
+          <div class="voice-avatar">M</div>
+          <div class="voice-agent-info">
+            <span class="voice-agent-label">担当エージェント</span>
+            <span class="voice-agent-name">田中 美咲</span>
+          </div>
+          <div class="voice-arrow">→</div>
+        </div>
       </div>
+      <!-- card 2 -->
       <div class="voice-card fade-up" style="transition-delay:.1s">
-        <div class="voice-quote">"</div>
-        <div class="voice-badge">30代・女性｜育休復帰後の転職</div>
-        <p class="voice-text">子育て中で時間の制約があるなか、LINEで気軽に相談できたのが助かりました。希望通りの時短勤務ができる職場を見つけてもらえました。</p>
-        <div class="voice-person">Kさん（沖縄市在住）</div>
+        <div class="voice-card-body">
+          <div class="voice-title">大変いい転職活動になりました。またお願いしたいです</div>
+          <div class="voice-hearts">♡ ♡ ♡ ♡ ♡</div>
+          <div class="voice-company-label">転職先企業</div>
+          <div class="voice-company-name">DXサービス企業</div>
+          <p class="voice-text">こちらの転職希望時期や業界、働き方や将来の夢まで、細かくヒアリングしていただき、それらを叶えられるような企業を紹…</p>
+        </div>
+        <div class="voice-card-foot">
+          <div class="voice-avatar">K</div>
+          <div class="voice-agent-info">
+            <span class="voice-agent-label">担当エージェント</span>
+            <span class="voice-agent-name">鈴木 拓夢</span>
+          </div>
+          <div class="voice-arrow">→</div>
+        </div>
       </div>
+      <!-- card 3 -->
       <div class="voice-card fade-up" style="transition-delay:.2s">
-        <div class="voice-quote">"</div>
-        <div class="voice-badge">40代・男性｜管理職への転職</div>
-        <p class="voice-text">長年同じ会社にいたので転職活動の仕方がわからず不安でしたが、丁寧に進め方を教えてもらい自信を持って活動できました。年収も上がり大満足です。</p>
-        <div class="voice-person">Tさん（浦添市在住）</div>
+        <div class="voice-card-body">
+          <div class="voice-title">決して妥協することなく、親身に支えてくれた</div>
+          <div class="voice-hearts">♡ ♡ ♡ ♡ ♡</div>
+          <div class="voice-company-label">転職先企業</div>
+          <div class="voice-company-name">SNSマーケティング支援企業</div>
+          <p class="voice-text">転職希望時期や業界、働き方や将来の夢まで、細かくヒアリングしていただき、それらを叶えられるような企業を紹…</p>
+        </div>
+        <div class="voice-card-foot">
+          <div class="voice-avatar">T</div>
+          <div class="voice-agent-info">
+            <span class="voice-agent-label">担当エージェント</span>
+            <span class="voice-agent-name">関根 優衣</span>
+          </div>
+          <div class="voice-arrow">→</div>
+        </div>
       </div>
     </div>
   </div>
