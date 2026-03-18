@@ -59,10 +59,10 @@
     },
     {
       "@type": "Question",
-      "name": "沖縄以外の求人も扱っていますか？",
+      "name": "未経験でも転職できますか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "はい、沖縄を中心に全国の求人を取り扱っています。UIターン・Iターン転職もサポートしています。"
+        "text": "はい、未経験からの転職支援が得意分野です。20代の方であれば、ポテンシャル採用に積極的な企業を多数ご紹介できます。業界・職種選びから一緒に考えます。"
       }
     },
     {
@@ -81,15 +81,15 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --navy: #1a3a5c;
-    --navy-light: #2a5a8c;
-    --navy-dark: #0f2540;
+    --primary: #111111;
+    --primary-light: #333333;
+    --accent: #fee858;
+    --accent-dark: #d4c230;
     --line-green: #06C755;
     --line-green-dark: #05a847;
-    --accent: #f4a742;
-    --text: #333333;
+    --text: #111111;
     --text-light: #666666;
-    --bg: #f8f9fa;
+    --bg: #f5f5f5;
     --white: #ffffff;
     --border: #e0e0e0;
     --shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -122,7 +122,7 @@
   .section-title {
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
-    color: var(--navy);
+    color: var(--primary);
     text-align: center;
     margin-bottom: 12px;
   }
@@ -164,18 +164,18 @@
     justify-content: center;
     gap: 8px;
     background: transparent;
-    color: var(--navy);
+    color: var(--primary);
     padding: 14px 32px;
     border-radius: 50px;
     font-size: 0.95rem;
     font-weight: 700;
     cursor: pointer;
-    border: 2px solid var(--navy);
+    border: 2px solid var(--primary);
     transition: background 0.2s, color 0.2s, transform 0.15s;
     text-decoration: none;
   }
   .btn-outline:hover {
-    background: var(--navy);
+    background: var(--primary);
     color: var(--white);
     transform: translateY(-2px);
   }
@@ -202,12 +202,16 @@
   }
 
   .site-logo {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--navy);
-    letter-spacing: -0.02em;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
   }
-  .site-logo span { color: var(--line-green); }
+  .logo-img {
+    height: 32px;
+    width: 180px;
+    display: block;
+    object-fit: contain;
+  }
 
   .header-nav {
     display: flex;
@@ -222,7 +226,7 @@
     transition: color 0.2s;
   }
   .header-nav a:hover,
-  .header-nav a.active { color: var(--navy); }
+  .header-nav a.active { color: var(--primary); }
 
   .header-cta {
     display: flex;
@@ -244,7 +248,7 @@
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--navy);
+    background: var(--primary);
     border-radius: 2px;
     transition: all 0.3s;
   }
@@ -272,7 +276,7 @@
 
   /* ===== FV (HERO) ===== */
   .fv {
-    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 60%, #111111 100%);
     color: var(--white);
     padding: 140px 20px 80px;
     text-align: center;
@@ -285,16 +289,16 @@
     position: absolute;
     top: -50%; left: -50%;
     width: 200%; height: 200%;
-    background: radial-gradient(circle at 70% 30%, rgba(6,199,85,0.08) 0%, transparent 50%),
-                radial-gradient(circle at 30% 70%, rgba(255,255,255,0.04) 0%, transparent 40%);
+    background: radial-gradient(circle at 70% 30%, rgba(254,232,88,0.07) 0%, transparent 50%),
+                radial-gradient(circle at 30% 70%, rgba(255,255,255,0.03) 0%, transparent 40%);
     pointer-events: none;
   }
 
   .fv-badge {
     display: inline-block;
-    background: rgba(6,199,85,0.2);
-    border: 1px solid rgba(6,199,85,0.5);
-    color: #7effc4;
+    background: rgba(254,232,88,0.15);
+    border: 1px solid rgba(254,232,88,0.5);
+    color: var(--accent);
     font-size: 0.78rem;
     font-weight: 700;
     padding: 5px 14px;
@@ -308,11 +312,11 @@
     font-weight: 800;
     line-height: 1.35;
     margin-bottom: 20px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
   .fv h1 em {
     font-style: normal;
-    color: #7effc4;
+    color: var(--accent);
   }
 
   .fv-lead {
@@ -337,19 +341,19 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background: transparent;
-    color: var(--white);
+    background: var(--accent);
+    color: var(--primary);
     padding: 16px 36px;
     border-radius: 50px;
     font-size: 1rem;
     font-weight: 700;
-    border: 2px solid rgba(255,255,255,0.6);
+    border: 2px solid var(--accent);
     transition: background 0.2s, border-color 0.2s, transform 0.15s;
     text-decoration: none;
   }
   .fv-btns .btn-outline-white:hover {
-    background: rgba(255,255,255,0.15);
-    border-color: var(--white);
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
     transform: translateY(-2px);
   }
 
@@ -362,7 +366,7 @@
     opacity: 0.85;
   }
   .fv-trust span { display: flex; align-items: center; gap: 5px; }
-  .fv-trust span::before { content: '✓'; color: var(--line-green); font-weight: 700; }
+  .fv-trust span::before { content: '✓'; color: var(--accent); font-weight: 700; }
 
   /* ===== STATS ===== */
   .stats {
@@ -382,7 +386,7 @@
   .stat-num {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
-    color: var(--navy);
+    color: var(--primary);
     line-height: 1.1;
   }
   .stat-num span { font-size: 0.55em; font-weight: 700; color: var(--text-light); }
@@ -413,7 +417,7 @@
   .reason-num {
     font-size: 0.75rem;
     font-weight: 800;
-    color: var(--line-green);
+    color: var(--accent-dark);
     letter-spacing: 0.1em;
     margin-bottom: 8px;
   }
@@ -426,7 +430,7 @@
   .reason-title {
     font-size: 1.05rem;
     font-weight: 700;
-    color: var(--navy);
+    color: var(--primary);
     margin-bottom: 10px;
     line-height: 1.4;
   }
@@ -450,13 +454,13 @@
     background: var(--bg);
     border-radius: var(--radius);
     padding: 28px;
-    border-left: 4px solid var(--navy);
+    border-left: 4px solid var(--accent);
     position: relative;
   }
 
   .voice-badge {
     display: inline-block;
-    background: var(--navy);
+    background: var(--primary);
     color: var(--white);
     font-size: 0.72rem;
     font-weight: 700;
@@ -538,7 +542,7 @@
   .job-title {
     font-size: 1rem;
     font-weight: 700;
-    color: var(--navy);
+    color: var(--primary);
     margin-bottom: 10px;
     line-height: 1.4;
   }
@@ -551,8 +555,8 @@
   }
   .job-tag {
     font-size: 0.72rem;
-    background: rgba(26,58,92,0.08);
-    color: var(--navy);
+    background: rgba(0,0,0,0.07);
+    color: var(--primary);
     padding: 3px 9px;
     border-radius: 20px;
     font-weight: 600;
@@ -601,7 +605,7 @@
     top: 52px;
     bottom: -24px;
     width: 2px;
-    background: linear-gradient(to bottom, var(--navy), var(--navy-light));
+    background: linear-gradient(to bottom, var(--primary), var(--primary-light));
   }
 
   .flow-step + .flow-step { margin-top: 48px; }
@@ -611,8 +615,8 @@
     height: 48px;
     min-width: 48px;
     border-radius: 50%;
-    background: var(--navy);
-    color: var(--white);
+    background: var(--accent);
+    color: var(--primary);
     font-weight: 800;
     font-size: 1.1rem;
     display: flex;
@@ -624,7 +628,7 @@
   .flow-title {
     font-size: 1rem;
     font-weight: 700;
-    color: var(--navy);
+    color: var(--primary);
     margin-bottom: 6px;
     padding-top: 10px;
   }
@@ -660,7 +664,7 @@
     cursor: pointer;
     font-weight: 700;
     font-size: 0.95rem;
-    color: var(--navy);
+    color: var(--primary);
     user-select: none;
     list-style: none;
   }
@@ -669,8 +673,8 @@
     content: 'Q';
     font-size: 1rem;
     font-weight: 800;
-    color: var(--navy);
-    background: rgba(26,58,92,0.1);
+    color: var(--primary);
+    background: var(--accent);
     width: 28px; height: 28px;
     border-radius: 50%;
     display: flex;
@@ -695,7 +699,7 @@
 
   /* ===== FINAL CTA ===== */
   .final-cta {
-    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
     color: var(--white);
     padding: 100px 20px;
     text-align: center;
@@ -706,7 +710,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 70% 50%, rgba(6,199,85,0.1) 0%, transparent 60%);
+    background: radial-gradient(circle at 70% 50%, rgba(254,232,88,0.07) 0%, transparent 60%);
     pointer-events: none;
   }
 
@@ -737,24 +741,24 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: transparent;
-    color: var(--white);
+    background: var(--accent);
+    color: var(--primary);
     padding: 16px 36px;
     border-radius: 50px;
     font-size: 1rem;
     font-weight: 700;
-    border: 2px solid rgba(255,255,255,0.6);
+    border: 2px solid var(--accent);
     transition: background 0.2s, border-color 0.2s, transform 0.15s;
   }
   .final-cta-btns .btn-outline-white:hover {
-    background: rgba(255,255,255,0.15);
-    border-color: var(--white);
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
     transform: translateY(-2px);
   }
 
   /* ===== FOOTER ===== */
   .site-footer {
-    background: var(--navy-dark);
+    background: #111111;
     color: rgba(255,255,255,0.7);
     padding: 48px 20px 24px;
   }
@@ -881,7 +885,7 @@
 <!-- ===== HEADER ===== -->
 <header class="site-header" id="site-header">
   <div class="header-inner">
-    <a href="/" class="site-logo">れいわ<span>キャリア</span></a>
+    <a href="/" class="site-logo"><img class="logo-img" src="./れいきゃりロゴ/1.png" alt="れいわキャリア"></a>
     <nav>
       <ul class="header-nav">
         <li><a href="#reasons">選ばれる理由</a></li>
@@ -984,9 +988,9 @@
       </div>
       <div class="reason-card fade-up" style="transition-delay:0.2s">
         <div class="reason-num">REASON 03</div>
-        <div class="reason-icon">📍</div>
-        <div class="reason-title">沖縄地域に強い<br>密着型サービス</div>
-        <div class="reason-desc">地元企業との強いパイプで、他では見つからない非公開求人も多数ご紹介できます。</div>
+        <div class="reason-icon">🌱</div>
+        <div class="reason-title">20代・未経験転職に<br>強い専門サポート</div>
+        <div class="reason-desc">「経験なし・スキルなし」から始める転職を得意としています。業界・職種の選び方から一緒に考え、あなたのポテンシャルを最大限に活かした転職をサポートします。</div>
       </div>
       <div class="reason-card fade-up" style="transition-delay:0.3s">
         <div class="reason-num">REASON 04</div>
@@ -1116,8 +1120,8 @@
       </div>
       <div class="faq-item fade-up" style="transition-delay:0.1s">
         <details>
-          <summary class="faq-q"><span class="faq-q-text">沖縄以外の求人も扱っていますか？</span><span class="faq-arrow">▼</span></summary>
-          <div class="faq-a">はい、沖縄を中心に全国の求人を取り扱っています。UIターン・Iターン転職もサポートしています。</div>
+          <summary class="faq-q"><span class="faq-q-text">未経験でも転職できますか？</span><span class="faq-arrow">▼</span></summary>
+          <div class="faq-a">はい、むしろ未経験からの転職支援が私たちの得意分野です。「何から始めればいいかわからない」という方でも、業界・職種選びから一緒に考えます。20代の方であれば、ポテンシャル採用に積極的な企業を多数ご紹介できます。</div>
         </details>
       </div>
       <div class="faq-item fade-up" style="transition-delay:0.15s">
@@ -1163,8 +1167,8 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="site-logo">れいわ<span style="color:var(--line-green)">キャリア</span></div>
-        <p>沖縄・全国の転職・就職をサポートする無料キャリア支援サービス。専任アドバイザーが内定まで完全伴走します。</p>
+        <a href="/" class="site-logo" style="margin-bottom:10px"><img class="logo-img" src="./れいきゃりロゴ/1.png" alt="れいわキャリア" style="filter:brightness(0) invert(1)"></a>
+        <p>20代・未経験の転職・就職をサポートする無料キャリア支援サービス。専任アドバイザーが内定まで完全伴走します。</p>
       </div>
       <div class="footer-nav">
         <h4>サービス</h4>
