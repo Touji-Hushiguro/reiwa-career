@@ -721,8 +721,8 @@ details[open] .faq-arrow { transform: rotate(180deg); }
 
 /* ===== FOOTER ===== */
 .site-footer {
-  background: #0a0a0a;
-  border-top: 1px solid var(--border);
+  background: var(--accent);
+  border-top: none;
   padding: 0;
 }
 .footer-top {
@@ -730,68 +730,98 @@ details[open] .faq-arrow { transform: rotate(180deg); }
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 48px;
-  padding: 64px 24px 56px;
-  max-width: 1100px;
+  padding: 72px 60px 60px;
+  max-width: 1200px;
   margin: 0 auto;
 }
-.footer-brand { max-width: 280px; }
+.footer-brand { max-width: 240px; }
 .footer-logo {
   height: 28px;
   width: 160px;
   object-fit: cover;
   object-position: left center;
-  filter: brightness(0) invert(1);
+  filter: brightness(0);
   display: block;
-  margin-bottom: 18px;
+  margin-bottom: 28px;
 }
 .footer-brand p {
   font-size: 0.82rem;
-  color: var(--gray2);
+  color: rgba(0,0,0,0.6);
   line-height: 1.8;
   margin-bottom: 20px;
 }
-.footer-line-btn {
+/* Footer CTA column */
+.footer-cta-col h4 {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #111;
+  margin-bottom: 18px;
+}
+.footer-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-cta-btn {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  background: var(--green);
+  justify-content: center;
+  gap: 8px;
+  background: #111111;
   color: #fff;
-  font-size: 0.83rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  padding: 10px 20px;
+  padding: 14px 30px;
   border-radius: 9999px;
-  transition: background .2s, transform .15s;
+  transition: opacity .2s, transform .15s;
   text-decoration: none;
+  white-space: nowrap;
 }
-.footer-line-btn:hover { background: var(--green-d); transform: translateY(-1px); }
+.footer-cta-btn:hover { opacity: 0.75; transform: translateY(-2px); }
 
 .footer-nav h4 {
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
+  letter-spacing: 0.04em;
+  color: #111111;
   margin-bottom: 16px;
 }
-.footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .footer-nav a {
   font-size: 0.82rem;
-  color: var(--gray2);
+  color: rgba(0,0,0,0.65);
   transition: color .2s;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0;
+  text-decoration: none;
 }
-.footer-nav a::before { content: '›'; color: var(--accent); font-size: 1rem; }
-.footer-nav a:hover { color: var(--white); }
+.footer-nav a::before { content: none; }
+.footer-nav a:hover { color: #111111; }
 
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 18px 24px;
-  text-align: center;
-  font-size: 0.73rem;
-  color: var(--gray2);
+.footer-bottom-wrap {
+  border-top: 1px solid rgba(0,0,0,0.12);
 }
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 0.73rem;
+  color: rgba(0,0,0,0.5);
+}
+.footer-bottom-links { display: flex; gap: 28px; }
+.footer-bottom-links a {
+  color: rgba(0,0,0,0.5);
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-bottom-links a:hover { color: #111; }
 
 /* ===== FLOAT LINE BTN ===== */
 .float-line {
@@ -837,6 +867,9 @@ details[open] .faq-arrow { transform: rotate(180deg); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
   .float-line .float-text { display: none; }
   .float-line { padding: 14px 18px; }
+  .footer-top { padding: 48px 24px 40px; gap: 36px; }
+  .footer-bottom { padding: 16px 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .footer-cta-btn { padding: 12px 24px; font-size: 0.82rem; }
 }
 @media (max-width: 480px) {
   .fv-btns { flex-direction: column; align-items: center; }
@@ -844,6 +877,7 @@ details[open] .faq-arrow { transform: rotate(180deg); }
   .final-cta-btns { flex-direction: column; align-items: center; }
   .final-cta-btns > * { width: 100%; max-width: 320px; }
   .fv-trust { gap: 16px; }
+  .footer-cta-btn { width: 100%; }
 }
 </style>
 </head>
@@ -1170,11 +1204,9 @@ details[open] .faq-arrow { transform: rotate(180deg); }
   <div class="footer-top">
     <div class="footer-brand">
       <img class="footer-logo" src="./れいきゃりロゴ/1.png" alt="れいわキャリア">
-      <p>20代・未経験の転職をサポートする無料キャリア支援サービス。専任アドバイザーが内定まで完全伴走します。</p>
-      <a href="LINE_URL" class="footer-line-btn" id="footer-line-link">📲 LINEで無料相談</a>
     </div>
     <div class="footer-nav">
-      <h4>Service</h4>
+      <h4>サービス</h4>
       <ul>
         <li><a href="#reasons">選ばれる理由</a></li>
         <li><a href="#voices">転職成功事例</a></li>
@@ -1184,14 +1216,27 @@ details[open] .faq-arrow { transform: rotate(180deg); }
       </ul>
     </div>
     <div class="footer-nav">
-      <h4>Link</h4>
+      <h4>リンク</h4>
       <ul>
         <li><a href="https://jobs.reiwa-career.com/">求人検索ページ</a></li>
       </ul>
     </div>
+    <div class="footer-cta-col">
+      <h4>お問い合わせ</h4>
+      <div class="footer-cta-group">
+        <a href="LINE_URL" class="footer-cta-btn" id="footer-line-link">📲 LINEで無料相談</a>
+        <a href="https://jobs.reiwa-career.com/" class="footer-cta-btn">🔍 求人情報を見る</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-bottom">
-    <p>&copy; 2024 れいわキャリア. All Rights Reserved.</p>
+  <div class="footer-bottom-wrap">
+    <div class="footer-bottom">
+      <div class="footer-bottom-links">
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">利用規約</a>
+      </div>
+      <p>&copy; 2024 れいわキャリア. All Rights Reserved.</p>
+    </div>
   </div>
 </footer>
 
