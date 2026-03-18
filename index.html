@@ -1,1382 +1,1415 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5HKK3XQP');</script>
-    <!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-　　 <meta http-equiv="Content-Security-Policy" content="
-          default-src 'self';
-          script-src 'self' 'unsafe-inline' 'unsafe-eval'
-            https://www.googletagmanager.com
-            https://www.google-analytics.com
-            https://tagmanager.google.com
-            https://script.google.com
-            https://script.googleusercontent.com
-            https://connect.facebook.net
-            https://www.facebook.com;
-          style-src 'self' 'unsafe-inline';
-          img-src 'self' data:
-            https://www.googletagmanager.com
-            https://www.google-analytics.com
-            https://*.google-analytics.com
-            https://www.facebook.com
-            https://*.facebook.com;
-          connect-src 'self'
-            https://www.googletagmanager.com
-            https://www.google-analytics.com
-            https://*.google-analytics.com
-            https://script.google.com
-            https://script.googleusercontent.com
-            https://www.facebook.com
-            https://*.facebook.com
-            https://graph.facebook.com;
-          frame-src 'self'
-            https://www.googletagmanager.com
-            https://tagmanager.google.com
-            https://www.facebook.com;
-  ">
-
-
-
-    <title>新規会員登録 | れいわキャリア</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif;
-            background: linear-gradient(135deg, #Fee858 0%, #ffdb5c 50%, #ffcc3d 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-
-        .header {
-            background: white;
-            padding: 32px;
-            text-align: center;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #Fee858;
-            margin-bottom: 8px;
-        }
-
-        .tagline {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .progress-bar {
-            height: 4px;
-            background: #e5e7eb;
-            position: relative;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #Fee858 0%, #ffdb5c 50%, #ffcc3d 100%);
-            transition: width 0.3s ease;
-            width: 0%;
-        }
-
-        .content {
-            padding: 40px 32px;
-        }
-
-        .step-indicator {
-            text-align: center;
-            color: #999;
-            font-size: 14px;
-            margin-bottom: 32px;
-        }
-
-        .question-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 24px;
-            text-align: center;
-        }
-
-        .required {
-            color: #ff4444;
-            font-size: 12px;
-            margin-left: 4px;
-        }
-
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .option-button {
-            background: white;
-            border: 2px solid #e5e7eb;
-            padding: 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 16px;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .option-button:hover {
-            border-color: #Fee858;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(254, 232, 88, 0.3);
-        }
-
-        .option-button.selected {
-            background: linear-gradient(90deg, #Fee858 0%, #ffdb5c 50%, #ffcc3d 100%);
-            border-color: #Fee858;
-            color: #333;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(254, 232, 88, 0.4);
-        }
-
-        .option-emoji {
-            font-size: 24px;
-            margin-right: 8px;
-        }
-
-        .checkbox-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .checkbox-label:hover {
-            border-color: #Fee858;
-        }
-
-        .checkbox-label.checked {
-            background: #fffbea;
-            border-color: #Fee858;
-        }
-
-        .checkbox-label input[type="checkbox"] {
-            margin-right: 8px;
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-label {
-            display: block;
-            font-size: 14px;
-            color: #333;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.2s;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: #Fee858;
-        }
-
-        .gender-buttons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 12px;
-            margin-top: 32px;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 16px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-back {
-            background: white;
-            border: 2px solid #e5e7eb;
-            color: #666;
-        }
-
-        .btn-back:hover {
-            background: #f9fafb;
-        }
-
-        .btn-back:active {
-            background: #f3f4f6;
-        }
-
-        .btn-next {
-            background: linear-gradient(90deg, #Fee858 0%, #ffdb5c 50%, #ffcc3d 100%);
-            color: #333;
-            border: none;
-        }
-
-        .btn-next:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(254, 232, 88, 0.4);
-        }
-
-        .btn-next:active {
-            transform: translateY(0);
-        }
-
-        .btn-next:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            background: #e5e7eb;
-        }
-
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 12px;
-        }
-
-        .time-slot {
-            background: white;
-            border: 2px solid #e5e7eb;
-            padding: 16px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 16px;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .time-slot:hover {
-            border-color: #Fee858;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(254, 232, 88, 0.3);
-        }
-
-        .time-slot.selected {
-            background: linear-gradient(90deg, #Fee858 0%, #ffdb5c 50%, #ffcc3d 100%);
-            border-color: #Fee858;
-            color: #333;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(254, 232, 88, 0.4);
-        }
-
-        .week-selector {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
-            justify-content: center;
-        }
-
-        .week-btn {
-            padding: 12px 24px;
-            border: 2px solid #e5e7eb;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .week-btn:hover {
-            border-color: #Fee858;
-        }
-
-        .week-btn.active {
-            background: linear-gradient(90deg, #Fee858 0%, #ffdb5c 50%, #ffcc3d 100%);
-            border-color: #Fee858;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .calendar-container {
-            overflow-x: auto;
-            margin-bottom: 20px;
-        }
-
-        .calendar-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-
-        .calendar-table th {
-            background: #f9fafb;
-            padding: 12px 8px;
-            font-weight: 600;
-            border: 1px solid #e5e7eb;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .calendar-table td {
-            padding: 8px;
-            border: 1px solid #e5e7eb;
-            text-align: center;
-        }
-
-        .calendar-table td:first-child {
-            font-weight: 500;
-            background: #f9fafb;
-            position: sticky;
-            left: 0;
-            z-index: 5;
-        }
-
-        .date-header {
-            font-size: 12px;
-            color: #666;
-        }
-
-        .day-name {
-            font-size: 11px;
-            color: #999;
-            display: block;
-        }
-
-        .time-cell {
-            cursor: pointer;
-            padding: 8px;
-            transition: all 0.2s;
-        }
-
-        .time-cell.available {
-            color: #10b981;
-            font-size: 18px;
-        }
-
-        .time-cell.available:hover {
-            background: #fffbea;
-            transform: scale(1.1);
-        }
-
-        .time-cell.unavailable {
-            color: #d1d5db;
-            cursor: not-allowed;
-            font-size: 16px;
-        }
-
-        .time-cell.selected {
-            background: linear-gradient(90deg, #Fee858 0%, #ffdb5c 50%, #ffcc3d 100%);
-            font-weight: bold;
-            border-radius: 4px;
-            position: relative;
-        }
-
-        .time-cell.preference-1::after {
-            content: '1';
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            background: #333;
-            color: white;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            font-size: 11px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .time-cell.preference-2::after {
-            content: '2';
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            background: #333;
-            color: white;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            font-size: 11px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .time-cell.preference-3::after {
-            content: '3';
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            background: #333;
-            color: white;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            font-size: 11px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .selected-slots-info {
-            padding: 20px;
-            background: #fffbea;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border: 2px solid #Fee858;
-        }
-
-        .preference-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px;
-            background: white;
-            border-radius: 6px;
-            margin-bottom: 8px;
-        }
-
-        .preference-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .preference-label {
-            color: #666;
-            font-size: 14px;
-            margin-right: 8px;
-        }
-
-        .remove-btn {
-            background: #ff4444;
-            color: white;
-            border: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 16px;
-            line-height: 1;
-            transition: all 0.2s;
-        }
-
-        .remove-btn:hover {
-            background: #cc0000;
-            transform: scale(1.1);
-        }
-
-        .selected-slot-info {
-            text-align: center;
-            padding: 16px;
-            background: #fffbea;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border: 2px solid #Fee858;
-        }
-
-        .selected-slot-info strong {
-            color: #333;
-        }
-
-        .birth-date-selects {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 12px;
-        }
-
-        @media (max-width: 600px) {
-            .birth-date-selects {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .strength-box {
-            margin-top: 20px;
-            background: linear-gradient(135deg, #Fee858 0%, #ffdb5c 50%, #ffcc3d 100%);
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(254, 232, 88, 0.3);
-            animation: slideDown 0.5s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .strength-box-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-        }
-
-        .btn-next:disabled:hover {
-            transform: translateY(0);
-            box-shadow: none;
-        }
-
-        .footer {
-            background: #f9fafb;
-            padding: 24px;
-            text-align: center;
-            font-size: 12px;
-            color: #666;
-        }
-
-        .footer a {
-            color: #Fee858;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .completion {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .completion-icon {
-            font-size: 64px;
-            margin-bottom: 24px;
-        }
-
-        .completion-title {
-            font-size: 28px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 16px;
-        }
-
-        .completion-message {
-            color: #666;
-            line-height: 1.8;
-            font-size: 16px;
-        }
-
-        @media (max-width: 480px) {
-            .checkbox-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FLPE0DN7E7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FLPE0DN7E7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>れいわキャリア｜沖縄・全国の転職・就職支援サービス</title>
+<meta name="description" content="れいわキャリアは沖縄を中心に全国の転職・就職をサポートする無料キャリア支援サービスです。専任アドバイザーが内定まで完全伴走。今すぐLINEで無料相談。">
+<meta name="keywords" content="転職,就職,沖縄,キャリア支援,無料相談,求人,れいわキャリア">
+<link rel="canonical" href="https://www.reiwa-career.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="れいわキャリア｜沖縄・全国の転職・就職支援サービス">
+<meta property="og:description" content="専任アドバイザーが内定まで完全伴走。無料で転職・就職をサポートします。今すぐLINEで相談。">
+<meta property="og:url" content="https://www.reiwa-career.com/">
+<meta property="og:site_name" content="れいわキャリア">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- JSON-LD: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "れいわキャリア",
+  "url": "https://www.reiwa-career.com/",
+  "description": "沖縄・全国の転職・就職支援サービス。専任アドバイザーが内定まで完全無料でサポート。",
+  "areaServed": "JP",
+  "serviceType": "転職・就職支援"
+}
+</script>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "利用は本当に無料ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい、求職者の方への支援は完全無料です。相談から内定後のフォローまで一切費用はかかりません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "在職中でも相談できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "もちろんです。在職中の方も多くご利用いただいています。スケジュールに合わせた柔軟な面談対応が可能です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "沖縄以外の求人も扱っていますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい、沖縄を中心に全国の求人を取り扱っています。UIターン・Iターン転職もサポートしています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "転職が初めてでも大丈夫ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "初めての転職の方も安心してご利用いただけます。履歴書・職務経歴書の作成から面接対策まで丁寧にサポートします。"
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a3a5c;
+    --navy-light: #2a5a8c;
+    --navy-dark: #0f2540;
+    --line-green: #06C755;
+    --line-green-dark: #05a847;
+    --accent: #f4a742;
+    --text: #333333;
+    --text-light: #666666;
+    --bg: #f8f9fa;
+    --white: #ffffff;
+    --border: #e0e0e0;
+    --shadow: 0 4px 20px rgba(0,0,0,0.1);
+    --radius: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', Meiryo, sans-serif;
+    color: var(--text);
+    line-height: 1.7;
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .section-sub {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 50px;
+  }
+
+  .btn-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--line-green);
+    color: var(--white);
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(6,199,85,0.35);
+    text-decoration: none;
+  }
+  .btn-line:hover {
+    background: var(--line-green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(6,199,85,0.45);
+  }
+  .btn-line:active { transform: translateY(0); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--navy);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px solid var(--navy);
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+  .btn-outline:hover {
+    background: var(--navy);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  .site-header.scrolled { box-shadow: var(--shadow); }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .site-logo {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+  }
+  .site-logo span { color: var(--line-green); }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+  .header-nav a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+  .header-nav a:hover,
+  .header-nav a.active { color: var(--navy); }
+
+  .header-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .header-cta .btn-line { padding: 10px 22px; font-size: 0.875rem; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 20px;
+    gap: 16px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu .btn-line { margin-top: 8px; width: 100%; }
+
+  /* ===== FV (HERO) ===== */
+  .fv {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+    color: var(--white);
+    padding: 140px 20px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fv::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 70% 30%, rgba(6,199,85,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 30% 70%, rgba(255,255,255,0.04) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .fv-badge {
+    display: inline-block;
+    background: rgba(6,199,85,0.2);
+    border: 1px solid rgba(6,199,85,0.5);
+    color: #7effc4;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  .fv h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .fv h1 em {
+    font-style: normal;
+    color: #7effc4;
+  }
+
+  .fv-lead {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    opacity: 0.9;
+    margin-bottom: 36px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .fv-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  .fv-btns .btn-line { font-size: 1.05rem; padding: 18px 40px; }
+  .fv-btns .btn-outline-white {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--white);
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 2px solid rgba(255,255,255,0.6);
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+  .fv-btns .btn-outline-white:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  .fv-trust {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 0.83rem;
+    opacity: 0.85;
+  }
+  .fv-trust span { display: flex; align-items: center; gap: 5px; }
+  .fv-trust span::before { content: '✓'; color: var(--line-green); font-weight: 700; }
+
+  /* ===== STATS ===== */
+  .stats {
+    background: var(--white);
+    padding: 60px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 32px;
+    text-align: center;
+  }
+
+  .stat-item {}
+  .stat-num {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+  .stat-num span { font-size: 0.55em; font-weight: 700; color: var(--text-light); }
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin-top: 6px;
+  }
+
+  /* ===== REASONS ===== */
+  .reasons { background: var(--bg); }
+
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .reason-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s;
+  }
+  .reason-card:hover { transform: translateY(-4px); }
+
+  .reason-num {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--line-green);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .reason-icon {
+    font-size: 2.4rem;
+    margin-bottom: 12px;
+  }
+
+  .reason-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .reason-desc {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* ===== VOICES ===== */
+  .voices { background: var(--white); }
+
+  .voices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .voice-card {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 28px;
+    border-left: 4px solid var(--navy);
+    position: relative;
+  }
+
+  .voice-badge {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  .voice-text {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .voice-person {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  /* ===== PICKUP JOBS ===== */
+  .pickup { background: var(--bg); }
+
+  .jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 36px;
+  }
+
+  .job-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .job-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+  }
+
+  .job-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .job-badge-new {
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: #e74c3c;
+    color: var(--white);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .job-badge-featured {
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: var(--accent);
+    color: var(--white);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .job-company {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+
+  .job-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .job-tag {
+    font-size: 0.72rem;
+    background: rgba(26,58,92,0.08);
+    color: var(--navy);
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+
+  .job-meta {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .job-meta span { display: flex; align-items: center; gap: 4px; }
+
+  .pickup-more {
+    text-align: center;
+  }
+
+  .jobs-loading, .jobs-error {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-light);
+  }
+
+  /* ===== FLOW ===== */
+  .flow { background: var(--white); }
+
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .flow-step {
+    display: flex;
+    gap: 24px;
+    position: relative;
+  }
+
+  .flow-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 52px;
+    bottom: -24px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--navy), var(--navy-light));
+  }
+
+  .flow-step + .flow-step { margin-top: 48px; }
+
+  .flow-num {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flow-content {}
+  .flow-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+    padding-top: 10px;
+  }
+  .flow-desc {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* ===== FAQ ===== */
+  .faq-section { background: var(--bg); }
+
+  .faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .faq-q {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--navy);
+    user-select: none;
+    list-style: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q::before {
+    content: 'Q';
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--navy);
+    background: rgba(26,58,92,0.1);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .faq-q-text { flex: 1; }
+  .faq-arrow {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    transition: transform 0.3s;
+  }
+  details[open] .faq-arrow { transform: rotate(180deg); }
+
+  .faq-a {
+    padding: 0 24px 20px 70px;
+    font-size: 0.875rem;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+    color: var(--white);
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 50%, rgba(6,199,85,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .final-cta h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 800;
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+
+  .final-cta p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin-bottom: 36px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-cta-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+  }
+  .final-cta-btns .btn-line { font-size: 1.05rem; padding: 18px 44px; }
+  .final-cta-btns .btn-outline-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--white);
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 2px solid rgba(255,255,255,0.6);
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  }
+  .final-cta-btns .btn-outline-white:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* ===== FOOTER ===== */
+  .site-footer {
+    background: var(--navy-dark);
+    color: rgba(255,255,255,0.7);
+    padding: 48px 20px 24px;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  .footer-brand .site-logo {
+    color: var(--white);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  .footer-brand p {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    max-width: 280px;
+  }
+
+  .footer-nav h4 {
+    color: var(--white);
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+  .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-nav a {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    transition: color 0.2s;
+  }
+  .footer-nav a:hover { color: var(--white); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    font-size: 0.78rem;
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ===== FLOATING LINE BTN ===== */
+  .float-line {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--line-green);
+    color: var(--white);
+    padding: 14px 22px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(6,199,85,0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .float-line:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 28px rgba(6,199,85,0.6);
+  }
+  .float-line-icon { font-size: 1.3rem; }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up { opacity: 1; transform: none; transition: none; }
+    .btn-line, .btn-outline, .reason-card, .job-card { transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .section { padding: 60px 0; }
+
+    .header-nav, .header-cta { display: none; }
+    .hamburger { display: flex; }
+
+    .fv { padding: 100px 20px 64px; }
+
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+    .flow-steps { padding: 0 4px; }
+
+    .float-line span.float-text { display: none; }
+    .float-line { padding: 14px 18px; }
+  }
+
+  @media (max-width: 480px) {
+    .fv-btns { flex-direction: column; align-items: center; }
+    .fv-btns > * { width: 100%; max-width: 320px; }
+    .final-cta-btns { flex-direction: column; align-items: center; }
+    .final-cta-btns > * { width: 100%; max-width: 320px; }
+  }
+</style>
 </head>
+
 <body>
-<!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HKK3XQP"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) --> 
-    <div class="container">
-        <div class="header">
-            <div class="logo">れいわキャリア</div>
-            <div class="tagline">働き方も、自分らしく</div>
-            
-            <!-- 強みボックス -->
-            <div class="strength-box" id="strengthBox" style="display: none;">
-                <div class="strength-box-title" id="strengthBoxTitle"></div>
-            </div>
-        </div>
-        
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressBar"></div>
-        </div>
 
-        <div class="content" id="formContent">
-            <!-- Step 1: 働き始める時期 -->
-            <div class="step" id="step1">
-                <div class="step-indicator">簡単30秒</div>
-                <h2 class="question-title">いつごろから働きたいですか？<span class="required">*</span></h2>
-                <div class="options">
-                    <button class="option-button" onclick="selectOption('workStart', '1ヶ月以内')">
-                        <span class="option-emoji">👍</span>1ヶ月以内
-                    </button>
-                    <button class="option-button" onclick="selectOption('workStart', '3ヶ月以内')">
-                        <span class="option-emoji">✌️</span>3ヶ月以内
-                    </button>
-                    <button class="option-button" onclick="selectOption('workStart', '6ヶ月以内')">
-                        <span class="option-emoji">👋</span>6ヶ月以内
-                    </button>
-                    <button class="option-button" onclick="selectOption('workStart', '決まっていない')">
-                        決まっていない
-                    </button>
-                </div>
-            </div>
-
-            <!-- Step 2: 希望職種 -->
-            <div class="step hidden" id="step2">
-                <div class="step-indicator">ステップ 2/7</div>
-                <h2 class="question-title">希望する職種を選択してください<span class="required">*</span></h2>
-                <div class="checkbox-grid" id="jobTypeGroup">
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="営業" onchange="updateCheckboxes('jobType')">
-                        <span>営業</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="事務・アシスタント" onchange="updateCheckboxes('jobType')">
-                        <span>事務・アシスタント</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="販売・サービス" onchange="updateCheckboxes('jobType')">
-                        <span>販売・サービス</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="IT・エンジニア" onchange="updateCheckboxes('jobType')">
-                        <span>IT・エンジニア</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="製造・軽作業" onchange="updateCheckboxes('jobType')">
-                        <span>製造・軽作業</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="クリエイティブ" onchange="updateCheckboxes('jobType')">
-                        <span>クリエイティブ</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="専門職" onchange="updateCheckboxes('jobType')">
-                        <span>専門職</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="その他" onchange="updateCheckboxes('jobType')">
-                        <span>その他</span>
-                    </label>
-                </div>
-                <div class="button-group">
-                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
-                    <button class="btn btn-next" id="nextBtn2" onclick="nextStep()" disabled>次へ</button>
-                </div>
-            </div>
-
-            <!-- Step 3: 希望条件 -->
-            <div class="step hidden" id="step3">
-                <div class="step-indicator">ステップ 3/8</div>
-                <h2 class="question-title">希望する条件を選択してください<span class="required">*</span></h2>
-                <div class="checkbox-grid" id="conditionGroup">
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="年収UP" onchange="updateCheckboxes('condition')">
-                        <span>💵 年収UP</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="残業少なめ" onchange="updateCheckboxes('condition')">
-                        <span>⏰ 残業少なめ</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="服装自由" onchange="updateCheckboxes('condition')">
-                        <span>👔 服装自由</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="未経験OK" onchange="updateCheckboxes('condition')">
-                        <span>🌱 未経験OK</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="リモートワーク" onchange="updateCheckboxes('condition')">
-                        <span>🏠 リモートワーク</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" value="福利厚生充実" onchange="updateCheckboxes('condition')">
-                        <span>✨ 福利厚生充実</span>
-                    </label>
-                </div>
-                <div class="button-group">
-                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
-                    <button class="btn btn-next" id="nextBtn3" onclick="nextStep()" disabled>次へ</button>
-                </div>
-            </div>
-
-            <!-- Step 4: 最終学歴 -->
-            <div class="step hidden" id="step4">
-                <div class="step-indicator">ステップ 4/8</div>
-                <h2 class="question-title">最終学歴を選択してください<span class="required">*</span></h2>
-                <div class="options">
-                    <button class="option-button" onclick="selectOption('education', '高校卒業')">高校卒業</button>
-                    <button class="option-button" onclick="selectOption('education', '短大・専門学校卒業')">短大・専門学校卒業</button>
-                    <button class="option-button" onclick="selectOption('education', '大学卒業')">大学卒業</button>
-                    <button class="option-button" onclick="selectOption('education', 'その他')">その他</button>
-                </div>
-                <div class="button-group">
-                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
-                    <button class="btn btn-next" id="nextBtn4" onclick="nextStep()" disabled>次へ</button>
-                </div>
-            </div>
-
-            <!-- Step 5: 就業状況 -->
-            <div class="step hidden" id="step5">
-                <div class="step-indicator">ステップ 5/8</div>
-                <h2 class="question-title">現在の就業状況を選択してください<span class="required">*</span></h2>
-                <div class="options">
-                    <button class="option-button" onclick="selectOption('employmentStatus', '正社員')">正社員</button>
-                    <button class="option-button" onclick="selectOption('employmentStatus', 'アルバイト・パート')">アルバイト・パート</button>
-                    <button class="option-button" onclick="selectOption('employmentStatus', '離職中')">離職中</button>
-                    <button class="option-button" onclick="selectOption('employmentStatus', 'その他')">その他</button>
-                </div>
-                <div class="button-group">
-                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
-                    <button class="btn btn-next" id="nextBtn5" onclick="nextStep()" disabled>次へ</button>
-                </div>
-            </div>
-
-            <!-- Step 6: 都道府県 -->
-            <div class="step hidden" id="step6">
-                <div class="step-indicator">ステップ 6/10</div>
-                <h2 class="question-title">お住まいの都道府県を選択してください<span class="required">*</span></h2>
-                <div class="input-group">
-                    <label class="input-label">都道府県<span class="required">*</span></label>
-                    <select class="input-field" id="prefecture" onchange="validateStep6()">
-                        <option value="">選択してください</option>
-                        <option value="北海道">北海道</option>
-                        <option value="東京都">東京都</option>
-                        <option value="神奈川県">神奈川県</option>
-                        <option value="千葉県">千葉県</option>
-                        <option value="埼玉県">埼玉県</option>
-                        <option value="大阪府">大阪府</option>
-                        <option value="愛知県">愛知県</option>
-                        <option value="福岡県">福岡県</option>
-                    </select>
-                </div>
-                <div class="button-group">
-                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
-                    <button class="btn btn-next" id="nextBtn6" onclick="nextStep()" disabled>次へ</button>
-                </div>
-            </div>
-
-            <!-- Step 7: 性別 -->
-            <div class="step hidden" id="step7">
-                <div class="step-indicator">ステップ 7/10</div>
-                <h2 class="question-title">性別を選択してください<span class="required">*</span></h2>
-                <div class="options">
-                    <button class="option-button" onclick="selectOption('gender', '男性')">男性</button>
-                    <button class="option-button" onclick="selectOption('gender', '女性')">女性</button>
-                    <button class="option-button" onclick="selectOption('gender', 'その他')">その他</button>
-                </div>
-                <div class="button-group">
-                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
-                    <button class="btn btn-next" id="nextBtn7" onclick="nextStep()" disabled>次へ</button>
-                </div>
-            </div>
-
-            <!-- Step 8: 氏名・年齢 -->
-            <div class="step hidden" id="step8">
-                <div class="step-indicator">ステップ 8/10</div>
-                <h2 class="question-title">氏名・年齢を入力してください</h2>
-                <div class="input-group">
-                    <label class="input-label">お名前<span class="required">*</span></label>
-                    <input type="text" class="input-field" id="fullName" placeholder="山田 太郎" oninput="validateStep8()">
-                </div>
-                <div class="input-group">
-                    <label class="input-label">生年月日<span class="required">*</span></label>
-                    <div class="birth-date-selects">
-                        <select class="input-field" id="birthYear" onchange="validateStep8()">
-                            <option value="">年</option>
-                        </select>
-                        <select class="input-field" id="birthMonth" onchange="validateStep8()">
-                            <option value="">月</option>
-                        </select>
-                        <select class="input-field" id="birthDay" onchange="validateStep8()">
-                            <option value="">日</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="button-group">
-                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
-                    <button class="btn btn-next" id="nextBtn8" onclick="nextStep()" disabled>次へ</button>
-                </div>
-            </div>
-
-            <!-- Step 9: メアド・電話 -->
-            <div class="step hidden" id="step9">
-                <div class="step-indicator">ステップ 9/10</div>
-                <h2 class="question-title">メールアドレス・電話番号を入力してください</h2>
-                <div class="input-group">
-                    <label class="input-label">メールアドレス<span class="required">*</span></label>
-                    <input type="email" class="input-field" id="email" placeholder="example@mail.com" oninput="validateStep9()">
-                    <span class="error-message" id="emailError" style="display: none; color: #ff4444; font-size: 12px; margin-top: 4px;">正しいメールアドレスを入力してください</span>
-                </div>
-                <div class="input-group">
-                    <label class="input-label">電話番号<span class="required">*</span></label>
-                    <input type="tel" class="input-field" id="phone" placeholder="090-1234-5678" oninput="validateStep9()">
-                    <span class="error-message" id="phoneError" style="display: none; color: #ff4444; font-size: 12px; margin-top: 4px;">正しい電話番号を入力してください（例: 090-1234-5678）</span>
-                </div>
-                <div class="button-group">
-                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
-                    <button class="btn btn-next" id="nextBtn9" onclick="nextStep()" disabled>次へ</button>
-                </div>
-            </div>
-
-            <!-- Step 10: 面談日程選択 -->
-            <div class="step hidden" id="step10">
-                <div class="step-indicator">ステップ 10/10</div>
-                <h2 class="question-title">ご希望の日時を選択してください<br><span style="font-size: 16px; color: #666;">第1希望から第3希望まで選択してください</span></h2>
-                
-                <div class="week-selector">
-                    <button class="week-btn active" onclick="selectWeek('next')">次の1週間</button>
-                </div>
-
-                <div class="calendar-container" id="calendarContainer">
-                    <!-- Calendar will be generated by JavaScript -->
-                </div>
-
-                <div class="selected-slots-info" id="selectedSlotsInfo" style="display: none;">
-                    <div class="preference-item" id="preference1" style="display: none;">
-                        <span class="preference-label">第1希望:</span> <strong id="preference1Text"></strong>
-                        <button class="remove-btn" onclick="removePreference(1)">×</button>
-                    </div>
-                    <div class="preference-item" id="preference2" style="display: none;">
-                        <span class="preference-label">第2希望:</span> <strong id="preference2Text"></strong>
-                        <button class="remove-btn" onclick="removePreference(2)">×</button>
-                    </div>
-                    <div class="preference-item" id="preference3" style="display: none;">
-                        <span class="preference-label">第3希望:</span> <strong id="preference3Text"></strong>
-                        <button class="remove-btn" onclick="removePreference(3)">×</button>
-                    </div>
-                </div>
-
-                <div class="button-group">
-                    <button class="btn btn-back" onclick="prevStep()">戻る</button>
-                    <button class="btn btn-next" id="nextBtn10" onclick="submitForm()" disabled>登録完了</button>
-                </div>
-            </div>
-
-            <!-- 完了画面 -->
-            <div class="step hidden" id="completion">
-                <div class="completion">
-                    <div class="completion-icon">✅</div>
-                    <h2 class="completion-title">予約が完了しました！</h2>
-                    <p class="completion-message">
-                        ご登録ありがとうございます。<br>
-                        担当者より1〜3営業日以内にご連絡させていただきます。<br>
-                        しばらくお待ちください。
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>株式会社BOXが運営しています</p>
-            <p style="margin-top: 12px;">
-                <a href="#">利用規約</a> | 
-                <a href="#">プライバシーポリシー</a> | 
-                <a href="#">お問い合わせ</a>
-            </p>
-        </div>
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">れいわ<span>キャリア</span></a>
+    <nav>
+      <ul class="header-nav">
+        <li><a href="#reasons">選ばれる理由</a></li>
+        <li><a href="#voices">転職事例</a></li>
+        <li><a href="#pickup">求人情報</a></li>
+        <li><a href="#flow">ご利用の流れ</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a href="LINE_URL" class="btn-line" id="header-line-btn">
+        <span>📲</span> LINEで無料相談
+      </a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="#reasons">選ばれる理由</a>
+    <a href="#voices">転職事例</a>
+    <a href="#pickup">求人情報</a>
+    <a href="#flow">ご利用の流れ</a>
+    <a href="#faq">よくある質問</a>
+    <a href="LINE_URL" class="btn-line" id="mobile-line-btn">📲 LINEで無料相談</a>
+  </nav>
+</header>
 
-    <script>
-        const formData = {
-            workStart: '',
-            jobType: [],
-            condition: [],
-            education: '',
-            employmentStatus: '',
-            gender: '',
-            interviewDateTime1: '',
-            interviewDateTime2: '',
-            interviewDateTime3: '',
-            fullName: '',
-            birthDate: '',
-            phone: '',
-            email: '',
-            prefecture: ''
-        };
+<!-- ===== FV / HERO ===== -->
+<section class="fv" id="top">
+  <div class="container">
+    <div class="fv-badge">✨ 完全無料｜内定まで伴走サポート</div>
+    <h1>
+      あなたの転職を、<br>
+      <em>れいわキャリア</em>が<br>
+      全力でサポートします。
+    </h1>
+    <p class="fv-lead">
+      沖縄・全国の求人から、あなたにぴったりの仕事を一緒に探します。<br>
+      書類作成・面接対策・条件交渉まで、専任アドバイザーが無料で伴走。
+    </p>
+    <div class="fv-btns">
+      <a href="LINE_URL" class="btn-line" id="fv-line-btn">
+        📲 LINEで無料相談スタート
+      </a>
+      <a href="https://jobs.reiwa-career.com/" class="btn-outline-white">
+        🔍 求人を探す
+      </a>
+    </div>
+    <div class="fv-trust">
+      <span>登録・相談完全無料</span>
+      <span>LINEで気軽に相談</span>
+      <span>在職中もOK</span>
+      <span>沖縄・全国対応</span>
+    </div>
+  </div>
+</section>
 
-        let currentStep = 1;
-        const totalSteps = 10;
+<!-- ===== STATS ===== -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-up">
+        <div class="stat-num" data-target="500">0<span>名以上</span></div>
+        <div class="stat-label">累計支援実績</div>
+      </div>
+      <div class="stat-item fade-up" style="transition-delay:0.1s">
+        <div class="stat-num" data-target="92">0<span>%</span></div>
+        <div class="stat-label">内定獲得率</div>
+      </div>
+      <div class="stat-item fade-up" style="transition-delay:0.2s">
+        <div class="stat-num" data-target="30">0<span>日</span></div>
+        <div class="stat-label">平均内定期間</div>
+      </div>
+      <div class="stat-item fade-up" style="transition-delay:0.3s">
+        <div class="stat-num" data-target="300">0<span>社以上</span></div>
+        <div class="stat-label">掲載求人数</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // 強みのデータ（2問ずつ切り替え）
-        const strengths = [
-            { step: 2, title: '平均年収100万円UP', emoji: '💵' },
-            { step: 4, title: '未経験特化', emoji: '✨' },
-            { step: 6, title: '全て無料', emoji: '🆓' },
-            { step: 8, title: '隠れホワイト求人多数', emoji: '🏢' },
-            { step: 10, title: '内定まで全てサポート', emoji: '🤝' }
-        ];
+<!-- ===== REASONS ===== -->
+<section class="section reasons" id="reasons">
+  <div class="container">
+    <h2 class="section-title fade-up">れいわキャリアが<br>選ばれる理由</h2>
+    <p class="section-sub fade-up">専任アドバイザーによる手厚いサポートで内定まで伴走します</p>
+    <div class="reasons-grid">
+      <div class="reason-card fade-up">
+        <div class="reason-num">REASON 01</div>
+        <div class="reason-icon">💰</div>
+        <div class="reason-title">完全無料で<br>最後までサポート</div>
+        <div class="reason-desc">求職者への費用は一切かかりません。相談から内定後フォローまで、全て無料でサポートします。</div>
+      </div>
+      <div class="reason-card fade-up" style="transition-delay:0.1s">
+        <div class="reason-num">REASON 02</div>
+        <div class="reason-icon">👤</div>
+        <div class="reason-title">専任アドバイザーが<br>マンツーマン対応</div>
+        <div class="reason-desc">担当者が変わらず、あなたの状況を深く理解した専任アドバイザーが内定まで一貫してサポートします。</div>
+      </div>
+      <div class="reason-card fade-up" style="transition-delay:0.2s">
+        <div class="reason-num">REASON 03</div>
+        <div class="reason-icon">📍</div>
+        <div class="reason-title">沖縄地域に強い<br>密着型サービス</div>
+        <div class="reason-desc">地元企業との強いパイプで、他では見つからない非公開求人も多数ご紹介できます。</div>
+      </div>
+      <div class="reason-card fade-up" style="transition-delay:0.3s">
+        <div class="reason-num">REASON 04</div>
+        <div class="reason-icon">📱</div>
+        <div class="reason-title">LINEで気軽に<br>いつでも相談</div>
+        <div class="reason-desc">電話やメールが苦手な方もLINEで気軽に相談可能。夜間や休日でもメッセージを送れます。</div>
+      </div>
+      <div class="reason-card fade-up" style="transition-delay:0.4s">
+        <div class="reason-num">REASON 05</div>
+        <div class="reason-icon">📝</div>
+        <div class="reason-title">書類・面接を<br>徹底サポート</div>
+        <div class="reason-desc">履歴書・職務経歴書の作成から面接対策まで。初めての転職の方も安心してご利用いただけます。</div>
+      </div>
+      <div class="reason-card fade-up" style="transition-delay:0.5s">
+        <div class="reason-num">REASON 06</div>
+        <div class="reason-icon">🤝</div>
+        <div class="reason-title">内定後も<br>フォローアップ</div>
+        <div class="reason-desc">入社後の職場環境や条件が気になる方へ、入社後もアドバイザーがフォローし続けます。</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        let currentStrengthIndex = 0;
+<!-- ===== VOICES ===== -->
+<section class="section voices" id="voices">
+  <div class="container">
+    <h2 class="section-title fade-up">転職成功事例</h2>
+    <p class="section-sub fade-up">れいわキャリアを利用して転職に成功した方の声</p>
+    <div class="voices-grid">
+      <div class="voice-card fade-up">
+        <div class="voice-badge">20代・男性｜IT業界へ転職</div>
+        <p class="voice-text">「未経験からのエンジニア転職で不安でしたが、アドバイザーの方が丁寧にサポートしてくれました。面接対策を何度も繰り返し、無事に内定をいただけました！」</p>
+        <div class="voice-person">Mさん（那覇市在住）</div>
+      </div>
+      <div class="voice-card fade-up" style="transition-delay:0.1s">
+        <div class="voice-badge">30代・女性｜育休復帰後の転職</div>
+        <p class="voice-text">「子育て中で時間の制約があるなか、LINEで気軽に相談できたのが助かりました。希望通りの時短勤務ができる職場を見つけてもらえました。」</p>
+        <div class="voice-person">Kさん（沖縄市在住）</div>
+      </div>
+      <div class="voice-card fade-up" style="transition-delay:0.2s">
+        <div class="voice-badge">40代・男性｜管理職への転職</div>
+        <p class="voice-text">「長年同じ会社にいたので転職活動の仕方がわからず不安でしたが、丁寧に進め方を教えてもらい自信を持って活動できました。年収も上がり大満足です。」</p>
+        <div class="voice-person">Tさん（浦添市在住）</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function showStrength(index) {
-            const strength = strengths[index];
-            const strengthBox = document.getElementById('strengthBox');
-            const titleEl = document.getElementById('strengthBoxTitle');
-            
-            // コンテンツを更新
-            titleEl.textContent = `${strength.emoji} ${strength.title}`;
-            
-            // 初回表示
-            if (strengthBox.style.display === 'none') {
-                strengthBox.style.display = 'block';
-            }
+<!-- ===== PICKUP JOBS ===== -->
+<section class="section pickup" id="pickup">
+  <div class="container">
+    <h2 class="section-title fade-up">注目の求人ピックアップ</h2>
+    <p class="section-sub fade-up">最新の求人情報を厳選してご紹介します</p>
+    <div id="jobs-container" class="jobs-grid">
+      <div class="jobs-loading">求人情報を読み込み中…</div>
+    </div>
+    <div class="pickup-more fade-up">
+      <a href="https://jobs.reiwa-career.com/" class="btn-outline">
+        すべての求人を見る →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLOW ===== -->
+<section class="section flow" id="flow">
+  <div class="container">
+    <h2 class="section-title fade-up">ご利用の流れ</h2>
+    <p class="section-sub fade-up">LINEでの登録から内定まで、スムーズにサポートします</p>
+    <div class="flow-steps">
+      <div class="flow-step fade-up">
+        <div class="flow-num">1</div>
+        <div class="flow-content">
+          <div class="flow-title">LINEで無料登録・相談</div>
+          <div class="flow-desc">LINEを友達追加して、簡単な質問に答えるだけ。まずはお気軽にご相談ください。</div>
+        </div>
+      </div>
+      <div class="flow-step fade-up" style="transition-delay:0.1s">
+        <div class="flow-num">2</div>
+        <div class="flow-content">
+          <div class="flow-title">キャリアカウンセリング（無料面談）</div>
+          <div class="flow-desc">専任アドバイザーとの面談で、あなたの希望・強み・キャリアプランを整理します。オンライン・対面どちらも対応可能です。</div>
+        </div>
+      </div>
+      <div class="flow-step fade-up" style="transition-delay:0.2s">
+        <div class="flow-num">3</div>
+        <div class="flow-content">
+          <div class="flow-title">求人紹介・応募書類作成</div>
+          <div class="flow-desc">希望に合った求人をご紹介し、履歴書・職務経歴書の作成もサポートします。</div>
+        </div>
+      </div>
+      <div class="flow-step fade-up" style="transition-delay:0.3s">
+        <div class="flow-num">4</div>
+        <div class="flow-content">
+          <div class="flow-title">面接対策・選考サポート</div>
+          <div class="flow-desc">企業ごとの面接傾向を踏まえた対策をしっかり行います。当日まで安心してサポートします。</div>
+        </div>
+      </div>
+      <div class="flow-step fade-up" style="transition-delay:0.4s">
+        <div class="flow-num">5</div>
+        <div class="flow-content">
+          <div class="flow-title">内定・入社後フォロー</div>
+          <div class="flow-desc">内定後の条件確認や入社手続きもサポート。入社後もアドバイザーがフォローします。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section faq-section" id="faq">
+  <div class="container">
+    <h2 class="section-title fade-up">よくある質問</h2>
+    <p class="section-sub fade-up">ご不明な点はLINEでもお気軽にご相談いただけます</p>
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <details>
+          <summary class="faq-q"><span class="faq-q-text">利用は本当に無料ですか？</span><span class="faq-arrow">▼</span></summary>
+          <div class="faq-a">はい、求職者の方への支援は完全無料です。相談から内定後のフォローまで一切費用はかかりません。</div>
+        </details>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:0.05s">
+        <details>
+          <summary class="faq-q"><span class="faq-q-text">在職中でも相談できますか？</span><span class="faq-arrow">▼</span></summary>
+          <div class="faq-a">もちろんです。在職中の方も多くご利用いただいています。スケジュールに合わせた柔軟な面談対応が可能です。夜間・休日の相談もLINEで受け付けています。</div>
+        </details>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:0.1s">
+        <details>
+          <summary class="faq-q"><span class="faq-q-text">沖縄以外の求人も扱っていますか？</span><span class="faq-arrow">▼</span></summary>
+          <div class="faq-a">はい、沖縄を中心に全国の求人を取り扱っています。UIターン・Iターン転職もサポートしています。</div>
+        </details>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:0.15s">
+        <details>
+          <summary class="faq-q"><span class="faq-q-text">転職が初めてでも大丈夫ですか？</span><span class="faq-arrow">▼</span></summary>
+          <div class="faq-a">初めての転職の方も安心してご利用いただけます。履歴書・職務経歴書の作成から面接対策まで丁寧にサポートします。まずはLINEでお気軽にご相談ください。</div>
+        </details>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:0.2s">
+        <details>
+          <summary class="faq-q"><span class="faq-q-text">相談してみたけど求人が合わなかった場合は？</span><span class="faq-arrow">▼</span></summary>
+          <div class="faq-a">ご希望に合う求人が現時点でなかった場合でも、定期的に新しい求人をご案内します。もちろんお断りいただくことも可能です。無理に転職を勧めることはありません。</div>
+        </details>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:0.25s">
+        <details>
+          <summary class="faq-q"><span class="faq-q-text">転職活動がバレませんか？</span><span class="faq-arrow">▼</span></summary>
+          <div class="faq-a">応募情報は厳重に管理しています。現職の企業への連絡は一切行いません。個人情報保護に関しても万全の体制を整えています。</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta">
+  <div class="container">
+    <h2>まずはLINEで<br>気軽に相談してみませんか？</h2>
+    <p>登録無料・完全無料。今すぐLINEで友達追加して、あなたの転職の第一歩を踏み出しましょう。</p>
+    <div class="final-cta-btns">
+      <a href="LINE_URL" class="btn-line" id="final-line-btn">
+        📲 LINEで無料相談スタート
+      </a>
+      <a href="https://jobs.reiwa-career.com/" class="btn-outline-white">
+        🔍 求人情報を見る
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="site-logo">れいわ<span style="color:var(--line-green)">キャリア</span></div>
+        <p>沖縄・全国の転職・就職をサポートする無料キャリア支援サービス。専任アドバイザーが内定まで完全伴走します。</p>
+      </div>
+      <div class="footer-nav">
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="#reasons">選ばれる理由</a></li>
+          <li><a href="#voices">転職成功事例</a></li>
+          <li><a href="#pickup">求人情報</a></li>
+          <li><a href="#flow">ご利用の流れ</a></li>
+          <li><a href="#faq">よくある質問</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>リンク</h4>
+        <ul>
+          <li><a href="https://jobs.reiwa-career.com/">求人検索ページ</a></li>
+          <li><a href="LINE_URL" id="footer-line-link">LINEで無料相談</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 れいわキャリア. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FLOATING LINE BUTTON ===== -->
+<a href="LINE_URL" class="float-line" id="float-line-btn">
+  <span class="float-line-icon">💬</span>
+  <span class="float-text">LINEで無料相談</span>
+</a>
+
+<script>
+(function() {
+  'use strict';
+
+  // ─── LINE URL ────────────────────────────────────────────────
+  const LINE_URL = 'https://liff.line.me/2008784499-92DR4hmy/landing?follow=%40872lluqj&lp=yrdfyz&liff_id=2008784499-92DR4hmy';
+
+  // LINE URLを全CTA要素に適用
+  document.querySelectorAll('a[href="LINE_URL"]').forEach(function(el) {
+    el.href = LINE_URL;
+  });
+
+  // ─── GAS 求人API ─────────────────────────────────────────────
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbwF_pqCTBQy6vpjw3ZPBPmiFGQ7O7DiAOnDgXaRDQVNGqm3eMO72A4Mr7F4QXNotJuSUQ/exec';
+
+  const FALLBACK_JOBS = [
+    {
+      id: 'F001',
+      company: 'サンプル株式会社',
+      title: '営業スタッフ（未経験歓迎）',
+      salary: '月給20万円〜',
+      location: '那覇市',
+      tags: ['未経験歓迎', '正社員', '沖縄'],
+      isNew: true,
+      featured: true
+    },
+    {
+      id: 'F002',
+      company: '沖縄ITソリューションズ',
+      title: 'ITエンジニア（フルスタック）',
+      salary: '月給30万円〜',
+      location: '那覇市・リモート可',
+      tags: ['エンジニア', '正社員', 'リモート可'],
+      isNew: true,
+      featured: false
+    },
+    {
+      id: 'F003',
+      company: 'リゾートホテル沖縄',
+      title: 'フロントスタッフ',
+      salary: '月給18万円〜',
+      location: '恩納村',
+      tags: ['ホテル', '正社員', '観光'],
+      isNew: false,
+      featured: true
+    }
+  ];
+
+  function renderJobs(jobs) {
+    const container = document.getElementById('jobs-container');
+    if (!container) return;
+
+    // ピックアップ求人（featuredまたは最大3件）
+    const pickup = jobs.filter(function(j) { return j.featured; }).slice(0, 3);
+    const display = pickup.length > 0 ? pickup : jobs.slice(0, 3);
+
+    if (display.length === 0) {
+      container.innerHTML = '<div class="jobs-loading">現在掲載中の求人を準備中です</div>';
+      return;
+    }
+
+    container.innerHTML = display.map(function(job) {
+      const badges = [];
+      if (job.isNew) badges.push('<span class="job-badge-new">NEW</span>');
+      if (job.featured) badges.push('<span class="job-badge-featured">注目</span>');
+
+      const tags = (job.tags || []).map(function(t) {
+        return '<span class="job-tag">' + escHtml(t) + '</span>';
+      }).join('');
+
+      return '<a href="https://jobs.reiwa-career.com/" class="job-card">'
+        + '<div class="job-card-head"><div>' + badges.join('') + '</div></div>'
+        + '<div class="job-company">' + escHtml(job.company) + '</div>'
+        + '<div class="job-title">' + escHtml(job.title) + '</div>'
+        + '<div class="job-tags">' + tags + '</div>'
+        + '<div class="job-meta">'
+        + (job.salary ? '<span>💴 ' + escHtml(String(job.salary)) + '</span>' : '')
+        + (job.location ? '<span>📍 ' + escHtml(String(job.location)) + '</span>' : '')
+        + '</div>'
+        + '</a>';
+    }).join('');
+  }
+
+  function escHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function loadJobs() {
+    var script = document.createElement('script');
+    var cbName = '_gasCallback_' + Date.now();
+    var timer = setTimeout(function() {
+      useFallback();
+      try { delete window[cbName]; } catch(e) {}
+    }, 5000);
+
+    window[cbName] = function(data) {
+      clearTimeout(timer);
+      try { delete window[cbName]; } catch(e) {}
+      if (data && data.status === 'ok' && Array.isArray(data.jobs) && data.jobs.length > 0) {
+        renderJobs(data.jobs);
+      } else {
+        useFallback();
+      }
+    };
+
+    function useFallback() {
+      renderJobs(FALLBACK_JOBS);
+    }
+
+    // fetch API
+    fetch(GAS_URL)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        clearTimeout(timer);
+        if (data && data.status === 'ok' && Array.isArray(data.jobs) && data.jobs.length > 0) {
+          renderJobs(data.jobs);
+        } else {
+          useFallback();
         }
+      })
+      .catch(function() {
+        useFallback();
+      });
+  }
 
-        function updateProgress() {
-            const progress = (currentStep / totalSteps) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
+  // ─── HEADER スクロール ────────────────────────────────────────
+  var header = document.getElementById('site-header');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 20) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  // ─── ハンバーガーメニュー ──────────────────────────────────────
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', function() {
+    var isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
+
+  // ─── フェードアップ アニメーション ─────────────────────────────
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-        function selectOption(fieldName, value) {
-            formData[fieldName] = value;
-            
-            // Remove selected class from all buttons in current step
-            const currentStepElement = document.getElementById('step' + currentStep);
-            const buttons = currentStepElement.querySelectorAll('.option-button');
-            buttons.forEach(btn => btn.classList.remove('selected'));
-            
-            // Add selected class to clicked button
-            event.target.classList.add('selected');
-            
-            // Enable next button
-            const nextBtn = document.getElementById('nextBtn' + currentStep);
-            if (nextBtn) nextBtn.disabled = false;
-            
-            // Auto-advance for step 1
-            if (currentStep === 1) {
-                setTimeout(() => nextStep(), 300);
-            } else if (currentStep === 4 || currentStep === 5) {
-                // Auto-enable for single select steps
-                const nextBtn = document.getElementById('nextBtn' + currentStep);
-                if (nextBtn) nextBtn.disabled = false;
-            } else if (currentStep === 6) {
-                validateStep6();
-            }
+    document.querySelectorAll('.fade-up').forEach(function(el) {
+      io.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.fade-up').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+
+  // ─── 数字カウントアップ ───────────────────────────────────────
+  function countUp(el, target, duration) {
+    var start = 0;
+    var startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = Math.floor(eased * target);
+      var suffix = el.querySelector('span') ? el.querySelector('span').outerHTML : '';
+      el.innerHTML = current + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var statsIO = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var nums = entry.target.querySelectorAll('.stat-num[data-target]');
+          nums.forEach(function(el) {
+            var target = parseInt(el.getAttribute('data-target'), 10);
+            countUp(el, target, 1200);
+          });
+          statsIO.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.3 });
 
-        function updateCheckboxes(fieldName) {
-            const groupId = fieldName + 'Group';
-            const checkboxes = document.querySelectorAll(`#${groupId} input[type="checkbox"]`);
-            const labels = document.querySelectorAll(`#${groupId} .checkbox-label`);
-            
-            formData[fieldName] = [];
-            
-            labels.forEach((label, index) => {
-                if (checkboxes[index].checked) {
-                    label.classList.add('checked');
-                    formData[fieldName].push(checkboxes[index].value);
-                } else {
-                    label.classList.remove('checked');
-                }
-            });
-            
-            // Enable next button if at least one is selected
-            const nextBtn = document.getElementById('nextBtn' + currentStep);
-            if (nextBtn) {
-                nextBtn.disabled = formData[fieldName].length === 0;
-            }
-        }
+    var statsSection = document.querySelector('.stats');
+    if (statsSection) statsIO.observe(statsSection);
+  }
 
-        function validateStep6() {
-            const prefecture = document.getElementById('prefecture').value;
-            const isValid = prefecture !== '';
-            document.getElementById('nextBtn6').disabled = !isValid;
-        }
+  // ─── 求人読み込み ─────────────────────────────────────────────
+  loadJobs();
 
-        function validateStep7() {
-            // Step 7は性別のみ - selectOption関数で自動的に次へ進む
-        }
+})();
+</script>
 
-        function validateStep8() {
-            const fullName = document.getElementById('fullName').value;
-            const birthYear = document.getElementById('birthYear').value;
-            const birthMonth = document.getElementById('birthMonth').value;
-            const birthDay = document.getElementById('birthDay').value;
-            
-            const isValid = fullName.trim() !== '' && birthYear !== '' && birthMonth !== '' && birthDay !== '';
-            document.getElementById('nextBtn8').disabled = !isValid;
-        }
-
-        function validateStep9() {
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            
-            // メールアドレスの正規表現
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const emailValid = emailRegex.test(email);
-            
-            // 電話番号の正規表現（ハイフンあり・なし両対応）
-            const phoneRegex = /^(0\d{1,4}-?\d{1,4}-?\d{4}|0\d{9,10})$/;
-            const phoneValid = phoneRegex.test(phone.replace(/-/g, ''));
-            
-            // エラーメッセージの表示/非表示
-            const emailError = document.getElementById('emailError');
-            const phoneError = document.getElementById('phoneError');
-            
-            if (email.trim() !== '' && !emailValid) {
-                emailError.style.display = 'block';
-            } else {
-                emailError.style.display = 'none';
-            }
-            
-            if (phone.trim() !== '' && !phoneValid) {
-                phoneError.style.display = 'block';
-            } else {
-                phoneError.style.display = 'none';
-            }
-            
-            const isValid = emailValid && phoneValid;
-            document.getElementById('nextBtn9').disabled = !isValid;
-        }
-
-        function validateStep10() {
-            // Step 10は面談日程選択 - selectSlot関数で処理
-        }
-
-        function initializeBirthDateSelects() {
-            const yearSelect = document.getElementById('birthYear');
-            const monthSelect = document.getElementById('birthMonth');
-            const daySelect = document.getElementById('birthDay');
-            
-            // Generate years (1940-2008)
-            for (let year = 2008; year >= 1940; year--) {
-                const option = document.createElement('option');
-                option.value = year;
-                option.textContent = year + '年';
-                yearSelect.appendChild(option);
-            }
-            
-            // Generate months (1-12)
-            for (let month = 1; month <= 12; month++) {
-                const option = document.createElement('option');
-                option.value = month;
-                option.textContent = month + '月';
-                monthSelect.appendChild(option);
-            }
-            
-            // Generate days (1-31)
-            for (let day = 1; day <= 31; day++) {
-                const option = document.createElement('option');
-                option.value = day;
-                option.textContent = day + '日';
-                daySelect.appendChild(option);
-            }
-        }
-
-        let currentWeek = 'next';
-        let selectedSlots = [];
-
-        function selectWeek(week) {
-            currentWeek = week;
-            document.querySelectorAll('.week-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            generateCalendar();
-        }
-
-        function generateCalendar() {
-            const container = document.getElementById('calendarContainer');
-            const today = new Date(2026, 1, 13); // Feb 13, 2026
-            
-            // Always show next week (starting from Feb 14)
-            const startDate = new Date(2026, 1, 14);
-            
-            // Generate 7 days
-            const dates = [];
-            for (let i = 0; i < 7; i++) {
-                const date = new Date(startDate);
-                date.setDate(date.getDate() + i);
-                dates.push(date);
-            }
-            
-            // Time slots configuration
-            const weekdaySlots = [];
-            for (let hour = 10; hour <= 20; hour++) {
-                weekdaySlots.push(`${String(hour).padStart(2, '0')}:00`);
-            }
-            
-            const saturdaySlots = [];
-            for (let hour = 13; hour <= 18; hour++) {
-                saturdaySlots.push(`${String(hour).padStart(2, '0')}:00`);
-            }
-            
-            const sundaySlots = [];
-            for (let hour = 10; hour <= 20; hour++) {
-                sundaySlots.push(`${String(hour).padStart(2, '0')}:00`);
-            }
-            
-            // Build table
-            let tableHTML = '<table class="calendar-table"><thead><tr><th>日時</th>';
-            
-            dates.forEach(date => {
-                const dayNames = ['日', '月', '火', '水', '木', '金', '土'];
-                const dayName = dayNames[date.getDay()];
-                const month = date.getMonth() + 1;
-                const day = date.getDate();
-                tableHTML += `<th><div class="date-header">${month}/${day}<span class="day-name">(${dayName})</span></div></th>`;
-            });
-            
-            tableHTML += '</tr></thead><tbody>';
-            
-            // Generate rows for each time slot
-            const maxSlots = Math.max(weekdaySlots.length, saturdaySlots.length, sundaySlots.length);
-            
-            for (let i = 0; i < maxSlots; i++) {
-                tableHTML += '<tr>';
-                
-                // Time column
-                const time = weekdaySlots[i] || saturdaySlots[i] || sundaySlots[i];
-                tableHTML += `<td>${time || ''}</td>`;
-                
-                // Date columns
-                dates.forEach(date => {
-                    const dayOfWeek = date.getDay();
-                    const isSaturday = dayOfWeek === 6;
-                    const isSunday = dayOfWeek === 0;
-                    
-                    let slotTime;
-                    let isAvailable = false;
-                    
-                    // 平日（月〜金）: 10:00-21:00で○
-                    if (!isSaturday && !isSunday && i < weekdaySlots.length) {
-                        slotTime = weekdaySlots[i];
-                        isAvailable = true;
-                    }
-                    // 土曜: 13:00-19:00のみ○
-                    else if (isSaturday && i < saturdaySlots.length) {
-                        slotTime = saturdaySlots[i];
-                        isAvailable = true;
-                    }
-                    
-                    if (isAvailable && slotTime) {
-                        const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-                        const slotId = `${dateStr}_${slotTime}`;
-                        const dayNames = ['日', '月', '火', '水', '木', '金', '土'];
-                        const displayDate = `${date.getMonth() + 1}/${date.getDate()}(${dayNames[date.getDay()]}) ${slotTime}-${String(parseInt(slotTime.split(':')[0]) + 1).padStart(2, '0')}:00`;
-                        
-                        tableHTML += `<td class="time-cell available" onclick="selectSlot('${slotId}', '${displayDate}')">○</td>`;
-                    } else {
-                        // 日曜・祝日、または土曜の対象外時間は×
-                        tableHTML += `<td class="time-cell unavailable">×</td>`;
-                    }
-                });
-                
-                tableHTML += '</tr>';
-            }
-            
-            tableHTML += '</tbody></table>';
-            container.innerHTML = tableHTML;
-            
-            // Restore selections if exist
-            updateCellHighlights();
-        }
-
-        function updateCellHighlights() {
-            // Remove all highlights
-            document.querySelectorAll('.time-cell').forEach(cell => {
-                cell.classList.remove('selected', 'preference-1', 'preference-2', 'preference-3');
-            });
-            
-            // Re-apply highlights
-            selectedSlots.forEach((slot, index) => {
-                const cells = document.querySelectorAll('.time-cell');
-                cells.forEach(cell => {
-                    if (cell.getAttribute('onclick') && cell.getAttribute('onclick').includes(slot.id)) {
-                        cell.classList.add('selected', `preference-${index + 1}`);
-                    }
-                });
-            });
-        }
-
-        function selectSlot(slotId, displayText) {
-            // Check if already selected
-            const existingIndex = selectedSlots.findIndex(s => s.id === slotId);
-            
-            if (existingIndex !== -1) {
-                // Remove if already selected
-                selectedSlots.splice(existingIndex, 1);
-            } else {
-                // Add new selection (max 3)
-                if (selectedSlots.length < 3) {
-                    selectedSlots.push({ id: slotId, text: displayText });
-                } else {
-                    alert('第3希望まで選択済みです。変更する場合は、既存の希望を削除してください。');
-                    return;
-                }
-            }
-            
-            updatePreferenceDisplay();
-            updateCellHighlights();
-            
-            // Enable next button if at least one slot is selected
-            document.getElementById('nextBtn10').disabled = selectedSlots.length === 0;
-        }
-
-        function updatePreferenceDisplay() {
-            const info = document.getElementById('selectedSlotsInfo');
-            
-            if (selectedSlots.length === 0) {
-                info.style.display = 'none';
-                return;
-            }
-            
-            info.style.display = 'block';
-            
-            // Update each preference
-            for (let i = 1; i <= 3; i++) {
-                const prefDiv = document.getElementById(`preference${i}`);
-                const prefText = document.getElementById(`preference${i}Text`);
-                
-                if (selectedSlots[i - 1]) {
-                    prefDiv.style.display = 'flex';
-                    prefText.textContent = selectedSlots[i - 1].text;
-                    formData[`interviewDateTime${i}`] = selectedSlots[i - 1].text;
-                } else {
-                    prefDiv.style.display = 'none';
-                    formData[`interviewDateTime${i}`] = '';
-                }
-            }
-        }
-
-        function removePreference(prefNumber) {
-            if (prefNumber <= selectedSlots.length) {
-                selectedSlots.splice(prefNumber - 1, 1);
-                updatePreferenceDisplay();
-                updateCellHighlights();
-                
-                // Disable next button if no slots selected
-                document.getElementById('nextBtn10').disabled = selectedSlots.length === 0;
-            }
-        }
-
-
-        function nextStep() {
-            document.getElementById('step' + currentStep).classList.add('hidden');
-            currentStep++;
-            document.getElementById('step' + currentStep).classList.remove('hidden');
-            updateProgress();
-            window.scrollTo(0, 0);
-            
-            // Generate calendar when entering step 10
-            if (currentStep === 10) {
-                generateCalendar();
-            }
-            
-            // 強みを表示するステップをチェック
-            const strengthToShow = strengths.find(s => s.step === currentStep);
-            if (strengthToShow) {
-                const index = strengths.indexOf(strengthToShow);
-                setTimeout(() => {
-                    showStrength(index);
-                }, 300); // ステップ遷移のアニメーション後に表示
-            }
-        }
-
-        function prevStep() {
-            document.getElementById('step' + currentStep).classList.add('hidden');
-            currentStep--;
-            document.getElementById('step' + currentStep).classList.remove('hidden');
-            updateProgress();
-            window.scrollTo(0, 0);
-        }
-
-        function submitForm() {
-            // Collect all form data
-            formData.fullName = document.getElementById('fullName').value;
-            const birthYear = document.getElementById('birthYear').value;
-            const birthMonth = document.getElementById('birthMonth').value;
-            const birthDay = document.getElementById('birthDay').value;
-            formData.birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
-            formData.phone = document.getElementById('phone').value;
-            formData.email = document.getElementById('email').value;
-            formData.prefecture = document.getElementById('prefecture').value;
-            // interviewDateTime is already set
-            
-            console.log('Form submitted:', formData);
-            console.log('第1希望:', formData.interviewDateTime1);
-            console.log('第2希望:', formData.interviewDateTime2);
-            console.log('第3希望:', formData.interviewDateTime3);
-            console.log('名前:', formData.fullName);
-            console.log('メール:', formData.email);
-            
-            // Send to Google Sheets
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbw8B6wTY4nMJUlpZ1f2QuDFUYZVlOCDHtifP6BrVgCo11kJjtCaLnIfPTYWDSr-Y5O3/exec';
-            
-            // Show completion screen immediately
-            document.getElementById('step10').classList.add('hidden');
-            document.getElementById('completion').classList.remove('hidden');
-            currentStep = 11;
-            updateProgress();
-            
-            // 強みボックスのテキストを変更
-            const strengthBoxTitle = document.getElementById('strengthBoxTitle');
-            if (strengthBoxTitle) {
-                strengthBoxTitle.textContent = '🙏 ご回答ありがとうございます';
-            }
-            
-            // Send data to Google Sheets in background
-            fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                console.log('データがGoogleスプレッドシートに保存されました');
-            })
-            .catch(error => {
-                console.error('エラー:', error);
-            });
-        }
-
-        // Initialize progress bar
-        updateProgress();
-        
-        // Initialize birth date selects
-        initializeBirthDateSelects();
-    </script>
 </body>
 </html>
