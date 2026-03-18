@@ -992,17 +992,33 @@ details[open] .faq-arrow { transform: rotate(180deg); }
   .section { padding: 72px 0; }
   .header-nav, .header-cta { display: none; }
   .hamburger { display: flex; }
+  /* モバイルFV：上半分＝画像（ロゴ）/ 下半分＝テキスト */
   .fv {
-    padding: 100px 24px 80px;
-    min-height: 100svh;
+    align-items: flex-end;       /* コンテンツを下に */
     justify-content: center;
+    padding: 0 24px 52px;
+    min-height: 100svh;
     text-align: center;
-    background-size: 200%;
-    background-position: 55% 20%;
+    background-size: cover;
+    background-position: center top;  /* 上から：顔→ロゴマーク→下部 */
   }
-  .fv-btns { justify-content: center; }
-  .fv-trust { justify-content: center; }
-  .fv-lead { margin-left: auto; margin-right: auto; }
+  /* オーバーレイ：上は薄く（画像・ロゴ見せ場）、下は濃く（テキスト可読性） */
+  .fv::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(4,4,4,0.18) 0%,
+      rgba(4,4,4,0.15) 42%,
+      rgba(4,4,4,0.68) 65%,
+      rgba(4,4,4,0.92) 100%
+    );
+  }
+  /* テキスト要素のマージンを縮めてコンパクトに */
+  .fv-badge     { margin-bottom: 18px; }
+  .fv-catchcopy { margin-bottom: 14px; font-size: clamp(2rem, 9vw, 2.8rem); }
+  .fv h1        { margin-bottom: 14px; }
+  .fv-lead      { margin-bottom: 28px; margin-left: auto; margin-right: auto; }
+  .fv-btns      { margin-bottom: 24px; justify-content: center; }
+  .fv-trust     { justify-content: center; gap: 14px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
   .float-line .float-text { display: none; }
   .float-line { padding: 14px 18px; }
