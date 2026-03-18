@@ -992,33 +992,46 @@ details[open] .faq-arrow { transform: rotate(180deg); }
   .section { padding: 72px 0; }
   .header-nav, .header-cta { display: none; }
   .hamburger { display: flex; }
-  /* モバイルFV：上半分＝画像（ロゴ）/ 下半分＝テキスト */
+  /* ヘッダーロゴをX軸左端に寄せる（Y軸高さ維持） */
+  .header-inner { padding: 0 20px 0 10px; }
+  /* モバイルFV：英字（上）→ ロゴ（中）→ 白文字（下）の3段構成 */
   .fv {
-    align-items: flex-end;       /* コンテンツを下に */
-    justify-content: center;
-    padding: 0 24px 52px;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0 24px;
     min-height: 100svh;
     text-align: center;
     background-size: cover;
-    background-position: center top;  /* 上から：顔→ロゴマーク→下部 */
+    background-position: center top;
   }
-  /* オーバーレイ：上は薄く（画像・ロゴ見せ場）、下は濃く（テキスト可読性） */
+  /* オーバーレイ：中央（ロゴゾーン）は薄く、上下は適度に暗く */
   .fv::before {
     background: linear-gradient(
       to bottom,
-      rgba(4,4,4,0.18) 0%,
-      rgba(4,4,4,0.15) 42%,
-      rgba(4,4,4,0.68) 65%,
-      rgba(4,4,4,0.92) 100%
+      rgba(4,4,4,0.60) 0%,
+      rgba(4,4,4,0.30) 30%,
+      rgba(4,4,4,0.18) 48%,
+      rgba(4,4,4,0.65) 68%,
+      rgba(4,4,4,0.90) 100%
     );
   }
-  /* テキスト要素のマージンを縮めてコンパクトに */
-  .fv-badge     { margin-bottom: 18px; }
-  .fv-catchcopy { margin-bottom: 14px; font-size: clamp(2rem, 9vw, 2.8rem); }
-  .fv h1        { margin-bottom: 14px; }
-  .fv-lead      { margin-bottom: 28px; margin-left: auto; margin-right: auto; }
-  .fv-btns      { margin-bottom: 24px; justify-content: center; }
-  .fv-trust     { justify-content: center; gap: 14px; }
+  /* fv-inner を縦全幅のflexコンテナに */
+  .fv-inner {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    padding: 80px 0 52px;
+    max-width: 100%;
+  }
+  /* badge + 英字：上部に固定 */
+  .fv-badge     { margin-bottom: 14px; }
+  .fv-catchcopy { margin-bottom: 0; font-size: clamp(2rem, 9vw, 2.8rem); }
+  /* h1：margin-top:auto で下に押し下げ（＝ロゴゾーンが自然に空く） */
+  .fv h1        { margin-top: auto; margin-bottom: 12px; }
+  .fv-lead      { margin-bottom: 24px; margin-left: auto; margin-right: auto; }
+  .fv-btns      { margin-bottom: 0; justify-content: center; }
+  /* trust badges：モバイルFVでは非表示（スクロール後のコンテンツに集中） */
+  .fv-trust     { display: none; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
   .float-line .float-text { display: none; }
   .float-line { padding: 14px 18px; }
