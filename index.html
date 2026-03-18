@@ -304,76 +304,86 @@ a { color: inherit; text-decoration: none; }
   background: var(--bg);
 }
 
-/* 黄色グロー（BOXのグロー効果） */
+/* 背景グロー */
 .fv-glow {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 700px;
-  height: 700px;
+  width: 900px;
+  height: 900px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(254,232,88,0.13) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(254,232,88,0.08) 0%, transparent 60%);
   pointer-events: none;
-  animation: glow-pulse 4s ease-in-out infinite;
+  animation: glow-pulse 5s ease-in-out infinite;
 }
 @keyframes glow-pulse {
-  0%, 100% { opacity: 0.8; transform: translate(-50%,-50%) scale(1); }
-  50% { opacity: 1; transform: translate(-50%,-50%) scale(1.1); }
+  0%, 100% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%,-50%) scale(1.15); }
+}
+.fv-deco { display: none; }
+
+.fv-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  width: 100%;
 }
 
-/* 右上装飾 */
-.fv-deco {
-  position: absolute;
-  top: 80px; right: -60px;
-  width: 300px; height: 300px;
-  border-radius: 50%;
-  border: 1px solid rgba(254,232,88,0.12);
-  pointer-events: none;
+/* ロゴマーク（大） */
+.fv-mark {
+  width: 110px;
+  height: 110px;
+  color: var(--accent);
+  margin: 0 auto 36px;
+  animation: mark-float 3.5s ease-in-out infinite;
 }
-.fv-deco::after {
-  content: '';
-  position: absolute;
-  top: 30px; left: 30px;
-  right: 30px; bottom: 30px;
-  border-radius: 50%;
-  border: 1px solid rgba(254,232,88,0.08);
+@keyframes mark-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
-
-.fv-inner { position: relative; z-index: 1; max-width: 860px; }
 
 .fv-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(254,232,88,0.12);
-  border: 1px solid rgba(254,232,88,0.35);
+  background: rgba(254,232,88,0.1);
+  border: 1px solid rgba(254,232,88,0.3);
   color: var(--accent);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 800;
   padding: 6px 18px;
   border-radius: 9999px;
-  margin-bottom: 32px;
-  letter-spacing: 0.08em;
+  margin-bottom: 40px;
+  letter-spacing: 0.1em;
 }
 
-.fv h1 {
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
+/* 巨大イタリックキャッチコピー（BOXスタイル） */
+.fv-catchcopy {
+  font-size: clamp(2.4rem, 7vw, 5.2rem);
   font-weight: 900;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  margin-bottom: 28px;
-  color: var(--white);
-}
-.fv h1 .hl {
+  font-style: italic;
   color: var(--accent);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+}
+
+/* 日本語サブタイトル */
+.fv h1 {
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  color: var(--white);
 }
 
 .fv-lead {
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-size: clamp(0.9rem, 2vw, 1rem);
   color: var(--gray);
   margin-bottom: 48px;
-  max-width: 560px;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.9;
@@ -391,7 +401,7 @@ a { color: inherit; text-decoration: none; }
 
 .fv-trust {
   display: flex;
-  gap: 32px;
+  gap: 28px;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -974,14 +984,26 @@ details[open] .faq-arrow { transform: rotate(180deg); }
 <!-- FV / HERO -->
 <section class="fv" id="top">
   <div class="fv-glow"></div>
-  <div class="fv-deco"></div>
   <div class="fv-inner">
     <div class="fv-badge">✨ 完全無料｜内定まで伴走サポート</div>
-    <h1>
-      20代の転職を、<br>
-      <span class="hl">れいわキャリア</span>と<br>
-      一緒に変えよう。
-    </h1>
+
+    <!-- ロゴマーク SVG（大） -->
+    <div class="fv-mark">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="5"/>
+        <path d="M 4 50 A 46 46 0 0 1 96 50 Z"/>
+        <line x1="14" y1="63" x2="86" y2="63" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+        <line x1="20" y1="74" x2="80" y2="74" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+        <line x1="28" y1="85" x2="72" y2="85" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+
+    <!-- 大キャッチコピー（BOXスタイル） -->
+    <div class="fv-catchcopy">Connecting people<br>and possibilities.</div>
+
+    <!-- 日本語サブタイトル -->
+    <h1>20代の転職を、れいわキャリアと一緒に変えよう。</h1>
+
     <p class="fv-lead">
       未経験・スキルなしでも大丈夫。<br>
       専任アドバイザーが内定まで完全無料でサポートします。
