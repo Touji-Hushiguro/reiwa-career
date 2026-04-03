@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- Google tag (gtag.js) -->
+<!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FLPE0DN7E7"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -11,1170 +11,98 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@1,800;1,900&display=swap" rel="stylesheet">
 <title>れいわキャリア｜20代・未経験の転職・就職支援サービス</title>
 <meta name="description" content="れいわキャリアは20代・未経験からの転職・就職をサポートする完全無料のキャリア支援サービスです。専任アドバイザーが内定まで完全伴走。今すぐLINEで無料相談。">
-<meta name="keywords" content="転職,就職,20代,未経験,キャリア支援,無料相談,求人,れいわキャリア">
 <link rel="canonical" href="https://www.reiwa-career.com/">
-<link rel="sitemap" type="application/xml" href="https://www.reiwa-career.com/sitemap.xml">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <meta property="og:type" content="website">
 <meta property="og:title" content="れいわキャリア｜20代・未経験の転職・就職支援サービス">
-<meta property="og:description" content="専任アドバイザーが内定まで完全伴走。無料で転職・就職をサポートします。今すぐLINEで相談。">
+<meta property="og:description" content="専任アドバイザーが内定まで完全伴走。完全無料で転職・就職をサポートします。">
 <meta property="og:url" content="https://www.reiwa-career.com/">
 <meta property="og:site_name" content="れいわキャリア">
 <meta name="twitter:card" content="summary_large_image">
-
-<!-- JSON-LD: Organization -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/common.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "れいわキャリア",
   "url": "https://www.reiwa-career.com/",
-  "description": "20代・未経験からの転職・就職支援サービス。専任アドバイザーが内定まで完全無料でサポート。",
-  "areaServed": "JP",
-  "serviceType": "転職・就職支援"
+  "description": "20代・未経験からの転職・就職支援サービス。専任アドバイザーが内定まで完全無料でサポート。"
 }
 </script>
-
-<!-- JSON-LD: FAQPage -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "利用は本当に無料ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "はい、求職者の方への支援は完全無料です。相談から内定後のフォローまで一切費用はかかりません。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "在職中でも相談できますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "もちろんです。在職中の方も多くご利用いただいています。スケジュールに合わせた柔軟な面談対応が可能です。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "未経験でも転職できますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "はい、未経験からの転職支援が得意分野です。20代の方であれば、ポテンシャル採用に積極的な企業を多数ご紹介できます。業界・職種選びから一緒に考えます。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "転職が初めてでも大丈夫ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "初めての転職の方も安心してご利用いただけます。履歴書・職務経歴書の作成から面接対策まで丁寧にサポートします。"
-      }
-    }
-  ]
-}
-</script>
-
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --bg:       #111111;
-  --bg2:      #1a1a1a;
-  --bg3:      #222222;
-  --accent:   #fee858;
-  --accent-d: #d4c230;
-  --green:    #06C755;
-  --green-d:  #05a847;
-  --white:    #ffffff;
-  --gray:     rgba(255,255,255,0.6);
-  --gray2:    rgba(255,255,255,0.35);
-  --border:   rgba(255,255,255,0.1);
-  --radius:   14px;
-  --shadow:   0 8px 32px rgba(0,0,0,0.4);
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;
-  background: var(--bg);
-  color: var(--white);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
-
-img { max-width: 100%; height: auto; display: block; }
-a { color: inherit; text-decoration: none; }
-
-.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-.section { padding: 100px 0; }
-
-/* ラベル */
-.sec-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-.sec-label::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: var(--accent);
-}
-
-.sec-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  font-weight: 800;
-  color: var(--white);
-  line-height: 1.25;
-  margin-bottom: 16px;
-  letter-spacing: -0.02em;
-}
-
-.sec-sub {
-  font-size: 0.95rem;
-  color: var(--gray);
-  line-height: 1.8;
-  margin-bottom: 56px;
-}
-
-/* ===== BUTTONS ===== */
-.btn-line {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--green);
-  color: var(--white);
-  padding: 16px 36px;
-  border-radius: 9999px;
-  font-size: 1rem;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: background .2s, transform .15s, box-shadow .2s;
-  box-shadow: 0 4px 20px rgba(6,199,85,0.35);
-  text-decoration: none;
-}
-.btn-line:hover { background: var(--green-d); transform: translateY(-2px); box-shadow: 0 6px 28px rgba(6,199,85,0.45); }
-
-.btn-yellow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--accent);
-  color: #111;
-  padding: 16px 36px;
-  border-radius: 9999px;
-  font-size: 1rem;
-  font-weight: 800;
-  border: none;
-  cursor: pointer;
-  transition: background .2s, transform .15s;
-  text-decoration: none;
-}
-.btn-yellow:hover { background: var(--accent-d); transform: translateY(-2px); }
-
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--white);
-  padding: 14px 32px;
-  border-radius: 9999px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  border: 1.5px solid rgba(255,255,255,0.4);
-  transition: border-color .2s, background .2s, transform .15s;
-  text-decoration: none;
-}
-.btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
-
-/* ===== HEADER ===== */
-.site-header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-bottom: 1px solid transparent;
-  transition: background .4s ease, border-color .4s ease, backdrop-filter .4s ease;
-}
-.site-header.scrolled {
-  background: rgba(17,17,17,0.95);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 68px;
-  padding: 0 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.site-logo { display: inline-flex; align-items: center; }
-.logo-img {
-  height: 32px;
-  width: 180px;
-  object-fit: cover;
-  object-position: left center;
-  filter: brightness(0) invert(1);
-  display: block;
-}
-
-.header-nav {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  list-style: none;
-}
-.header-nav a {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--white);
-  transition: color .2s, opacity .2s;
-  opacity: 0.85;
-}
-.header-nav a:hover { opacity: 1; color: var(--white); }
-
-.header-cta .btn-yellow { padding: 10px 22px; font-size: 0.85rem; }
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
-.hamburger span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--white);
-  border-radius: 2px;
-  transition: all .3s;
-}
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  padding: 20px 24px;
-  gap: 16px;
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--gray);
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-.mobile-menu .btn-line { margin-top: 8px; width: 100%; }
-
-/* ===== FV / HERO ===== */
-.fv {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  text-align: left;
-  padding: 120px 0 100px 8vw;
-  overflow: hidden;
-  background-color: var(--bg);
-  background-image: url('./fv-bg.jpg');
-  background-size: 115%;
-  background-position: 72% 28%;
-  background-repeat: no-repeat;
-}
-
-/* 暗オーバーレイ：左側濃く・右側薄く → テキスト可読＋ロゴ映え */
-.fv::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    108deg,
-    rgba(6,6,6,0.85) 0%,
-    rgba(6,6,6,0.72) 38%,
-    rgba(6,6,6,0.22) 68%,
-    rgba(6,6,6,0.05) 100%
-  );
-  z-index: 0;
-}
-.fv-deco { display: none; }
-
-.fv-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 540px;
-  width: 100%;
-}
-
-.fv-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(254,232,88,0.15);
-  border: 1px solid rgba(254,232,88,0.5);
-  color: var(--accent);
-  font-size: 0.76rem;
-  font-weight: 800;
-  padding: 6px 18px;
-  border-radius: 9999px;
-  margin-bottom: 40px;
-  letter-spacing: 0.1em;
-  backdrop-filter: blur(4px);
-}
-
-/* 巨大イタリックキャッチコピー（BOXスタイル） */
-.fv-catchcopy {
-  font-family: 'Jost', sans-serif;
-  font-size: clamp(2.4rem, 7vw, 5.2rem);
-  font-weight: 900;
-  font-style: italic;
-  color: var(--accent);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  margin-bottom: 28px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
-}
-
-/* 日本語サブタイトル */
-.fv h1 {
-  font-size: clamp(1.0rem, 2.0vw, 1.35rem);
-  font-weight: 700;
-  line-height: 1.6;
-  letter-spacing: 0em;
-  margin-bottom: 20px;
-  color: rgba(255,255,255,0.9);
-  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-}
-
-.fv-lead {
-  font-size: clamp(0.9rem, 1.6vw, 0.95rem);
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 40px;
-  max-width: 420px;
-  line-height: 1.9;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
-}
-
-.fv-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  justify-content: flex-start;
-  margin-bottom: 44px;
-}
-.fv-btns .btn-line { font-size: 1.05rem; padding: 18px 44px; }
-.fv-btns .btn-yellow { font-size: 1rem; padding: 17px 40px; }
-
-.fv-trust {
-  display: flex;
-  gap: 20px;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-.fv-trust-item {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.9);
-  font-weight: 600;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-}
-.fv-trust-item::before {
-  content: '✓';
-  color: var(--green);
-  font-weight: 900;
-  font-size: 0.9rem;
-}
-
-/* ===== STATS ===== */
-.stats {
-  background: var(--bg2);
-  padding: 64px 24px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 900px;
-  margin: 0 auto;
-}
-.stat-item {
-  text-align: left;
-  padding: 0 48px;
-  border-right: 1px dashed rgba(255,255,255,0.15);
-}
-.stat-item:first-child { padding-left: 0; }
-.stat-item:last-child { border-right: none; }
-.stat-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  color: var(--gray);
-  font-weight: 600;
-  margin-bottom: 14px;
-}
-.stat-label::before {
-  content: '♥';
-  color: var(--accent);
-  font-size: 0.85rem;
-}
-.stat-num {
-  font-size: clamp(2.8rem, 5vw, 4rem);
-  font-weight: 900;
-  color: var(--white);
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-.stat-num .stat-unit {
-  font-size: 0.45em;
-  color: var(--gray);
-  font-weight: 700;
-  vertical-align: baseline;
-  margin-left: 2px;
-}
-.stat-sub {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.55);
-  margin-top: 4px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-@media (max-width: 640px) {
-  .stats-grid { grid-template-columns: 1fr; gap: 36px; }
-  .stat-item { padding: 0; border-right: none; border-bottom: 1px dashed rgba(255,255,255,0.15); padding-bottom: 28px; }
-  .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
-}
-
-/* ===== REASONS ===== */
-.reasons { background: var(--bg); }
-.reasons-head { text-align: center; }
-
-.reasons-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.reason-card {
-  background: var(--bg2);
-  border-radius: var(--radius);
-  padding: 36px 32px;
-  border: 1px solid var(--border);
-  transition: border-color .25s, transform .25s, box-shadow .25s;
-}
-.reason-card:hover {
-  border-color: rgba(254,232,88,0.4);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(254,232,88,0.08);
-}
-
-.reason-num {
-  font-size: 0.68rem;
-  font-weight: 900;
-  color: var(--accent);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-.reason-icon { font-size: 2.2rem; margin-bottom: 14px; }
-.reason-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 10px;
-  line-height: 1.45;
-}
-.reason-desc {
-  font-size: 0.85rem;
-  color: var(--gray);
-  line-height: 1.8;
-}
-
-/* ===== VOICES ===== */
-.voices { background: var(--bg); }
-.voices-head { text-align: center; }
-.voices-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-/* BOX-style voice card */
-.voice-card {
-  background: #ffffff;
-  border-radius: 20px;
-  overflow: hidden;
-  border: none;
-  box-shadow: 0 6px 32px rgba(0,0,0,0.28);
-  display: flex;
-  flex-direction: column;
-  transition: transform .25s, box-shadow .25s;
-}
-.voice-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.36); }
-.voice-card-body {
-  padding: 32px 28px 24px;
-  flex: 1;
-}
-.voice-title {
-  font-size: 1.12rem;
-  font-weight: 800;
-  color: #b5870a;
-  line-height: 1.6;
-  margin-bottom: 14px;
-}
-.voice-hearts {
-  color: #b5870a;
-  font-size: 1.05rem;
-  letter-spacing: 3px;
-  margin-bottom: 20px;
-}
-.voice-company-label {
-  font-size: 0.7rem;
-  color: #999;
-  margin-bottom: 4px;
-}
-.voice-company-name {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 14px;
-}
-.voice-text {
-  font-size: 0.82rem;
-  color: #666;
-  line-height: 1.85;
-}
-.voice-card-foot {
-  background: #111111;
-  padding: 16px 22px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.voice-avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #2a2a2a;
-  border: 2px solid #fee858;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  color: #fee858;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-.voice-agent-info { flex: 1; }
-.voice-agent-label {
-  font-size: 0.65rem;
-  color: rgba(255,255,255,0.45);
-  display: block;
-  margin-bottom: 3px;
-}
-.voice-agent-name {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #fff;
-}
-.voice-arrow {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #fee858;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #111;
-  font-size: 1rem;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-/* ===== PICKUP JOBS ===== */
-.pickup { background: var(--bg); }
-.pickup-head { text-align: center; }
-.jobs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 18px;
-  margin-bottom: 40px;
-}
-.job-card {
-  background: var(--bg2);
-  border-radius: var(--radius);
-  padding: 28px;
-  border: 1px solid var(--border);
-  display: block;
-  color: inherit;
-  text-decoration: none;
-  transition: border-color .2s, transform .2s, box-shadow .2s;
-}
-.job-card:hover {
-  border-color: rgba(254,232,88,0.4);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(254,232,88,0.07);
-}
-.job-card-head { display: flex; gap: 6px; margin-bottom: 12px; }
-.job-badge-new {
-  font-size: 0.68rem; font-weight: 700;
-  background: #e74c3c; color: #fff;
-  padding: 2px 8px; border-radius: 4px;
-}
-.job-badge-featured {
-  font-size: 0.68rem; font-weight: 700;
-  background: var(--accent); color: #111;
-  padding: 2px 8px; border-radius: 4px;
-}
-.job-company { font-size: 0.75rem; color: var(--gray2); margin-bottom: 5px; }
-.job-title { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 12px; line-height: 1.4; }
-.job-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
-.job-tag {
-  font-size: 0.7rem; font-weight: 600;
-  background: rgba(254,232,88,0.1); color: var(--accent);
-  padding: 3px 10px; border-radius: 9999px;
-  border: 1px solid rgba(254,232,88,0.2);
-}
-.job-meta { font-size: 0.8rem; color: var(--gray); display: flex; gap: 14px; flex-wrap: wrap; }
-.jobs-loading { text-align: center; padding: 40px; color: var(--gray); }
-.pickup-more { text-align: center; }
-
-/* ===== FLOW ===== */
-.flow { background: var(--bg2); }
-.flow-head { text-align: center; }
-.flow-steps {
-  max-width: 660px;
-  margin: 0 auto;
-}
-.flow-step {
-  display: flex;
-  gap: 24px;
-  position: relative;
-}
-.flow-step:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  left: 21px;
-  top: 48px;
-  bottom: -32px;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--accent), rgba(254,232,88,0.1));
-}
-.flow-step + .flow-step { margin-top: 56px; }
-
-.flow-num {
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #111;
-  font-weight: 900;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 20px rgba(254,232,88,0.3);
-}
-.flow-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 6px;
-  padding-top: 10px;
-}
-.flow-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.8; }
-
-/* ===== FAQ ===== */
-.faq-section { background: var(--bg); }
-.faq-head { text-align: center; }
-.faq-list {
-  max-width: 720px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.faq-item {
-  background: var(--bg2);
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  transition: border-color .2s;
-}
-.faq-item:has(details[open]) { border-color: rgba(254,232,88,0.3); }
-
-.faq-q {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 22px 24px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--white);
-  list-style: none;
-  user-select: none;
-}
-.faq-q::-webkit-details-marker { display: none; }
-.faq-q-icon {
-  width: 28px; height: 28px; min-width: 28px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #111;
-  font-weight: 900;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.faq-q-text { flex: 1; }
-.faq-arrow { font-size: 0.75rem; color: var(--gray2); transition: transform .3s; }
-details[open] .faq-arrow { transform: rotate(180deg); }
-.faq-a {
-  padding: 0 24px 22px 66px;
-  font-size: 0.875rem;
-  color: var(--gray);
-  line-height: 1.85;
-}
-
-/* ===== FINAL CTA ===== */
-.final-cta {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  padding: 120px 24px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.final-cta-glow {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  width: 600px; height: 400px;
-  background: radial-gradient(ellipse, rgba(254,232,88,0.1) 0%, transparent 70%);
-  pointer-events: none;
-}
-.final-cta h2 {
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-  color: var(--white);
-  position: relative;
-}
-.final-cta p {
-  font-size: 0.95rem;
-  color: var(--gray);
-  margin-bottom: 44px;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
-.final-cta-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  justify-content: center;
-  position: relative;
-}
-.final-cta-btns .btn-line { font-size: 1.05rem; padding: 18px 48px; }
-.final-cta-btns .btn-yellow { font-size: 1rem; padding: 17px 40px; }
-
-/* ===== FOOTER ===== */
-.site-footer {
-  background: var(--accent);
-  border-top: none;
-  padding: 0;
-}
-.footer-top {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 48px;
-  padding: 72px 60px 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.footer-brand { max-width: 240px; }
-.footer-logo {
-  height: 28px;
-  width: 160px;
-  object-fit: cover;
-  object-position: left center;
-  filter: brightness(0);
-  display: block;
-  margin-bottom: 28px;
-}
-.footer-brand p {
-  font-size: 0.82rem;
-  color: rgba(0,0,0,0.6);
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-/* Footer CTA column */
-.footer-cta-col h4 {
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: #111;
-  margin-bottom: 18px;
-}
-.footer-cta-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.footer-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: #111111;
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 700;
-  padding: 14px 30px;
-  border-radius: 9999px;
-  transition: opacity .2s, transform .15s;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.footer-cta-btn:hover { opacity: 0.75; transform: translateY(-2px); }
-
-.footer-nav h4 {
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: #111111;
-  margin-bottom: 16px;
-}
-.footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.footer-nav a {
-  font-size: 0.82rem;
-  color: rgba(0,0,0,0.65);
-  transition: color .2s;
-  display: flex;
-  align-items: center;
-  gap: 0;
-  text-decoration: none;
-}
-.footer-nav a::before { content: none; }
-.footer-nav a:hover { color: #111111; }
-
-.footer-bottom-wrap {
-  border-top: 1px solid rgba(0,0,0,0.12);
-}
-.footer-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 20px 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-  font-size: 0.73rem;
-  color: rgba(0,0,0,0.5);
-}
-.footer-bottom-links { display: flex; gap: 28px; }
-.footer-bottom-links a {
-  color: rgba(0,0,0,0.5);
-  text-decoration: none;
-  transition: color .2s;
-}
-.footer-bottom-links a:hover { color: #111; }
-
-/* ===== FLOAT LINE BTN ===== */
-.float-line {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 900;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  background: var(--green);
-  color: #fff;
-  padding: 14px 22px;
-  border-radius: 9999px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  box-shadow: 0 4px 24px rgba(6,199,85,0.5);
-  transition: transform .2s, box-shadow .2s;
-  text-decoration: none;
-}
-.float-line:hover { transform: translateY(-3px); box-shadow: 0 6px 32px rgba(6,199,85,0.6); }
-
-/* ===== FV PAGE LOAD ANIMATIONS ===== */
-@keyframes fv-in {
-  from { opacity: 0; transform: translateY(52px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-/* バッジ */
-.fv-badge    { animation: fv-in 0.7s cubic-bezier(0.16,1,0.3,1) 0.40s backwards; }
-/* 英文キャッチコピー（メインイベント） */
-.fv-catchcopy { animation: fv-in 1.0s cubic-bezier(0.16,1,0.3,1) 0.65s backwards; }
-/* 日本語サブタイトル */
-.fv h1       { animation: fv-in 0.8s cubic-bezier(0.16,1,0.3,1) 0.95s backwards; }
-/* リード文 */
-.fv-lead     { animation: fv-in 0.7s cubic-bezier(0.16,1,0.3,1) 1.15s backwards; }
-/* CTAボタン */
-.fv-btns     { animation: fv-in 0.7s cubic-bezier(0.16,1,0.3,1) 1.35s backwards; }
-/* トラストバッジ */
-.fv-trust    { animation: fv-in 0.6s cubic-bezier(0.16,1,0.3,1) 1.55s backwards; }
-
-/* ===== SCROLL ANIMATIONS ===== */
-@keyframes slide-in-left {
-  from { opacity: 0; transform: translateX(-32px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-.fade-up {
-  opacity: 0;
-  transform: translateY(44px);
-  transition:
-    opacity  0.75s cubic-bezier(0.16,1,0.3,1),
-    transform 0.75s cubic-bezier(0.16,1,0.3,1);
-}
-.fade-up.visible { opacity: 1; transform: translateY(0); }
-
-/* セクションラベル：左からスライドイン */
-.slide-left {
-  opacity: 0;
-  transform: translateX(-28px);
-  transition:
-    opacity  0.65s cubic-bezier(0.16,1,0.3,1),
-    transform 0.65s cubic-bezier(0.16,1,0.3,1);
-}
-.slide-left.visible { opacity: 1; transform: translateX(0); }
-
-@media (prefers-reduced-motion: reduce) {
-  .fade-up, .slide-left { opacity: 1; transform: none; transition: none; }
-  .fv-badge, .fv-catchcopy, .fv h1, .fv-lead, .fv-btns, .fv-trust {
-    animation: none; opacity: 1; transform: none;
-  }
-  html { scroll-behavior: auto; }
-  @keyframes glow-pulse { from { opacity: 0.8; } to { opacity: 0.8; } }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .section { padding: 72px 0; }
-  .header-nav, .header-cta { display: none; }
-  .hamburger { display: flex; }
-  /* ヘッダーロゴをX軸左端に寄せる（Y軸高さ維持） */
-  .header-inner { padding: 0 20px 0 10px; }
-  /* モバイルFV：英字（上）→ ロゴ（中）→ 白文字（下）の3段構成 */
-  .fv {
-    align-items: stretch;
-    justify-content: flex-start;
-    padding: 0 24px;
-    min-height: 100svh;
-    text-align: center;
-    background-size: cover;
-    background-position: center top;
-  }
-  /* オーバーレイ：中央（ロゴゾーン）は薄く、上下は適度に暗く */
-  .fv::before {
-    background: linear-gradient(
-      to bottom,
-      rgba(4,4,4,0.60) 0%,
-      rgba(4,4,4,0.30) 30%,
-      rgba(4,4,4,0.18) 48%,
-      rgba(4,4,4,0.65) 68%,
-      rgba(4,4,4,0.90) 100%
-    );
-  }
-  /* fv-inner：縦全幅flex、英字↑ ロゴ（空き）↑ 白文字↓ */
-  .fv-inner {
-    display: flex;
-    flex-direction: column;
-    min-height: 100svh;
-    padding: 76px 0 40px;
-    max-width: 100%;
-    width: 100%;
-  }
-  /* badge：中央寄せ（inline-flexのためalign-self指定） */
-  .fv-badge {
-    align-self: center;
-    margin-bottom: 12px;
-  }
-  /* 英字キャッチコピー：上部に固定 */
-  .fv-catchcopy {
-    margin-bottom: 0;
-    font-size: clamp(2rem, 9vw, 2.8rem);
-    text-align: center;
-  }
-  /* h1：margin-top:auto でロゴゾーンを最大化して押し下げ */
-  /* 1行に収まるフォントサイズ・折り返し禁止 */
-  .fv h1 {
-    margin-top: auto;
-    margin-bottom: 10px;
-    font-size: 0.82rem;
-    font-weight: 700;
-    white-space: nowrap;
-    letter-spacing: 0.01em;
-  }
-  /* リード：1行に収まるフォントサイズ */
-  .fv-lead {
-    font-size: 0.75rem;
-    line-height: 1.75;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .fv-btns {
-    margin-bottom: 0;
-    justify-content: center;
-    width: 100%;
-  }
-  /* trust badges：モバイルFVでは非表示（スクロール後） */
-  .fv-trust { display: none; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
-  .float-line .float-text { display: none; }
-  .float-line { padding: 14px 18px; }
-
-  /* フッター：グリッドでバランス整列 */
-  .footer-top {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 40px 24px 36px;
-    gap: 28px 20px;
-  }
-  .footer-brand {
-    grid-column: 1 / -1;
-    max-width: 100%;
-    margin-bottom: 0;
-  }
-  .footer-cta-col {
-    grid-column: 1 / -1;
-  }
-  .footer-cta-btn { padding: 14px 24px; font-size: 0.85rem; }
-  .footer-bottom { padding: 16px 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
-}
-@media (max-width: 480px) {
-  .fv-btns { flex-direction: column; align-items: center; }
-  .fv-btns > * { width: 100%; max-width: 320px; }
-  .final-cta-btns { flex-direction: column; align-items: center; }
-  .final-cta-btns > * { width: 100%; max-width: 320px; }
-  .fv-trust { gap: 16px; }
-  .footer-cta-btn { width: 100%; }
-  /* 実績：3項目を1列に整列（2列時に孤立する問題解消） */
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-  .stat-item {
-    padding: 24px 0;
-    border-right: none;
-    border-bottom: 1px dashed rgba(255,255,255,0.15);
-  }
-  .stat-item:last-child { border-bottom: none; }
-}
-</style>
 </head>
-
 <body>
 
-<!-- HEADER -->
+<!-- ===== HEADER ===== -->
 <header class="site-header" id="site-header">
-  <div class="header-inner">
-    <a href="/" class="site-logo">
-      <img class="logo-img" src="./れいきゃりロゴ/1.png" alt="れいわキャリア">
-    </a>
-    <nav>
-      <ul class="header-nav">
-        <li><a href="#reasons">選ばれる理由</a></li>
-        <li><a href="#voices">転職事例</a></li>
-        <li><a href="#pickup">求人情報</a></li>
-        <li><a href="#flow">ご利用の流れ</a></li>
-        <li><a href="#faq">よくある質問</a></li>
-      </ul>
-    </nav>
-    <div class="header-cta">
-      <a href="LINE_URL" class="btn-yellow" id="header-line-btn">📲 LINEで無料相談</a>
+  <!-- 上段 -->
+  <div class="header-top">
+    <div class="header-logo">
+      <a href="/"><img src="./れいきゃりロゴ/1.png" alt="れいわキャリア"></a>
+    </div>
+    <div class="header-sub-links">
+      <a href="/work/">れいキャリで働きたい</a>
+      <a href="/client/">採用を検討中の企業様はこちら</a>
+    </div>
+    <div class="header-top-right">
+      <a href="/contact/" class="btn-primary">今すぐ相談する &nbsp;›</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="メニューを開く">
       <span></span><span></span><span></span>
     </button>
   </div>
+  <!-- 下段ナビ -->
+  <nav class="header-nav-bar">
+    <ul>
+      <li><a href="/about/">サービスの特徴</a></li>
+      <li><a href="/member/">メンバー紹介</a></li>
+      <li><a href="/future/">就職・転職をご検討の方へ</a></li>
+      <li><a href="/joboffer/">求人の特徴</a></li>
+      <li><a href="/successes/">就職・転職成功者の声</a></li>
+      <li><a href="/media/">れいキャリメディア</a></li>
+    </ul>
+  </nav>
+  <!-- モバイルメニュー -->
   <nav class="mobile-menu" id="mobile-menu">
-    <a href="#reasons">選ばれる理由</a>
-    <a href="#voices">転職事例</a>
-    <a href="#pickup">求人情報</a>
-    <a href="#flow">ご利用の流れ</a>
-    <a href="#faq">よくある質問</a>
-    <a href="LINE_URL" class="btn-line" id="mobile-line-btn">📲 LINEで無料相談</a>
+    <a href="/about/">サービスの特徴</a>
+    <a href="/member/">メンバー紹介</a>
+    <a href="/future/">就職・転職をご検討の方へ</a>
+    <a href="/joboffer/">求人の特徴</a>
+    <a href="/successes/">就職・転職成功者の声</a>
+    <a href="/media/">れいキャリメディア</a>
+    <a href="/work/">れいキャリで働きたい</a>
+    <a href="/client/">採用を検討中の企業様はこちら</a>
+    <a href="/faq/">よくある質問</a>
+    <div class="mobile-cta">
+      <a href="https://liff.line.me/2008784499-92DR4hmy/landing?follow=%40872lluqj&lp=lMroZY&liff_id=2008784499-92DR4hmy" class="btn-line-cta" style="width:100%;display:flex;">📲 LINEで無料相談スタート</a>
+    </div>
   </nav>
 </header>
 
-<!-- FV / HERO -->
+<!-- ===== FV / HERO ===== -->
 <section class="fv" id="top">
   <div class="fv-inner">
-    <div class="fv-badge">✨ 完全無料｜内定まで伴走サポート</div>
-
-    <!-- 大キャッチコピー（BOXスタイル） -->
-    <div class="fv-catchcopy">Connecting people<br>and possibilities.</div>
-
-    <!-- 日本語サブタイトル -->
-    <h1>20代の転職を、れいわキャリアと一緒に変えよう。</h1>
-
-    <p class="fv-lead">
-      未経験・スキルなしでも大丈夫。<br>
-      専任アドバイザーが内定まで完全無料でサポートします。
-    </p>
+    <div class="fv-tag">✨ 完全無料｜内定まで伴走サポート</div>
+    <h1 class="fv-catch">20代の転職を、<br><span>れいわキャリア</span>と<br>一緒に変えよう。</h1>
+    <p class="fv-sub">未経験・スキルなしでも大丈夫。<br>専任アドバイザーが内定まで完全無料でサポートします。</p>
     <div class="fv-btns">
-      <a href="LINE_URL" class="btn-line" id="fv-line-btn">📲 LINEで無料相談スタート</a>
-      <a href="https://jobs.reiwa-career.com/" class="btn-yellow">🔍 求人を探す</a>
+      <a href="https://liff.line.me/2008784499-92DR4hmy/landing?follow=%40872lluqj&lp=lMroZY&liff_id=2008784499-92DR4hmy" class="btn-line-cta" id="fv-line-btn">📲 LINEで無料相談スタート</a>
+      <a href="https://jobs.reiwa-career.com/" class="btn-secondary" style="color:#fff;border-color:rgba(255,255,255,0.7);">🔍 求人を探す</a>
     </div>
     <div class="fv-trust">
-      <div class="fv-trust-item">登録・相談完全無料</div>
-      <div class="fv-trust-item">LINEで気軽に相談</div>
-      <div class="fv-trust-item">在職中もOK</div>
-      <div class="fv-trust-item">20代・未経験OK</div>
+      <span class="fv-trust-item">登録・相談完全無料</span>
+      <span class="fv-trust-item">LINEで気軽に相談</span>
+      <span class="fv-trust-item">在職中もOK</span>
+      <span class="fv-trust-item">20代・未経験OK</span>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
+<!-- ===== STATS ===== -->
 <section class="stats">
   <div class="container">
     <div class="stats-grid">
@@ -1196,72 +124,138 @@ details[open] .faq-arrow { transform: rotate(180deg); }
   </div>
 </section>
 
-<!-- REASONS -->
-<section class="section reasons" id="reasons">
+<!-- ===== INTRO ===== -->
+<section class="section section-white">
+  <div class="container" style="text-align:center; max-width:700px;">
+    <p class="fade-up" style="font-size:1.05rem; line-height:2; color:var(--text-mid);">
+      私たちは、<a href="/about/" style="color:var(--orange);font-weight:700;text-decoration:underline;">20代に特化した転職・就職支援サービス</a>です。<br>
+      社会人となり数年が経ち「このままで良いのだろうか？」という漠然な不安を持ちやすい時期です。<br><br>
+      そんな20代という大切な時期だからこそ、<br>
+      「れいわキャリア」が適切に寄り添ってサポートします。
+    </p>
+    <p class="fade-up" style="margin-top:20px; font-size:1.05rem; color:var(--orange); font-weight:700; transition-delay:.1s;">
+      れいわキャリアで、あなたにとって最高なキャリアを一緒に描きましょう！
+    </p>
+  </div>
+</section>
+
+<!-- ===== REASONS ===== -->
+<section class="section section-cream" id="reasons">
   <div class="container">
-    <div class="reasons-head">
-      <div class="sec-label fade-up">Why choose us</div>
-      <h2 class="sec-title fade-up">れいわキャリアが<br>選ばれる理由</h2>
-      <p class="sec-sub fade-up">専任アドバイザーによる手厚いサポートで内定まで伴走します</p>
+    <div class="sec-head-center fade-up">
+      <div class="sec-label">WHY CHOOSE US</div>
+      <h2 class="sec-title">れいわキャリアが<br>選ばれる理由</h2>
+      <p class="sec-sub">専任アドバイザーによる手厚いサポートで内定まで伴走します</p>
     </div>
-    <div class="reasons-grid">
-      <div class="reason-card fade-up">
-        <div class="reason-num">REASON 01</div>
-        <div class="reason-icon">💰</div>
-        <div class="reason-title">完全無料で<br>最後までサポート</div>
-        <div class="reason-desc">求職者への費用は一切かかりません。相談から内定後フォローまで、全て無料でサポートします。</div>
+
+    <!-- REASON 01 -->
+    <div class="reason-item fade-up">
+      <div class="reason-num-label">REASON 01</div>
+      <h3 class="reason-heading">内定獲得率が<em>驚異の高水準</em></h3>
+      <ul class="reason-bullets">
+        <li><strong>20代に特化し年間多数のサポート実績</strong></li>
+        <li>この経験に基づく独自のノウハウを蓄積しており、皆さんに惜しみなくお伝えしています。</li>
+        <li>選考を受ける求人ごとに特化した面接対策を行うことで、求職者の強みを最大限に引き出します。</li>
+      </ul>
+      <div class="detail-box fade-up">
+        <div>
+          <div class="detail-box-title">高い内定率の理由は、お伝えできる情報量の差</div>
+          <p class="detail-box-text">求人1社1社の採用背景から、今後の事業展開、直近で採用した人材の情報を細かく収集しております。業界・職種・会社規模に応じて求められる人材像や想定される質問に対応した面接対策を、皆様のバックボーンやこれまでのご経験から紐解き、どのように回答すれば企業に魅力が伝わるか？を一緒に言語化するまでサポートさせて頂きます。</p>
+        </div>
+        <div class="detail-box-img">
+          <div class="img-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span>面接対策イメージ写真<br>（こちらに画像が入ります）</span>
+          </div>
+        </div>
       </div>
-      <div class="reason-card fade-up" style="transition-delay:.1s">
-        <div class="reason-num">REASON 02</div>
-        <div class="reason-icon">👤</div>
-        <div class="reason-title">専任アドバイザーが<br>マンツーマン対応</div>
-        <div class="reason-desc">担当者が変わらず、あなたの状況を深く理解した専任アドバイザーが内定まで一貫してサポートします。</div>
+    </div>
+
+    <!-- REASON 02 -->
+    <div class="reason-item fade-up">
+      <div class="reason-num-label">REASON 02</div>
+      <h3 class="reason-heading">入社後の<em>定着率が高水準</em></h3>
+      <ul class="reason-bullets">
+        <li>皆さんのキャリアを第一に考え、それぞれの方に合った求人のみを紹介することでミスマッチを極限まで減らしています。</li>
+        <li>キャリアアドバイザーとは別に企業担当の部隊が存在し、各企業の人事の方と密に連絡を取り合っています。</li>
+        <li><strong>入社後の定着率は業界最高水準</strong></li>
+        <li>Googleでも多数の口コミをいただき高評価を獲得しています。</li>
+      </ul>
+      <div class="detail-box reverse fade-up">
+        <div class="detail-box-img">
+          <div class="img-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span>カウンセリングイメージ写真<br>（こちらに画像が入ります）</span>
+          </div>
+        </div>
+        <div>
+          <div class="detail-box-title">ミスマッチを避け、深く理解した上で最適な求人のみ紹介</div>
+          <p class="detail-box-text">キャリアアドバイザーとの面談では、非常に詳しく深く皆さんのことをお伺いします。理解を深めた上で求人をご紹介するので、ミスマッチの可能性が大幅に下がります。人事とも密に情報交換しているため、常に最新情報をもとに企業の雰囲気や文化をお伝えできます。</p>
+        </div>
       </div>
-      <div class="reason-card fade-up" style="transition-delay:.2s">
-        <div class="reason-num">REASON 03</div>
-        <div class="reason-icon">🌱</div>
-        <div class="reason-title">20代・未経験転職に<br>強い専門サポート</div>
-        <div class="reason-desc">「経験なし・スキルなし」から始める転職を得意としています。業界・職種の選び方から一緒に考えます。</div>
-      </div>
-      <div class="reason-card fade-up" style="transition-delay:.3s">
-        <div class="reason-num">REASON 04</div>
-        <div class="reason-icon">📱</div>
-        <div class="reason-title">LINEで気軽に<br>いつでも相談</div>
-        <div class="reason-desc">電話やメールが苦手な方もLINEで気軽に相談可能。夜間や休日でもメッセージを送れます。</div>
-      </div>
-      <div class="reason-card fade-up" style="transition-delay:.4s">
-        <div class="reason-num">REASON 05</div>
-        <div class="reason-icon">📝</div>
-        <div class="reason-title">書類・面接を<br>徹底サポート</div>
-        <div class="reason-desc">履歴書・職務経歴書の作成から面接対策まで。初めての転職の方も安心してご利用いただけます。</div>
-      </div>
-      <div class="reason-card fade-up" style="transition-delay:.5s">
-        <div class="reason-num">REASON 06</div>
-        <div class="reason-icon">🤝</div>
-        <div class="reason-title">内定後も<br>フォローアップ</div>
-        <div class="reason-desc">入社後の職場環境や条件が気になる方へ、入社後もアドバイザーがフォローし続けます。</div>
+    </div>
+
+    <!-- REASON 03 -->
+    <div class="reason-item fade-up">
+      <div class="reason-num-label">REASON 03</div>
+      <h3 class="reason-heading">平均<em>10時間以上</em>の手厚いサポート</h3>
+      <ul class="reason-bullets">
+        <li>入社ではなく、<strong>入社後の活躍をゴール</strong>とし、20代に特化して転職と就職の支援に取り組んできました。</li>
+        <li>20代はキャリアの基盤を築くための重要な時期です。しかし、多くの20代は自分の強みを見つけることに苦労しています。</li>
+        <li><strong>キャリア設計</strong>にも重点を置き、5年後・10年後から逆算した支援を行います。</li>
+      </ul>
+      <div class="detail-box fade-up">
+        <div>
+          <div class="detail-box-title">キャリア設計から逆算したサポートで、質にも定評</div>
+          <p class="detail-box-text">目の前の転職や内定のためだけではなく、「5年後10年後にどうなっていたいか」から逆算して一緒にキャリア設計を行います。そのため、時間はかかりますが、充実したサポートを提供しております。LINEで気軽にご相談いただけますので、まずはお気軽にご連絡ください。</p>
+        </div>
+        <div class="detail-box-img">
+          <div class="img-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span>サポートイメージ写真<br>（こちらに画像が入ります）</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- VOICES -->
-<section class="section voices" id="voices">
+<!-- ===== CTA BLOCK ===== -->
+<section class="cta-block">
   <div class="container">
-    <div class="voices-head">
-      <div class="sec-label fade-up">Success stories</div>
-      <h2 class="sec-title fade-up">転職成功事例</h2>
-      <p class="sec-sub fade-up">れいわキャリアを利用して転職に成功した方の声</p>
+    <div class="fade-up">
+      <div class="sec-label" style="text-align:center; margin-bottom:12px;">SPECIAL SUPPORT</div>
+      <h2 class="cta-block-title">今すぐ<em>無料相談</em>スタート！</h2>
+      <p class="cta-block-sub">
+        面倒なフォーム入力は不要。LINEで気軽に相談できます。<br>
+        現在のご状況をお聞かせください。
+      </p>
+      <p style="font-size:0.82rem;color:var(--text-mid);text-align:center;margin-bottom:16px;">現在のご状況は？</p>
+      <div class="cta-block-status">
+        <a href="https://liff.line.me/2008784499-92DR4hmy/landing?follow=%40872lluqj&lp=lMroZY&liff_id=2008784499-92DR4hmy" class="cta-status-btn">在職中</a>
+        <a href="https://liff.line.me/2008784499-92DR4hmy/landing?follow=%40872lluqj&lp=lMroZY&liff_id=2008784499-92DR4hmy" class="cta-status-btn">離職中</a>
+        <a href="https://liff.line.me/2008784499-92DR4hmy/landing?follow=%40872lluqj&lp=lMroZY&liff_id=2008784499-92DR4hmy" class="cta-status-btn">フリーター（アルバイト・パート）</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VOICES / 転職成功事例 ===== -->
+<section class="section section-white" id="voices">
+  <div class="container">
+    <div class="sec-head-center fade-up">
+      <div class="sec-label">SUCCESS STORIES</div>
+      <h2 class="sec-title">就職・転職成功者の声</h2>
+      <p class="sec-sub">れいわキャリアを利用して転職に成功した方の声</p>
     </div>
     <div class="voices-grid">
-      <!-- card 1 -->
       <div class="voice-card fade-up">
         <div class="voice-card-body">
+          <div class="voice-stars">★★★★★</div>
           <div class="voice-title">未経験でも親身にサポートしてもらえて、自信を持って転職活動に臨めました</div>
-          <div class="voice-hearts">♡ ♡ ♡ ♡ ♡</div>
           <div class="voice-company-label">転職先企業</div>
-          <div class="voice-company-name">ITソリューション企業</div>
-          <p class="voice-text">アドバイザーの方が丁寧にサポートしてくれました。面接対策を何度も繰り返し、無事に内定をいただけました…</p>
+          <div class="voice-company">ITソリューション企業</div>
+          <p class="voice-text">アドバイザーの方が丁寧にサポートしてくれました。面接対策を何度も繰り返し、無事に内定をいただけました。未経験でも全くハードルを感じませんでした。</p>
         </div>
         <div class="voice-card-foot">
           <div class="voice-avatar">M</div>
@@ -1269,17 +263,16 @@ details[open] .faq-arrow { transform: rotate(180deg); }
             <span class="voice-agent-label">担当エージェント</span>
             <span class="voice-agent-name">田中 美咲</span>
           </div>
-          <div class="voice-arrow">→</div>
+          <div class="voice-arrow">›</div>
         </div>
       </div>
-      <!-- card 2 -->
       <div class="voice-card fade-up" style="transition-delay:.1s">
         <div class="voice-card-body">
+          <div class="voice-stars">★★★★★</div>
           <div class="voice-title">大変いい転職活動になりました。またお願いしたいです</div>
-          <div class="voice-hearts">♡ ♡ ♡ ♡ ♡</div>
           <div class="voice-company-label">転職先企業</div>
-          <div class="voice-company-name">DXサービス企業</div>
-          <p class="voice-text">こちらの転職希望時期や業界、働き方や将来の夢まで、細かくヒアリングしていただき、それらを叶えられるような企業を紹…</p>
+          <div class="voice-company">DXサービス企業</div>
+          <p class="voice-text">こちらの転職希望時期や業界、働き方や将来の夢まで、細かくヒアリングしていただき、それらを叶えられるような企業を紹介していただきました。</p>
         </div>
         <div class="voice-card-foot">
           <div class="voice-avatar">K</div>
@@ -1287,17 +280,16 @@ details[open] .faq-arrow { transform: rotate(180deg); }
             <span class="voice-agent-label">担当エージェント</span>
             <span class="voice-agent-name">鈴木 拓夢</span>
           </div>
-          <div class="voice-arrow">→</div>
+          <div class="voice-arrow">›</div>
         </div>
       </div>
-      <!-- card 3 -->
       <div class="voice-card fade-up" style="transition-delay:.2s">
         <div class="voice-card-body">
+          <div class="voice-stars">★★★★★</div>
           <div class="voice-title">決して妥協することなく、親身に支えてくれた</div>
-          <div class="voice-hearts">♡ ♡ ♡ ♡ ♡</div>
           <div class="voice-company-label">転職先企業</div>
-          <div class="voice-company-name">SNSマーケティング支援企業</div>
-          <p class="voice-text">転職希望時期や業界、働き方や将来の夢まで、細かくヒアリングしていただき、それらを叶えられるような企業を紹…</p>
+          <div class="voice-company">SNSマーケティング支援企業</div>
+          <p class="voice-text">転職希望時期や業界、働き方や将来の夢まで、細かくヒアリングしていただき、それらを叶えられるような企業を紹介していただきました。</p>
         </div>
         <div class="voice-card-foot">
           <div class="voice-avatar">T</div>
@@ -1305,335 +297,301 @@ details[open] .faq-arrow { transform: rotate(180deg); }
             <span class="voice-agent-label">担当エージェント</span>
             <span class="voice-agent-name">関根 優衣</span>
           </div>
-          <div class="voice-arrow">→</div>
+          <div class="voice-arrow">›</div>
         </div>
       </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;" class="fade-up">
+      <a href="/successes/" class="btn-ghost">成功事例をもっと見る →</a>
     </div>
   </div>
 </section>
 
-<!-- PICKUP JOBS -->
-<section class="section pickup" id="pickup">
+<!-- ===== JOB PICKUP ===== -->
+<section class="section section-cream" id="joboffer">
   <div class="container">
-    <div class="pickup-head">
-      <div class="sec-label fade-up">Job listings</div>
-      <h2 class="sec-title fade-up">注目の求人ピックアップ</h2>
-      <p class="sec-sub fade-up">最新の求人情報を厳選してご紹介します</p>
+    <div class="sec-head-center fade-up">
+      <div class="sec-label">JOB OFFER</div>
+      <h2 class="sec-title">注目の求人ピックアップ</h2>
+      <p class="sec-sub">れいわキャリアでは様々な業種や働き方の求人をご紹介しています</p>
     </div>
     <div id="jobs-container" class="jobs-grid">
-      <div class="jobs-loading">求人情報を読み込み中…</div>
+      <!-- GAS APIで動的ロード -->
+      <div style="grid-column:1/-1;text-align:center;color:var(--text-light);padding:40px 0;">求人情報を読み込み中…</div>
     </div>
-    <div class="pickup-more fade-up">
-      <a href="https://jobs.reiwa-career.com/" class="btn-ghost">すべての求人を見る →</a>
+    <div style="text-align:center; margin-top:40px;" class="fade-up">
+      <a href="https://jobs.reiwa-career.com/" class="btn-primary btn-primary-lg">すべての求人を見る →</a>
     </div>
   </div>
 </section>
 
-<!-- FLOW -->
-<section class="section flow" id="flow">
+<!-- ===== FLOW ===== -->
+<section class="section section-white" id="flow">
   <div class="container">
-    <div class="flow-head">
-      <div class="sec-label fade-up">How it works</div>
-      <h2 class="sec-title fade-up">ご利用の流れ</h2>
-      <p class="sec-sub fade-up">LINEでの登録から内定まで、スムーズにサポートします</p>
+    <div class="sec-head-center fade-up">
+      <div class="sec-label">HOW IT WORKS</div>
+      <h2 class="sec-title">サポートの流れ</h2>
+      <p class="sec-sub">LINEでの登録から内定まで、スムーズにサポートします</p>
     </div>
-    <div class="flow-steps">
+    <div class="flow-grid">
       <div class="flow-step fade-up">
-        <div class="flow-num">1</div>
-        <div>
-          <div class="flow-title">LINEで無料登録・相談</div>
-          <div class="flow-desc">LINEを友達追加して、簡単な質問に答えるだけ。まずはお気軽にご相談ください。</div>
-        </div>
+        <div class="flow-num-wrap">1</div>
+        <div class="flow-step-label">STEP 01</div>
+        <div class="flow-title">無料面談に申し込む</div>
+        <p class="flow-desc">LINEを友達追加して、簡単な質問に答えるだけ。まずはお気軽にご相談ください。</p>
       </div>
-      <div class="flow-step fade-up" style="transition-delay:.1s">
-        <div class="flow-num">2</div>
-        <div>
-          <div class="flow-title">キャリアカウンセリング（無料面談）</div>
-          <div class="flow-desc">専任アドバイザーとの面談で、あなたの希望・強み・キャリアプランを整理します。オンライン・対面どちらも対応可能です。</div>
-        </div>
+      <div class="flow-step fade-up" style="transition-delay:.08s">
+        <div class="flow-num-wrap">2</div>
+        <div class="flow-step-label">STEP 02</div>
+        <div class="flow-title">面談と求人紹介</div>
+        <p class="flow-desc">専任アドバイザーとの面談で、希望・強み・キャリアプランを整理します。</p>
+        <div class="flow-badge">マンツーマンサポート！</div>
       </div>
-      <div class="flow-step fade-up" style="transition-delay:.2s">
-        <div class="flow-num">3</div>
-        <div>
-          <div class="flow-title">求人紹介・応募書類作成</div>
-          <div class="flow-desc">希望に合った求人をご紹介し、履歴書・職務経歴書の作成もサポートします。</div>
-        </div>
+      <div class="flow-step fade-up" style="transition-delay:.16s">
+        <div class="flow-num-wrap">3</div>
+        <div class="flow-step-label">STEP 03</div>
+        <div class="flow-title">面接対策と書類添削</div>
+        <p class="flow-desc">企業ごとの面接傾向を踏まえた対策を実施。履歴書・職務経歴書もサポートします。</p>
+        <div class="flow-badge">未経験求人多数！</div>
       </div>
-      <div class="flow-step fade-up" style="transition-delay:.3s">
-        <div class="flow-num">4</div>
-        <div>
-          <div class="flow-title">面接対策・選考サポート</div>
-          <div class="flow-desc">企業ごとの面接傾向を踏まえた対策をしっかり行います。当日まで安心してサポートします。</div>
-        </div>
+      <div class="flow-step fade-up" style="transition-delay:.24s">
+        <div class="flow-num-wrap">4</div>
+        <div class="flow-step-label">STEP 04</div>
+        <div class="flow-title">選考・面接</div>
+        <p class="flow-desc">当日まで安心してサポート。面接後のフィードバックも丁寧に行います。</p>
       </div>
-      <div class="flow-step fade-up" style="transition-delay:.4s">
-        <div class="flow-num">5</div>
-        <div>
-          <div class="flow-title">内定・入社後フォロー</div>
-          <div class="flow-desc">内定後の条件確認や入社手続きもサポート。入社後もアドバイザーがフォローします。</div>
-        </div>
+      <div class="flow-step fade-up" style="transition-delay:.32s">
+        <div class="flow-num-wrap">5</div>
+        <div class="flow-step-label">STEP 05</div>
+        <div class="flow-title">内定獲得と条件調整</div>
+        <p class="flow-desc">内定後の条件確認や給与交渉もサポート。より良い条件での入社を目指します。</p>
+        <div class="flow-badge">内定獲得！</div>
+      </div>
+      <div class="flow-step fade-up" style="transition-delay:.40s">
+        <div class="flow-num-wrap">6</div>
+        <div class="flow-step-label">STEP 06</div>
+        <div class="flow-title">入社後もサポート</div>
+        <p class="flow-desc">入社後の職場環境が気になる方へ、アドバイザーがフォローし続けます。</p>
+        <div class="flow-badge">入社後も手厚い支援</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="section faq-section" id="faq">
+<!-- ===== FAQ ===== -->
+<section class="section section-cream" id="faq">
   <div class="container">
-    <div class="faq-head">
-      <div class="sec-label fade-up">FAQ</div>
-      <h2 class="sec-title fade-up">よくある質問</h2>
-      <p class="sec-sub fade-up">ご不明な点はLINEでもお気軽にご相談いただけます</p>
+    <div class="sec-head-center fade-up">
+      <div class="sec-label">FAQ</div>
+      <h2 class="sec-title">よくある質問</h2>
+      <p class="sec-sub">ご不明な点はLINEでもお気軽にご相談いただけます</p>
     </div>
-    <div class="faq-list">
+    <div class="faq-list" style="max-width:780px; margin:0 auto;">
       <div class="faq-item fade-up">
         <details>
-          <summary class="faq-q">
+          <summary>
             <span class="faq-q-icon">Q</span>
             <span class="faq-q-text">利用は本当に無料ですか？</span>
             <span class="faq-arrow">▼</span>
           </summary>
-          <div class="faq-a">はい、求職者の方への支援は完全無料です。相談から内定後のフォローまで一切費用はかかりません。</div>
+          <div class="faq-answer">
+            <div class="faq-a-icon">A</div>
+            <p class="faq-a-text">はい、求職者の方への支援は完全無料です。相談から内定後のフォローまで一切費用はかかりません。</p>
+          </div>
         </details>
       </div>
       <div class="faq-item fade-up" style="transition-delay:.05s">
         <details>
-          <summary class="faq-q">
+          <summary>
             <span class="faq-q-icon">Q</span>
             <span class="faq-q-text">在職中でも相談できますか？</span>
             <span class="faq-arrow">▼</span>
           </summary>
-          <div class="faq-a">もちろんです。在職中の方も多くご利用いただいています。スケジュールに合わせた柔軟な面談対応が可能です。夜間・休日の相談もLINEで受け付けています。</div>
+          <div class="faq-answer">
+            <div class="faq-a-icon">A</div>
+            <p class="faq-a-text">もちろんです。在職中の方も多くご利用いただいています。スケジュールに合わせた柔軟な面談対応が可能です。</p>
+          </div>
         </details>
       </div>
       <div class="faq-item fade-up" style="transition-delay:.1s">
         <details>
-          <summary class="faq-q">
+          <summary>
             <span class="faq-q-icon">Q</span>
             <span class="faq-q-text">未経験でも転職できますか？</span>
             <span class="faq-arrow">▼</span>
           </summary>
-          <div class="faq-a">はい、むしろ未経験からの転職支援が私たちの得意分野です。「何から始めればいいかわからない」という方でも、業界・職種選びから一緒に考えます。20代の方であれば、ポテンシャル採用に積極的な企業を多数ご紹介できます。</div>
+          <div class="faq-answer">
+            <div class="faq-a-icon">A</div>
+            <p class="faq-a-text">はい、未経験からの転職支援が得意分野です。20代の方であれば、ポテンシャル採用に積極的な企業を多数ご紹介できます。業界・職種選びから一緒に考えます。</p>
+          </div>
         </details>
       </div>
       <div class="faq-item fade-up" style="transition-delay:.15s">
         <details>
-          <summary class="faq-q">
+          <summary>
             <span class="faq-q-icon">Q</span>
             <span class="faq-q-text">転職が初めてでも大丈夫ですか？</span>
             <span class="faq-arrow">▼</span>
           </summary>
-          <div class="faq-a">初めての転職の方も安心してご利用いただけます。履歴書・職務経歴書の作成から面接対策まで丁寧にサポートします。まずはLINEでお気軽にご相談ください。</div>
+          <div class="faq-answer">
+            <div class="faq-a-icon">A</div>
+            <p class="faq-a-text">初めての転職の方も安心してご利用いただけます。履歴書・職務経歴書の作成から面接対策まで丁寧にサポートします。</p>
+          </div>
         </details>
       </div>
-      <div class="faq-item fade-up" style="transition-delay:.2s">
-        <details>
-          <summary class="faq-q">
-            <span class="faq-q-icon">Q</span>
-            <span class="faq-q-text">相談してみたけど求人が合わなかった場合は？</span>
-            <span class="faq-arrow">▼</span>
-          </summary>
-          <div class="faq-a">ご希望に合う求人が現時点でなかった場合でも、定期的に新しい求人をご案内します。もちろんお断りいただくことも可能です。無理に転職を勧めることはありません。</div>
-        </details>
-      </div>
-      <div class="faq-item fade-up" style="transition-delay:.25s">
-        <details>
-          <summary class="faq-q">
-            <span class="faq-q-icon">Q</span>
-            <span class="faq-q-text">転職活動がバレませんか？</span>
-            <span class="faq-arrow">▼</span>
-          </summary>
-          <div class="faq-a">応募情報は厳重に管理しています。現職の企業への連絡は一切行いません。個人情報保護に関しても万全の体制を整えています。</div>
-        </details>
-      </div>
+    </div>
+    <div class="faq-more fade-up">
+      <a href="/faq/" class="btn-ghost">よくある質問をもっと見る →</a>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <div class="final-cta-glow"></div>
-  <div class="container">
-    <h2>まずはLINEで<br>気軽に相談してみませんか？</h2>
-    <p>登録無料・完全無料。今すぐLINEで友達追加して、あなたの転職の第一歩を踏み出しましょう。</p>
-    <div class="final-cta-btns">
-      <a href="LINE_URL" class="btn-line" id="final-line-btn">📲 LINEで無料相談スタート</a>
-      <a href="https://jobs.reiwa-career.com/" class="btn-yellow">🔍 求人情報を見る</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
+<!-- ===== FOOTER ===== -->
 <footer class="site-footer">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <img class="footer-logo" src="./れいきゃりロゴ/1.png" alt="れいわキャリア">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="./れいきゃりロゴ/1.png" alt="れいわキャリア">
+      <p>20代に特化した<br>就職・転職支援サービス</p>
     </div>
     <div class="footer-nav">
       <h4>サービス</h4>
       <ul>
-        <li><a href="#reasons">選ばれる理由</a></li>
-        <li><a href="#voices">転職成功事例</a></li>
-        <li><a href="#pickup">求人情報</a></li>
-        <li><a href="#flow">ご利用の流れ</a></li>
-        <li><a href="#faq">よくある質問</a></li>
+        <li><a href="/about/">サービスの特徴</a></li>
+        <li><a href="/member/">メンバー紹介</a></li>
+        <li><a href="/future/">就職・転職をご検討の方へ</a></li>
+        <li><a href="/joboffer/">求人の特徴</a></li>
+        <li><a href="/successes/">就職・転職成功者の声</a></li>
       </ul>
     </div>
     <div class="footer-nav">
-      <h4>リンク</h4>
+      <h4>その他</h4>
       <ul>
-        <li><a href="https://jobs.reiwa-career.com/">求人検索</a></li>
+        <li><a href="/media/">れいキャリメディア</a></li>
+        <li><a href="/work/">れいキャリで働きたい</a></li>
+        <li><a href="/client/">採用を検討中の企業様</a></li>
+        <li><a href="/faq/">よくある質問</a></li>
+        <li><a href="/contact/">お問い合わせ</a></li>
       </ul>
     </div>
-    <div class="footer-cta-col">
+    <div class="footer-cta">
       <h4>お問い合わせ</h4>
       <div class="footer-cta-group">
-        <a href="LINE_URL" class="footer-cta-btn" id="footer-line-link">📲 LINEで無料相談</a>
-        <a href="https://jobs.reiwa-career.com/" class="footer-cta-btn">🔍 求人情報を見る</a>
+        <a href="https://liff.line.me/2008784499-92DR4hmy/landing?follow=%40872lluqj&lp=lMroZY&liff_id=2008784499-92DR4hmy" class="footer-cta-btn green" id="footer-line-btn">📲 LINEで無料相談</a>
+        <a href="https://jobs.reiwa-career.com/" class="footer-cta-btn orange">🔍 求人情報を見る</a>
       </div>
     </div>
   </div>
-  <div class="footer-bottom-wrap">
-    <div class="footer-bottom">
-      <div class="footer-bottom-links">
-        <a href="https://box-hr.co.jp/policy/">プライバシーポリシー</a>
-        <a href="https://box-hr.co.jp/terms/">利用規約</a>
-      </div>
-      <p>&copy; 2025 れいわキャリア. All Rights Reserved.</p>
+  <div class="footer-bottom">
+    <div class="footer-bottom-links">
+      <a href="/company/">会社案内</a>
+      <a href="/regulation/">取扱職種の範囲等</a>
+      <a href="/privacy/">個人情報保護基本方針について</a>
     </div>
+    <p class="footer-copy">© 2025 れいわキャリア. All Rights Reserved.</p>
   </div>
 </footer>
 
-<!-- FLOATING LINE -->
-<a href="LINE_URL" class="float-line" id="float-line-btn">
-  <span>💬</span>
-  <span class="float-text">LINEで無料相談</span>
-</a>
+<!-- フローティングCTA -->
+<div class="float-cta">
+  <a href="https://liff.line.me/2008784499-92DR4hmy/landing?follow=%40872lluqj&lp=lMroZY&liff_id=2008784499-92DR4hmy" id="float-line-btn" aria-label="LINEで相談">💬</a>
+</div>
 
 <script>
-(function() {
-  'use strict';
+// LINE URL設定
+const LINE_URL = 'https://liff.line.me/2008784499-92DR4hmy/landing?follow=%40872lluqj&lp=lMroZY&liff_id=2008784499-92DR4hmy';
 
-  const LINE_URL = 'https://liff.line.me/2008784499-92DR4hmy/landing?follow=%40872lluqj&lp=lMroZY&liff_id=2008784499-92DR4hmy';
-  document.querySelectorAll('a[href="LINE_URL"]').forEach(function(el) { el.href = LINE_URL; });
+// ハンバーガーメニュー
+var ham = document.getElementById('hamburger');
+var menu = document.getElementById('mobile-menu');
+ham.addEventListener('click', function() {
+  ham.classList.toggle('open');
+  menu.classList.toggle('open');
+});
 
-  const GAS_URL = 'https://script.google.com/macros/s/AKfycbwF_pqCTBQy6vpjw3ZPBPmiFGQ7O7DiAOnDgXaRDQVNGqm3eMO72A4Mr7F4QXNotJuSUQ/exec';
-
-  const FALLBACK = [
-    { id:'F1', company:'サンプル株式会社', title:'営業スタッフ（未経験歓迎）', salary:'月給20万円〜', location:'那覇市', tags:['未経験歓迎','正社員'], isNew:true, featured:true },
-    { id:'F2', company:'沖縄ITソリューションズ', title:'ITエンジニア（フルスタック）', salary:'月給30万円〜', location:'那覇市・リモート可', tags:['エンジニア','正社員','リモート可'], isNew:true, featured:false },
-    { id:'F3', company:'リゾートホテル沖縄', title:'フロントスタッフ', salary:'月給18万円〜', location:'恩納村', tags:['ホテル','正社員'], isNew:false, featured:true }
-  ];
-
-  function esc(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-
-  function renderJobs(jobs) {
-    var el = document.getElementById('jobs-container');
-    if (!el) return;
-    var pick = jobs.filter(function(j){ return j.featured; }).slice(0,3);
-    var list = pick.length > 0 ? pick : jobs.slice(0,3);
-    if (!list.length) { el.innerHTML='<div class="jobs-loading">準備中です</div>'; return; }
-    el.innerHTML = list.map(function(j) {
-      var b = (j.isNew ? '<span class="job-badge-new">NEW</span>' : '') + (j.featured ? '<span class="job-badge-featured">注目</span>' : '');
-      var tags = (j.tags||[]).map(function(t){ return '<span class="job-tag">'+esc(t)+'</span>'; }).join('');
-      return '<a href="https://jobs.reiwa-career.com/" class="job-card">'
-        +'<div class="job-card-head">'+b+'</div>'
-        +'<div class="job-company">'+esc(j.company)+'</div>'
-        +'<div class="job-title">'+esc(j.title)+'</div>'
-        +'<div class="job-tags">'+tags+'</div>'
-        +'<div class="job-meta">'+(j.salary?'<span>💴 '+esc(String(j.salary))+'</span>':'')+(j.location?'<span>📍 '+esc(String(j.location))+'</span>':'')+'</div>'
-        +'</a>';
-    }).join('');
-  }
-
-  fetch(GAS_URL)
-    .then(function(r){ return r.json(); })
-    .then(function(d){ d&&d.status==='ok'&&d.jobs&&d.jobs.length?renderJobs(d.jobs):renderJobs(FALLBACK); })
-    .catch(function(){ renderJobs(FALLBACK); });
-
-  // Header scroll
-  var hdr = document.getElementById('site-header');
-  window.addEventListener('scroll', function() {
-    hdr.classList.toggle('scrolled', window.scrollY > 20);
-  }, {passive:true});
-
-  // Hamburger
-  var ham = document.getElementById('hamburger');
-  var mob = document.getElementById('mobile-menu');
-  ham.addEventListener('click', function() {
-    var open = mob.classList.toggle('open');
-    ham.classList.toggle('open', open);
-  });
-  mob.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() { mob.classList.remove('open'); ham.classList.remove('open'); });
-  });
-
-  // sec-labelをslide-leftに変換
-  document.querySelectorAll('.sec-label').forEach(function(el) {
-    el.classList.remove('fade-up');
-    el.classList.add('slide-left');
-  });
-
-  // Scroll animations (fade-up + slide-left)
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          // グリッド子要素のstagger
-          var parent = e.target;
-          var siblings = Array.from(parent.parentNode.children).filter(function(c) {
-            return c.classList.contains('fade-up') || c.classList.contains('slide-left');
-          });
-          var idx = siblings.indexOf(parent);
-          if (idx > 0 && !parent.style.transitionDelay) {
-            parent.style.transitionDelay = (idx * 0.07) + 's';
-          }
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
-
-    document.querySelectorAll('.fade-up, .slide-left').forEach(function(el) {
-      io.observe(el);
-    });
-  } else {
-    document.querySelectorAll('.fade-up, .slide-left').forEach(function(el) {
-      el.classList.add('visible');
-    });
-  }
-
-  // Count-up
-  function countUp(el, target, decimal) {
-    var unit = el.querySelector('.stat-unit') ? el.querySelector('.stat-unit').outerHTML : '';
-    var t0 = null;
-    function step(ts) {
-      if (!t0) t0 = ts;
-      var p = Math.min((ts-t0)/1200, 1);
-      var e = 1 - Math.pow(1-p, 3);
-      var val = Math.floor(e * target);
-      el.innerHTML = val + (p >= 1 && decimal ? decimal : '') + unit;
-      if (p < 1) requestAnimationFrame(step);
+// スクロールアニメーション
+var io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
     }
-    requestAnimationFrame(step);
-  }
-  if ('IntersectionObserver' in window) {
-    var sio = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          e.target.querySelectorAll('.stat-num[data-target]').forEach(function(el) {
-            countUp(el, parseInt(el.getAttribute('data-target'), 10), el.getAttribute('data-decimal'));
-          });
-          sio.unobserve(e.target);
-        }
-      });
-    }, {threshold:.3});
-    var st = document.querySelector('.stats');
-    if (st) sio.observe(st);
-  }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(function(el) { io.observe(el); });
 
+// countUp
+var statsObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.stat-num[data-target]').forEach(function(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var decimal = el.getAttribute('data-decimal') || '';
+        var unit = el.querySelector('.stat-unit') ? el.querySelector('.stat-unit').outerHTML : '';
+        var sub = el.querySelector('.stat-sub') ? el.querySelector('.stat-sub').outerHTML : '';
+        var start = 0;
+        var duration = 1600;
+        var startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var ease = 1 - Math.pow(1 - progress, 3);
+          var current = Math.floor(ease * target);
+          el.innerHTML = current + (progress === 1 && decimal ? decimal : '') + unit;
+          if (progress < 1) requestAnimationFrame(step);
+          else if (decimal) el.innerHTML = target + decimal + unit;
+        }
+        requestAnimationFrame(step);
+      });
+      statsObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+var statsSection = document.querySelector('.stats');
+if (statsSection) statsObserver.observe(statsSection);
+
+// GAS API求人ピックアップ
+(function() {
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbwF_pqCTBQy6vpjw3ZPBPmiFGQ7O7DiAOnDgXaRDQVNGqm3eMO72A4Mr7F4QXNotJuSUQ/exec';
+  var container = document.getElementById('jobs-container');
+  if (!container) return;
+  fetch(GAS_URL + '?limit=3')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var jobs = data.jobs || data || [];
+      if (!jobs.length) throw new Error('no jobs');
+      container.innerHTML = jobs.slice(0,3).map(function(job) {
+        return '<div class="job-card fade-up">' +
+          '<div class="job-card-img"><span style="font-size:2rem;">💼</span></div>' +
+          '<div class="job-card-body">' +
+            '<span class="job-category">' + (job.category || '求人') + '</span>' +
+            '<div class="job-title">' + (job.title || job.company || '求人情報') + '</div>' +
+            '<div class="job-tags">' +
+              (job.location ? '<span class="job-tag">📍 ' + job.location + '</span>' : '') +
+              (job.salary ? '<span class="job-tag">💴 ' + job.salary + '</span>' : '') +
+            '</div>' +
+          '</div></div>';
+      }).join('');
+      container.querySelectorAll('.fade-up').forEach(function(el) { io.observe(el); });
+    })
+    .catch(function() {
+      container.innerHTML = [
+        {title:'ITサポートスタッフ',category:'IT・通信',location:'東京都',salary:'月給22万〜'},
+        {title:'営業アシスタント',category:'営業',location:'大阪府',salary:'月給20万〜'},
+        {title:'カスタマーサポート',category:'サービス',location:'東京都',salary:'月給21万〜'}
+      ].map(function(job) {
+        return '<div class="job-card fade-up">' +
+          '<div class="job-card-img"><span style="font-size:2rem;">💼</span></div>' +
+          '<div class="job-card-body">' +
+            '<span class="job-category">' + job.category + '</span>' +
+            '<div class="job-title">' + job.title + '</div>' +
+            '<div class="job-tags">' +
+              '<span class="job-tag">📍 ' + job.location + '</span>' +
+              '<span class="job-tag">💴 ' + job.salary + '</span>' +
+            '</div>' +
+          '</div></div>';
+      }).join('');
+      container.querySelectorAll('.fade-up').forEach(function(el) { io.observe(el); });
+    });
 })();
 </script>
 </body>
