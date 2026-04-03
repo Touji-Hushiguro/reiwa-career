@@ -195,28 +195,41 @@ async function loadSlots(pageId) {
   renderSlots(pageId, slots);
 }
 
-// セクション分類
-const SECTIONS = [
-  { key: 'fv',      label: 'メインビジュアル',        ids: ['fv_bg'] },
-  { key: 'reason',  label: 'れいキャリを選ぶ理由',     ids: ['reason1_img','reason2_img','reason3_img'] },
-  { key: 'cta',     label: 'CTAブロック',              ids: ['cta_illust'] },
-  { key: 'voices',  label: '転職成功事例',              ids: ['voice1_thumb','voice2_thumb','voice3_thumb'] },
-  { key: 'advisor', label: 'キャリアアドバイザー',      ids: ['advisor1_photo','advisor2_photo','advisor3_photo','advisor4_photo'] },
+// セクション分類（全ページ対応）
+const ALL_SECTIONS = [
+  // ホーム
+  { pageId: 'home', key: 'fv',      label: 'メインビジュアル',        ids: ['fv_bg'] },
+  { pageId: 'home', key: 'reason',  label: 'れいキャリを選ぶ理由',     ids: ['reason1_img','reason2_img','reason3_img'] },
+  { pageId: 'home', key: 'cta',     label: 'CTAブロック',              ids: ['cta_illust'] },
+  { pageId: 'home', key: 'voices',  label: '転職成功事例',              ids: ['voice1_thumb','voice2_thumb','voice3_thumb'] },
+  { pageId: 'home', key: 'advisor', label: 'キャリアアドバイザー',      ids: ['advisor1_photo','advisor2_photo','advisor3_photo','advisor4_photo'] },
+  // サービスの特徴
+  { pageId: 'about', key: 'intro',   label: 'ページ上部 ビジュアル',    ids: ['about_intro1','about_intro2'] },
+  { pageId: 'about', key: 'reason',  label: '選ばれる理由 セクション',   ids: ['about_reason1_img','about_reason2_img','about_reason3_img'] },
+  // メンバー紹介
+  { pageId: 'member', key: 'photos', label: 'メンバー写真',              ids: ['member1_photo','member2_photo','member3_photo'] },
+  // メディア
+  { pageId: 'media',  key: 'thumbs', label: '記事サムネイル',            ids: ['media1_thumb','media2_thumb','media3_thumb'] },
 ];
+
+function getSections(pageId) {
+  return ALL_SECTIONS.filter(s => s.pageId === pageId);
+}
 
 function renderSlots(pageId, slots) {
   const page = pages.find(p => p.id === pageId);
   const main = document.getElementById('main');
   let html = `<div class="page-title">${page?.icon || ''} ${page?.label || ''} ページの画像スロット</div>`;
 
-  SECTIONS.forEach(sec => {
+  const sections = getSections(pageId);
+  sections.forEach(sec => {
     const secSlots = slots.filter(s => sec.ids.includes(s.id));
     if (!secSlots.length) return;
     html += `<div class="section-label">${sec.label}</div><div class="slots-grid" id="grid-${sec.key}"></div>`;
   });
 
-  // 未分類
-  const classified = SECTIONS.flatMap(s => s.ids);
+  // 未分類スロット
+  const classified = sections.flatMap(s => s.ids);
   const others = slots.filter(s => !classified.includes(s.id));
   if (others.length) {
     html += `<div class="section-label">その他</div><div class="slots-grid" id="grid-other"></div>`;
@@ -224,7 +237,7 @@ function renderSlots(pageId, slots) {
 
   main.innerHTML = html;
 
-  SECTIONS.forEach(sec => {
+  sections.forEach(sec => {
     const grid = document.getElementById(`grid-${sec.key}`);
     if (!grid) return;
     const secSlots = slots.filter(s => sec.ids.includes(s.id));

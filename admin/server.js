@@ -64,6 +64,12 @@ function makeImgTag(type, src, label) {
       return `<img src="${src}" alt="${base.alt}" loading="${base.loading}" style="width:100%;height:160px;object-fit:cover;display:block;border-radius:var(--radius-md,8px) var(--radius-md,8px) 0 0;">`;
     case 'cta-illust':
       return `<img src="${src}" alt="${base.alt}" loading="${base.loading}" style="width:100%;max-width:260px;height:auto;display:block;margin:0 auto;">`;
+    case 'intro-half':
+      return `<img src="${src}" alt="${base.alt}" loading="${base.loading}" style="width:100%;min-height:300px;object-fit:cover;display:block;">`;
+    case 'member-photo':
+      return `<img src="${src}" alt="${base.alt}" loading="${base.loading}" style="width:100%;min-height:240px;object-fit:cover;display:block;">`;
+    case 'media-thumb':
+      return `<img src="${src}" alt="${base.alt}" loading="${base.loading}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
     default:
       return `<img src="${src}" alt="${base.alt}" loading="${base.loading}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
   }
@@ -186,6 +192,12 @@ function getDefaultPlaceholder(type, label) {
       return `${svgImage}<span>転職成功者写真（こちらに画像が入ります）</span>`;
     case 'cta-illust':
       return `<div class="cta-campaign-illust"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>キャンペーンイラスト<br>（こちらに画像が入ります）</span></div>`;
+    case 'intro-half':
+      return `<div class="img-placeholder" style="min-height:300px;border-radius:0;">${svgImage}<span>（こちらに画像が入ります）</span></div>`;
+    case 'member-photo':
+      return `<div class="img-placeholder" style="min-height:240px;border-radius:0;">${svgPhoto}<span>メンバー写真<br>（こちらに画像が入ります）</span></div>`;
+    case 'media-thumb':
+      return `<div class="job-card-img"><span style="font-size:2rem;">📸</span></div>`;
     default:
       return `<div class="img-placeholder">${svgImage}<span>（こちらに画像が入ります）</span></div>`;
   }

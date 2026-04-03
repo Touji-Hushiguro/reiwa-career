@@ -21,7 +21,7 @@
           "description": "「高い内定率」セクション右側の写真",
           "icon": "📸",
           "type": "placeholder",
-          "aspectHint": "正方形〜横長（推奨: 600×400px）"
+          "aspectHint": "横長（推奨: 600×400px）"
         },
         {
           "id": "reason2_img",
@@ -29,7 +29,7 @@
           "description": "「高い定着率」セクション左側の写真",
           "icon": "📸",
           "type": "placeholder",
-          "aspectHint": "正方形〜横長（推奨: 600×400px）"
+          "aspectHint": "横長（推奨: 600×400px）"
         },
         {
           "id": "reason3_img",
@@ -37,7 +37,7 @@
           "description": "「手厚いサポート」セクション右側の写真",
           "icon": "📸",
           "type": "placeholder",
-          "aspectHint": "正方形〜横長（推奨: 600×400px）"
+          "aspectHint": "横長（推奨: 600×400px）"
         },
         {
           "id": "cta_illust",
@@ -102,6 +102,118 @@
           "icon": "🧑",
           "type": "photo-circle",
           "aspectHint": "正方形（推奨: 200×200px）"
+        }
+      ]
+    },
+    {
+      "id": "about",
+      "label": "サービスの特徴",
+      "icon": "✨",
+      "htmlFile": "about/index.html",
+      "slots": [
+        {
+          "id": "about_intro1",
+          "label": "イントロ写真①（左）",
+          "description": "ページ上部の2分割エリア左側：チーム集合写真など",
+          "icon": "📸",
+          "type": "intro-half",
+          "aspectHint": "縦長〜正方形（推奨: 600×400px）"
+        },
+        {
+          "id": "about_intro2",
+          "label": "イントロ写真②（右）",
+          "description": "ページ上部の2分割エリア右側：カウンセリング風景など",
+          "icon": "📸",
+          "type": "intro-half",
+          "aspectHint": "縦長〜正方形（推奨: 600×400px）"
+        },
+        {
+          "id": "about_reason1_img",
+          "label": "REASON01 写真（面接対策）",
+          "description": "「高い内定率」セクション右側の写真",
+          "icon": "📸",
+          "type": "placeholder",
+          "aspectHint": "横長（推奨: 500×350px）"
+        },
+        {
+          "id": "about_reason2_img",
+          "label": "REASON02 写真（カウンセリング）",
+          "description": "「高い定着率」セクション左側の写真",
+          "icon": "📸",
+          "type": "placeholder",
+          "aspectHint": "横長（推奨: 500×350px）"
+        },
+        {
+          "id": "about_reason3_img",
+          "label": "REASON03 写真（キャリア相談）",
+          "description": "「手厚いサポート」セクション右側の写真",
+          "icon": "📸",
+          "type": "placeholder",
+          "aspectHint": "横長（推奨: 500×350px）"
+        }
+      ]
+    },
+    {
+      "id": "member",
+      "label": "メンバー紹介",
+      "icon": "👥",
+      "htmlFile": "member/index.html",
+      "slots": [
+        {
+          "id": "member1_photo",
+          "label": "メンバー① 写真",
+          "description": "メンバー紹介カード1枚目の写真（上部カバー画像）",
+          "icon": "🧑",
+          "type": "member-photo",
+          "aspectHint": "横長（推奨: 400×240px）"
+        },
+        {
+          "id": "member2_photo",
+          "label": "メンバー② 写真",
+          "description": "メンバー紹介カード2枚目の写真（上部カバー画像）",
+          "icon": "🧑",
+          "type": "member-photo",
+          "aspectHint": "横長（推奨: 400×240px）"
+        },
+        {
+          "id": "member3_photo",
+          "label": "メンバー③ 写真",
+          "description": "メンバー紹介カード3枚目の写真（上部カバー画像）",
+          "icon": "🧑",
+          "type": "member-photo",
+          "aspectHint": "横長（推奨: 400×240px）"
+        }
+      ]
+    },
+    {
+      "id": "media",
+      "label": "れいキャリメディア",
+      "icon": "📰",
+      "htmlFile": "media/index.html",
+      "slots": [
+        {
+          "id": "media1_thumb",
+          "label": "記事① サムネイル（転職ノウハウ）",
+          "description": "メディア記事カード1枚目のサムネイル画像",
+          "icon": "📝",
+          "type": "media-thumb",
+          "aspectHint": "横長（推奨: 400×220px）"
+        },
+        {
+          "id": "media2_thumb",
+          "label": "記事② サムネイル（キャリア相談）",
+          "description": "メディア記事カード2枚目のサムネイル画像",
+          "icon": "💡",
+          "type": "media-thumb",
+          "aspectHint": "横長（推奨: 400×220px）"
+        },
+        {
+          "id": "media3_thumb",
+          "label": "記事③ サムネイル（未経験転職）",
+          "description": "メディア記事カード3枚目のサムネイル画像",
+          "icon": "🌱",
+          "type": "media-thumb",
+          "aspectHint": "横長（推奨: 400×220px）"
         }
       ]
     }
