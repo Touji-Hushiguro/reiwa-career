@@ -1092,8 +1092,8 @@ ul, ol { list-style: none; }
 }
 .advisor-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
 .advisor-photo {
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   margin: 0 auto 16px;
   overflow: hidden;
@@ -1102,8 +1102,16 @@ ul, ol { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: center;
+  /* 円形クリップをGPUで処理して画質を保つ */
+  transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
-.advisor-photo img { width: 100%; height: 100%; object-fit: cover; }
+.advisor-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .advisor-photo-placeholder {
   width: 100%;
   height: 100%;
