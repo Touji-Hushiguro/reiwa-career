@@ -873,7 +873,14 @@ ul, ol { list-style: none; }
   gap: 40px;
   padding-bottom: 48px;
 }
-.footer-logo img { height: 32px; width: auto; margin-bottom: 12px; }
+.footer-logo img {
+  width: 130px;
+  height: 32px;
+  object-fit: cover;
+  object-position: center 49%;
+  display: block;
+  margin-bottom: 12px;
+}
 .footer-logo p {
   font-size: 0.78rem;
   color: var(--text-light);
