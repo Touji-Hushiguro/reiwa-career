@@ -1,0 +1,109 @@
+{
+  "pages": [
+    {
+      "id": "home",
+      "label": "ホーム",
+      "icon": "🏠",
+      "htmlFile": "index.html",
+      "slots": [
+        {
+          "id": "fv_bg",
+          "label": "メインビジュアル背景",
+          "description": "トップページの大きな背景画像",
+          "icon": "🖼",
+          "type": "file-replace",
+          "targetFile": "fv-bg.jpg",
+          "aspectHint": "横長（推奨: 1920×1080px）"
+        },
+        {
+          "id": "reason1_img",
+          "label": "REASON01 写真（面接対策）",
+          "description": "「高い内定率」セクション右側の写真",
+          "icon": "📸",
+          "type": "placeholder",
+          "aspectHint": "正方形〜横長（推奨: 600×400px）"
+        },
+        {
+          "id": "reason2_img",
+          "label": "REASON02 写真（カウンセリング）",
+          "description": "「高い定着率」セクション左側の写真",
+          "icon": "📸",
+          "type": "placeholder",
+          "aspectHint": "正方形〜横長（推奨: 600×400px）"
+        },
+        {
+          "id": "reason3_img",
+          "label": "REASON03 写真（サポート）",
+          "description": "「手厚いサポート」セクション右側の写真",
+          "icon": "📸",
+          "type": "placeholder",
+          "aspectHint": "正方形〜横長（推奨: 600×400px）"
+        },
+        {
+          "id": "cta_illust",
+          "label": "CTAイラスト",
+          "description": "「今すぐ無料相談」ボタンの右側のイラスト",
+          "icon": "🎨",
+          "type": "cta-illust",
+          "aspectHint": "縦長〜正方形（推奨: 400×480px）"
+        },
+        {
+          "id": "voice1_thumb",
+          "label": "成功事例① サムネイル",
+          "description": "転職成功事例カード1枚目（✨未経験→IT）の写真",
+          "icon": "👤",
+          "type": "voice-thumb",
+          "aspectHint": "横長（推奨: 400×200px）"
+        },
+        {
+          "id": "voice2_thumb",
+          "label": "成功事例② サムネイル",
+          "description": "転職成功事例カード2枚目（🎯異業種）の写真",
+          "icon": "👤",
+          "type": "voice-thumb",
+          "aspectHint": "横長（推奨: 400×200px）"
+        },
+        {
+          "id": "voice3_thumb",
+          "label": "成功事例③ サムネイル",
+          "description": "転職成功事例カード3枚目（💰年収UP）の写真",
+          "icon": "👤",
+          "type": "voice-thumb",
+          "aspectHint": "横長（推奨: 400×200px）"
+        },
+        {
+          "id": "advisor1_photo",
+          "label": "アドバイザー① 顔写真",
+          "description": "アドバイザー紹介1枚目の円形顔写真",
+          "icon": "🧑",
+          "type": "photo-circle",
+          "aspectHint": "正方形（推奨: 200×200px）"
+        },
+        {
+          "id": "advisor2_photo",
+          "label": "アドバイザー② 顔写真",
+          "description": "アドバイザー紹介2枚目の円形顔写真",
+          "icon": "🧑",
+          "type": "photo-circle",
+          "aspectHint": "正方形（推奨: 200×200px）"
+        },
+        {
+          "id": "advisor3_photo",
+          "label": "アドバイザー③ 顔写真",
+          "description": "アドバイザー紹介3枚目の円形顔写真",
+          "icon": "🧑",
+          "type": "photo-circle",
+          "aspectHint": "正方形（推奨: 200×200px）"
+        },
+        {
+          "id": "advisor4_photo",
+          "label": "アドバイザー④ 顔写真",
+          "description": "アドバイザー紹介4枚目の円形顔写真",
+          "icon": "🧑",
+          "type": "photo-circle",
+          "aspectHint": "正方形（推奨: 200×200px）"
+        }
+      ]
+    }
+  ]
+}

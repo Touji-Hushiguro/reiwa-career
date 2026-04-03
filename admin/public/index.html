@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>れいキャリ 画像管理パネル</title>
+<style>
+:root {
+  --orange: #F5841F;
+  --orange-dk: #d47318;
+  --orange-lt: #fff3e8;
+  --green: #2d6a4f;
+  --red: #c0392b;
+  --bg: #f4f5f7;
+  --white: #fff;
+  --border: #e5e7eb;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --r: 12px;
+  --shadow: 0 2px 12px rgba(0,0,0,.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Hiragino Sans','Yu Gothic UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ---- HEADER ---- */
+.hd{background:linear-gradient(135deg,var(--orange),var(--orange-dk));color:#fff;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(245,132,31,.3)}
+.hd-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem}
+.hd-badge{background:rgba(255,255,255,.2);font-size:.68rem;padding:2px 8px;border-radius:20px;font-weight:500}
+.btn-pub{background:#fff;color:var(--orange);border:none;border-radius:24px;padding:8px 22px;font-weight:700;font-size:.88rem;cursor:pointer;display:flex;align-items:center;gap:7px;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.btn-pub:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.btn-pub:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.spin{display:none;width:14px;height:14px;border:2px solid var(--orange);border-top-color:transparent;border-radius:50%;animation:sp .6s linear infinite}
+.loading .spin{display:block}.loading .ico{display:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* ---- LAYOUT ---- */
+.wrap{max-width:1100px;margin:0 auto;padding:28px 20px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start}
+
+/* ---- SIDEBAR ---- */
+.sb{background:var(--white);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;position:sticky;top:78px}
+.sb-ttl{padding:14px 18px 10px;font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--border)}
+.tab{display:flex;align-items:center;gap:9px;padding:12px 18px;cursor:pointer;border-left:3px solid transparent;font-size:.88rem;user-select:none;transition:background .15s}
+.tab:hover{background:var(--bg)}
+.tab.active{background:var(--orange-lt);border-left-color:var(--orange);color:var(--orange);font-weight:600}
+
+/* ---- CONTENT ---- */
+.page-title{font-size:1.1rem;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+
+/* ---- SLOT SECTION ---- */
+.section-label{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:24px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.slots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:8px}
+
+/* ---- SLOT CARD ---- */
+.slot-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .2s;position:relative}
+.slot-card.has-img{border-color:#c8f0d8}
+.slot-card.dragover{border-color:var(--orange);background:var(--orange-lt);transform:scale(1.02)}
+
+.slot-preview{position:relative;width:100%;aspect-ratio:4/3;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;cursor:pointer;overflow:hidden}
+.slot-preview.circle-hint{aspect-ratio:1/1}
+.slot-preview img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s}
+.slot-preview:hover img{opacity:.85}
+.slot-preview .ph-icon{font-size:2rem;opacity:.4}
+.slot-preview .ph-text{font-size:.72rem;color:var(--muted);text-align:center;line-height:1.4;padding:0 8px}
+
+.slot-overlay{position:absolute;inset:0;background:rgba(245,132,31,.85);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;opacity:0;transition:opacity .2s;color:#fff;cursor:pointer}
+.slot-card:hover .slot-overlay{opacity:1}
+.slot-overlay-icon{font-size:1.8rem}
+.slot-overlay-text{font-size:.78rem;font-weight:600}
+
+.slot-info{padding:10px 12px 12px}
+.slot-name{font-size:.82rem;font-weight:700;margin-bottom:2px}
+.slot-desc{font-size:.72rem;color:var(--muted);margin-bottom:8px;line-height:1.4}
+.slot-hint{font-size:.68rem;color:var(--muted);background:var(--bg);padding:3px 8px;border-radius:6px;display:inline-block;margin-bottom:8px}
+.slot-actions{display:flex;gap:6px}
+.btn-upload{flex:1;background:var(--orange);color:#fff;border:none;border-radius:7px;padding:6px 8px;font-size:.76rem;font-weight:600;cursor:pointer;transition:background .15s}
+.btn-upload:hover{background:var(--orange-dk)}
+.btn-remove{background:var(--bg);border:1px solid var(--border);color:var(--muted);border-radius:7px;padding:6px 10px;font-size:.76rem;cursor:pointer;transition:all .15s}
+.btn-remove:hover{background:#fff0f0;color:var(--red);border-color:var(--red)}
+.btn-remove:disabled{opacity:.35;cursor:not-allowed}
+
+/* status badge */
+.status-badge{position:absolute;top:8px;left:8px;font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:10px;pointer-events:none}
+.status-badge.set{background:#c8f0d8;color:#2d6a4f}
+.status-badge.unset{background:#f0f0f0;color:var(--muted)}
+
+/* progress overlay on card */
+.slot-uploading{position:absolute;inset:0;background:rgba(255,255,255,.88);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;z-index:10;display:none}
+.slot-uploading.show{display:flex}
+.up-spin{width:28px;height:28px;border:3px solid var(--orange-lt);border-top-color:var(--orange);border-radius:50%;animation:sp .7s linear infinite}
+.up-text{font-size:.78rem;color:var(--muted);font-weight:500}
+
+/* ---- MODAL ---- */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:200}
+.modal-bg.show{display:flex}
+.modal{background:#fff;border-radius:16px;padding:30px;width:420px;box-shadow:var(--shadow-lg)}
+.modal h3{font-size:1.1rem;margin-bottom:6px}
+.modal p{color:var(--muted);font-size:.85rem;margin-bottom:18px}
+.modal input{width:100%;border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:.9rem;margin-bottom:18px;outline:none;transition:border-color .2s}
+.modal input:focus{border-color:var(--orange)}
+.modal-footer{display:flex;gap:10px;justify-content:flex-end}
+.btn-cancel{background:var(--bg);border:1px solid var(--border);color:var(--muted);padding:8px 18px;border-radius:8px;cursor:pointer;font-weight:500;font-size:.88rem}
+.btn-ok{background:var(--orange);border:none;color:#fff;padding:8px 22px;border-radius:8px;cursor:pointer;font-weight:700;font-size:.88rem;display:flex;align-items:center;gap:7px}
+.btn-ok:disabled{opacity:.6;cursor:not-allowed}
+.btn-ok .spin{border-color:rgba(255,255,255,.4);border-top-color:#fff}
+.btn-ok.loading .spin{display:block}.btn-ok.loading .ico{display:none}
+
+/* ---- TOAST ---- */
+.toast-wrap{position:fixed;bottom:28px;right:28px;display:flex;flex-direction:column;gap:8px;z-index:999}
+.toast{background:var(--text);color:#fff;padding:11px 18px;border-radius:10px;font-size:.85rem;font-weight:500;display:flex;align-items:center;gap:7px;box-shadow:var(--shadow-lg);animation:tin .3s ease;max-width:300px}
+.toast.success{background:var(--green)}.toast.error{background:var(--red)}
+@keyframes tin{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes tout{to{transform:translateX(110%);opacity:0}}
+
+.hidden-input{display:none}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="hd-logo">📁 れいキャリ 画像管理パネル <span class="hd-badge">Admin</span></div>
+  <button class="btn-pub" id="btnPub"><span class="ico">🚀</span><div class="spin"></div>GitHubに公開する</button>
+</header>
+
+<div class="wrap">
+  <aside class="sb">
+    <div class="sb-ttl">ページ</div>
+    <div id="tabs"></div>
+  </aside>
+
+  <main id="main">
+    <div style="color:var(--muted);text-align:center;padding:60px">読み込み中...</div>
+  </main>
+</div>
+
+<!-- PUBLISH MODAL -->
+<div class="modal-bg" id="pubModal">
+  <div class="modal">
+    <h3>🚀 GitHubに公開</h3>
+    <p>変更内容のメモを入力（任意）</p>
+    <input type="text" id="pubMsg" value="画像を更新">
+    <div class="modal-footer">
+      <button class="btn-cancel" id="btnCancelPub">キャンセル</button>
+      <button class="btn-ok" id="btnOkPub"><span class="ico">公開する</span><div class="spin"></div></button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-wrap" id="toasts"></div>
+
+<!-- Hidden file inputs (one per slot, created dynamically) -->
+<div id="inputs"></div>
+
+<script>
+// ---- STATE ----
+let pages = [];
+let currentPageId = '';
+let slots = [];
+
+// ---- INIT ----
+async function init() {
+  const r = await fetch('/api/pages');
+  pages = (await r.json()).pages;
+  renderTabs();
+  if (pages.length) selectPage(pages[0].id);
+}
+
+// ---- TABS ----
+function renderTabs() {
+  const el = document.getElementById('tabs');
+  el.innerHTML = '';
+  pages.forEach(p => {
+    const d = document.createElement('div');
+    d.className = 'tab' + (p.id === currentPageId ? ' active' : '');
+    d.dataset.id = p.id;
+    d.innerHTML = `<span>${p.icon}</span><span>${p.label}</span>`;
+    d.addEventListener('click', () => selectPage(p.id));
+    el.appendChild(d);
+  });
+}
+
+async function selectPage(id) {
+  currentPageId = id;
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.id === id));
+  await loadSlots(id);
+}
+
+// ---- SLOTS ----
+async function loadSlots(pageId) {
+  document.getElementById('main').innerHTML = '<div style="color:var(--muted);text-align:center;padding:60px">読み込み中...</div>';
+  const r = await fetch(`/api/slots/${pageId}`);
+  const data = await r.json();
+  slots = data.slots;
+  renderSlots(pageId, slots);
+}
+
+// セクション分類
+const SECTIONS = [
+  { key: 'fv',      label: 'メインビジュアル',        ids: ['fv_bg'] },
+  { key: 'reason',  label: 'れいキャリを選ぶ理由',     ids: ['reason1_img','reason2_img','reason3_img'] },
+  { key: 'cta',     label: 'CTAブロック',              ids: ['cta_illust'] },
+  { key: 'voices',  label: '転職成功事例',              ids: ['voice1_thumb','voice2_thumb','voice3_thumb'] },
+  { key: 'advisor', label: 'キャリアアドバイザー',      ids: ['advisor1_photo','advisor2_photo','advisor3_photo','advisor4_photo'] },
+];
+
+function renderSlots(pageId, slots) {
+  const page = pages.find(p => p.id === pageId);
+  const main = document.getElementById('main');
+  let html = `<div class="page-title">${page?.icon || ''} ${page?.label || ''} ページの画像スロット</div>`;
+
+  SECTIONS.forEach(sec => {
+    const secSlots = slots.filter(s => sec.ids.includes(s.id));
+    if (!secSlots.length) return;
+    html += `<div class="section-label">${sec.label}</div><div class="slots-grid" id="grid-${sec.key}"></div>`;
+  });
+
+  // 未分類
+  const classified = SECTIONS.flatMap(s => s.ids);
+  const others = slots.filter(s => !classified.includes(s.id));
+  if (others.length) {
+    html += `<div class="section-label">その他</div><div class="slots-grid" id="grid-other"></div>`;
+  }
+
+  main.innerHTML = html;
+
+  SECTIONS.forEach(sec => {
+    const grid = document.getElementById(`grid-${sec.key}`);
+    if (!grid) return;
+    const secSlots = slots.filter(s => sec.ids.includes(s.id));
+    secSlots.forEach(slot => grid.appendChild(makeSlotCard(pageId, slot)));
+  });
+
+  if (others.length) {
+    const grid = document.getElementById('grid-other');
+    others.forEach(slot => grid.appendChild(makeSlotCard(pageId, slot)));
+  }
+}
+
+function makeSlotCard(pageId, slot) {
+  const card = document.createElement('div');
+  card.className = 'slot-card' + (slot.hasImage ? ' has-img' : '');
+  card.id = `card-${slot.id}`;
+
+  const isCircle = slot.type === 'photo-circle';
+  const preview = slot.hasImage
+    ? `<img src="${slot.src}" alt="${slot.label}">`
+    : `<span class="ph-icon">${slot.icon}</span><span class="ph-text">${slot.label}</span>`;
+
+  card.innerHTML = `
+    <div class="slot-preview ${isCircle ? 'circle-hint' : ''}" id="prev-${slot.id}">
+      ${preview}
+      <div class="slot-overlay">
+        <div class="slot-overlay-icon">📤</div>
+        <div class="slot-overlay-text">クリックまたはドロップ</div>
+      </div>
+    </div>
+    <span class="status-badge ${slot.hasImage ? 'set' : 'unset'}">${slot.hasImage ? '✅ 設定済み' : '未設定'}</span>
+    <div class="slot-uploading" id="up-${slot.id}">
+      <div class="up-spin"></div>
+      <div class="up-text">アップロード中...</div>
+    </div>
+    <div class="slot-info">
+      <div class="slot-name">${slot.icon} ${slot.label}</div>
+      <div class="slot-desc">${slot.description}</div>
+      <div class="slot-hint">📐 ${slot.aspectHint}</div>
+      <div class="slot-actions">
+        <button class="btn-upload" data-slot="${slot.id}">📤 画像を設定</button>
+        <button class="btn-remove" data-slot="${slot.id}" ${!slot.hasImage ? 'disabled' : ''}>✕</button>
+      </div>
+    </div>
+  `;
+
+  // ---- click to upload ----
+  const triggerUpload = () => triggerFileInput(pageId, slot.id);
+  card.querySelector('.slot-preview').addEventListener('click', triggerUpload);
+  card.querySelector('.btn-upload').addEventListener('click', triggerUpload);
+
+  // ---- remove ----
+  card.querySelector('.btn-remove').addEventListener('click', () => removeSlot(pageId, slot.id));
+
+  // ---- drag & drop ----
+  card.addEventListener('dragover', e => { e.preventDefault(); card.classList.add('dragover'); });
+  card.addEventListener('dragleave', () => card.classList.remove('dragover'));
+  card.addEventListener('drop', e => {
+    e.preventDefault();
+    card.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if (file) uploadFile(pageId, slot.id, file);
+  });
+
+  return card;
+}
+
+// ---- FILE INPUT ----
+function triggerFileInput(pageId, slotId) {
+  const inp = document.createElement('input');
+  inp.type = 'file';
+  inp.accept = 'image/*';
+  inp.className = 'hidden-input';
+  inp.addEventListener('change', () => {
+    if (inp.files[0]) uploadFile(pageId, slotId, inp.files[0]);
+    inp.remove();
+  });
+  document.getElementById('inputs').appendChild(inp);
+  inp.click();
+}
+
+// ---- UPLOAD ----
+async function uploadFile(pageId, slotId, file) {
+  const card = document.getElementById(`card-${slotId}`);
+  const loader = document.getElementById(`up-${slotId}`);
+  loader.classList.add('show');
+
+  const fd = new FormData();
+  fd.append('file', file);
+
+  try {
+    const r = await fetch(`/api/slots/${pageId}/${slotId}`, { method: 'POST', body: fd });
+    const data = await r.json();
+    if (data.success) {
+      toast(`「${slotId}」に画像を設定しました ✅`, 'success');
+      await loadSlots(pageId);
+    } else {
+      toast('エラー: ' + data.error, 'error');
+    }
+  } catch (e) {
+    toast('通信エラー', 'error');
+  } finally {
+    loader.classList.remove('show');
+  }
+}
+
+// ---- REMOVE ----
+async function removeSlot(pageId, slotId) {
+  if (!confirm('この画像を削除してプレースホルダーに戻しますか？')) return;
+  const r = await fetch(`/api/slots/${pageId}/${slotId}`, { method: 'DELETE' });
+  const data = await r.json();
+  if (data.success) {
+    toast('削除しました', 'success');
+    await loadSlots(pageId);
+  } else {
+    toast('エラー: ' + data.error, 'error');
+  }
+}
+
+// ---- PUBLISH ----
+document.getElementById('btnPub').addEventListener('click', () => {
+  document.getElementById('pubModal').classList.add('show');
+});
+document.getElementById('btnCancelPub').addEventListener('click', () => {
+  document.getElementById('pubModal').classList.remove('show');
+});
+document.getElementById('btnOkPub').addEventListener('click', async () => {
+  const btn = document.getElementById('btnOkPub');
+  const msg = document.getElementById('pubMsg').value;
+  btn.classList.add('loading'); btn.disabled = true;
+
+  const r = await fetch('/api/publish', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ message: msg })
+  });
+  const data = await r.json();
+  btn.classList.remove('loading'); btn.disabled = false;
+
+  if (data.success) {
+    document.getElementById('pubModal').classList.remove('show');
+    toast(data.nothing ? '変更はありませんでした' : 'GitHubに公開しました 🚀', 'success');
+  } else {
+    toast('公開エラー: ' + data.error, 'error');
+  }
+});
+
+// ---- TOAST ----
+function toast(msg, type = '') {
+  const wrap = document.getElementById('toasts');
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.textContent = msg;
+  wrap.appendChild(el);
+  setTimeout(() => {
+    el.style.animation = 'tout .3s ease forwards';
+    setTimeout(() => el.remove(), 300);
+  }, 3200);
+}
+
+init();
+</script>
+</body>
+</html>
