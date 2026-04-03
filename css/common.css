@@ -67,14 +67,12 @@ ul, ol { list-style: none; }
 .header-logo a {
   display: inline-flex;
   align-items: center;
-  overflow: hidden;
-  height: 54px;
 }
 .header-logo img {
-  height: 160px;
-  width: auto;
-  margin-top: -27px;
-  flex-shrink: 0;
+  width: 150px;
+  height: 38px;
+  object-fit: cover;
+  object-position: center 49%;
 }
 .header-sub-links {
   display: flex;
